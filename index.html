@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dima Naida</title>
+  <title>Діма Найда</title>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -16,7 +16,6 @@
       --accent:       #F2E000;
       --accent-light: #FDFBCC;
       --wa:           #25D366;
-      --wa-dark:      #128C7E;
       --spotify:      #1DB954;
     }
 
@@ -30,6 +29,30 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-switch {
+      position: fixed; top: .8rem; right: .8rem; z-index: 600;
+      display: flex;
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 10px rgba(28,25,21,.12);
+      overflow: hidden;
+    }
+    .lang-btn {
+      padding: .32rem .7rem;
+      font-size: .74rem; font-weight: 700; letter-spacing: .04em;
+      border: none; background: none; cursor: pointer;
+      color: var(--muted); font-family: inherit;
+      transition: color .15s, background .15s;
+    }
+    .lang-btn.active {
+      background: var(--accent);
+      color: var(--text);
+    }
+    .lang-btn:not(.active):hover { color: var(--text); }
+
     /* ── PROFILE CARD ── */
     .profile-card {
       position: relative; width: 100%; max-width: 480px;
@@ -37,7 +60,6 @@
       overflow: hidden;
       box-shadow: 0 8px 48px rgba(28,25,21,.22), 0 2px 8px rgba(28,25,21,.08);
     }
-
     .profile-photo { width: 100%; height: 580px; overflow: hidden; background: #c8bfb4; }
     .profile-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
     .profile-photo .photo-placeholder {
@@ -46,7 +68,6 @@
       gap: 1rem; color: #8a7e74; font-size: .85rem;
     }
     .profile-photo .photo-placeholder span:first-child { font-size: 3rem; }
-
     .profile-overlay {
       position: absolute; bottom: 0; left: 0; right: 0;
       padding: 4rem 1.5rem 1.6rem;
@@ -58,8 +79,7 @@
     /* ── INFO CHIPS ── */
     .info-chips {
       display: flex; flex-wrap: wrap; gap: .45rem;
-      padding: 1.1rem 1rem 1.1rem;
-      background: var(--white);
+      padding: 1.1rem 1rem; background: var(--white);
       max-width: 480px; margin: 0 auto;
       border-top: 1px solid var(--border);
     }
@@ -92,11 +112,11 @@
       display: flex; align-items: center; justify-content: center;
       font-size: .9rem; flex-shrink: 0;
     }
-    .card-dot.spotify  { background: var(--spotify); }
+    .card-dot.spotify { background: var(--spotify); }
     .card-body { padding: .15rem 1.2rem 1rem; font-size: .98rem; color: #2E2820; line-height: 1.78; }
     .card-body p em { font-style: italic; color: var(--text); }
 
-    /* ── GET IN TOUCH ── */
+    /* ── CONTACT CARD ── */
     .contact-card {
       background: var(--white); margin: .7rem 1rem 0;
       border-radius: 14px; overflow: hidden;
@@ -109,8 +129,6 @@
       font-size: .68rem; font-weight: 700;
       letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
     }
-
-    /* contact divider */
     .c-divider { height: 1px; background: var(--border); margin: 0 1.2rem; }
 
     /* Instagram row */
@@ -149,28 +167,23 @@
       background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
       box-shadow: 0 2px 8px rgba(131,58,180,.3);
     }
-    .ig-btn-follow {
-      color: var(--text); background: var(--bg); border: 1.5px solid var(--border);
-    }
+    .ig-btn-follow { color: var(--text); background: var(--bg); border: 1.5px solid var(--border); }
 
-    /* Contact rows (WhatsApp + Email) */
+    /* Contact rows */
     .contact-row {
       display: flex; align-items: center; gap: .75rem;
       padding: 1rem 1.2rem;
       text-decoration: none; color: inherit;
-      transition: background .15s;
-      cursor: pointer;
+      transition: background .15s; cursor: pointer;
     }
     .contact-row:last-child { padding-bottom: 1.2rem; }
     .contact-row:hover { background: var(--bg); }
     .contact-row:active { background: var(--border); }
-
     .contact-row-icon {
       width: 38px; height: 38px; border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.05rem; flex-shrink: 0;
     }
-
     .contact-row-detail { min-width: 0; flex: 1; }
     .contact-row-label {
       font-size: .67rem; color: var(--muted);
@@ -179,43 +192,28 @@
     }
     .contact-row-value {
       font-size: .9rem; font-weight: 600; color: var(--text);
-      display: block;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-
     .contact-row-arrow {
-      font-size: 1.25rem; color: var(--border);
-      flex-shrink: 0; margin-left: .25rem;
-      transition: color .15s, transform .15s;
-      font-weight: 300;
+      font-size: 1.25rem; color: var(--border); flex-shrink: 0; margin-left: .25rem;
+      font-weight: 300; transition: color .15s, transform .15s;
     }
-    .contact-row:hover .contact-row-arrow {
-      color: var(--muted);
-      transform: translateX(2px);
-    }
+    .contact-row:hover .contact-row-arrow { color: var(--muted); transform: translateX(2px); }
 
     /* ── MINI GALLERY ── */
     .gallery { padding: .7rem 1.2rem 1.2rem; border-top: 1px solid var(--border); }
     .gallery + .gallery { padding-top: .7rem; }
     .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; border-radius: 9px; overflow: hidden; }
-    .gallery-thumb {
-      aspect-ratio: 1; overflow: hidden; background: #ddd7cf; cursor: pointer; position: relative;
-    }
+    .gallery-thumb { aspect-ratio: 1; overflow: hidden; background: #ddd7cf; cursor: pointer; position: relative; }
     .gallery-thumb img,
-    .gallery-thumb video {
-      width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .22s;
-    }
+    .gallery-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .22s; }
     .gallery-thumb:hover img,
     .gallery-thumb:hover video { transform: scale(1.07); }
-    .gallery-thumb .thumb-placeholder {
-      width: 100%; height: 100%; display: flex; align-items: center;
-      justify-content: center; color: #a09890; font-size: 1.4rem;
-    }
+    .gallery-thumb .thumb-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #a09890; font-size: 1.4rem; }
     .gallery-thumb.is-video::after {
       content: '▶'; position: absolute; inset: 0;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; color: #fff;
-      text-shadow: 0 1px 6px rgba(0,0,0,.55); pointer-events: none;
+      font-size: 1.2rem; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.55); pointer-events: none;
     }
     .gallery-thumb.more-overlay::after {
       content: attr(data-label); position: absolute; inset: 0;
@@ -226,10 +224,9 @@
     .gallery-cta {
       display: block; margin-top: .6rem; font-size: .78rem; font-weight: 600;
       color: var(--muted); text-align: right; cursor: pointer;
-      background: none; border: none; padding: 0; font-family: inherit;
-      transition: color .15s;
+      background: none; border: none; padding: 0; font-family: inherit; transition: color .15s;
     }
-    .gallery-cta:hover { color: var(--accent); }
+    .gallery-cta:hover { color: var(--text); }
 
     /* ── PHOTO PAIR ── */
     .photo-pair-card {
@@ -262,10 +259,7 @@
     }
     .tags-label { font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: .8rem; }
     .tags { display: flex; flex-wrap: wrap; gap: .45rem; }
-    .tag {
-      font-size: .82rem; color: var(--text); background: var(--bg);
-      border: 1.5px solid var(--border); border-radius: 999px; padding: .3rem .9rem; font-weight: 500;
-    }
+    .tag { font-size: .82rem; color: var(--text); background: var(--bg); border: 1.5px solid var(--border); border-radius: 999px; padding: .3rem .9rem; font-weight: 500; }
 
     /* ── SPOTIFY ── */
     .spotify-card {
@@ -295,10 +289,7 @@
       white-space: nowrap;
       transition: transform .2s, box-shadow .2s, opacity .3s;
     }
-    .sticky-cta:hover {
-      transform: translateX(-50%) translateY(-2px);
-      box-shadow: 0 8px 32px rgba(242,224,0,.5), 0 2px 8px rgba(28,25,21,.12);
-    }
+    .sticky-cta:hover { transform: translateX(-50%) translateY(-2px); box-shadow: 0 8px 32px rgba(242,224,0,.5), 0 2px 8px rgba(28,25,21,.12); }
     .sticky-cta.hidden { opacity: 0; pointer-events: none; }
 
     /* ── LIGHTBOX ── */
@@ -314,8 +305,7 @@
       background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
       color: #fff; font-size: 1.3rem; width: 40px; height: 40px;
       border-radius: 50%; cursor: pointer; display: flex;
-      align-items: center; justify-content: center; font-family: inherit;
-      transition: background .2s;
+      align-items: center; justify-content: center; font-family: inherit; transition: background .2s;
     }
     .lightbox-close:hover { background: rgba(255,255,255,.22); }
     .lightbox-title { color: rgba(255,255,255,.7); font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; text-align: center; margin-bottom: .8rem; }
@@ -323,29 +313,22 @@
     .lightbox-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
     .lightbox-grid .lb-video-wrap { position: relative; aspect-ratio: 1; background: #000; overflow: hidden; }
     .lightbox-grid .lb-video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
-    .lightbox-grid .lb-video-wrap .lb-play {
-      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-      font-size: 2rem; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.7);
-      pointer-events: none; transition: opacity .2s;
-    }
+    .lightbox-grid .lb-video-wrap .lb-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.7); pointer-events: none; transition: opacity .2s; }
     .lightbox-grid .lb-video-wrap:hover .lb-play { opacity: 0; }
-    .lightbox-grid .lb-placeholder {
-      aspect-ratio: 1; background: #1e1a16;
-      display: flex; align-items: center; justify-content: center;
-      color: #4a4540; font-size: .8rem; text-align: center; padding: 1rem;
-      flex-direction: column; gap: .4rem;
-    }
+    .lightbox-grid .lb-placeholder { aspect-ratio: 1; background: #1e1a16; display: flex; align-items: center; justify-content: center; color: #4a4540; font-size: .8rem; text-align: center; padding: 1rem; flex-direction: column; gap: .4rem; }
     .lightbox-grid .lb-placeholder span:first-child { font-size: 1.8rem; }
 
     /* ── FOOTER ── */
-    footer {
-      max-width: 480px; margin: 2rem auto 0; padding: 1.5rem 1rem;
-      font-size: .76rem; color: var(--muted);
-      text-align: center; border-top: 1px solid var(--border);
-    }
+    footer { max-width: 480px; margin: 2rem auto 0; padding: 1.5rem 1rem; font-size: .76rem; color: var(--muted); text-align: center; border-top: 1px solid var(--border); }
   </style>
 </head>
 <body>
+
+  <!-- LANGUAGE SWITCHER -->
+  <div class="lang-switch">
+    <button class="lang-btn" id="btn-uk" onclick="setLang('uk')">UA</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
 
   <!-- PROFILE CARD -->
   <div class="profile-card">
@@ -354,16 +337,15 @@
         onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>🏔️</span><span>Add photos/recent.jpg</span></div>'">
     </div>
     <div class="profile-overlay">
-      <h1 class="profile-name">👋 Hi! I'm Dima</h1>
-      <p class="profile-tagline">Product · Company Growth · eGym</p>
+      <h1 class="profile-name" data-t="profileName"></h1>
+      <p class="profile-tagline" data-t="profileTagline"></p>
     </div>
   </div>
 
   <!-- INFO CHIPS -->
   <div class="info-chips">
-    <span class="chip">🛠️ Product Manager</span>
+    <span class="chip" id="chip-role" data-t="chipRole"></span>
     <span class="chip" id="age-chip"></span>
-    <span class="chip chip-accent">eGym</span>
   </div>
 
   <main class="main">
@@ -372,10 +354,9 @@
     <div class="contact-card" id="contact">
       <div class="contact-header">
         <div class="card-dot">✉️</div>
-        Get in touch
+        <span data-t="contactHeader"></span>
       </div>
 
-      <!-- Instagram -->
       <div class="ig-row">
         <div class="ig-avatar">
           <img src="photos/recent.jpg" alt="@cadet93000"
@@ -383,23 +364,20 @@
         </div>
         <div class="ig-info">
           <span class="ig-username">@cadet93000</span>
-          <p class="ig-subline">Instagram · travels, CrossFit & breakfast vibes</p>
+          <p class="ig-subline" data-t="igSubline"></p>
           <div class="ig-actions">
-            <a class="ig-btn ig-btn-message" href="https://ig.me/m/cadet93000" target="_blank" rel="noopener noreferrer">DM me</a>
-            <a class="ig-btn ig-btn-follow"  href="https://www.instagram.com/cadet93000" target="_blank" rel="noopener noreferrer">Follow</a>
+            <a class="ig-btn ig-btn-message" href="https://ig.me/m/cadet93000" target="_blank" rel="noopener noreferrer" data-t="igDm"></a>
+            <a class="ig-btn ig-btn-follow"  href="https://www.instagram.com/cadet93000" target="_blank" rel="noopener noreferrer" data-t="igFollow"></a>
           </div>
         </div>
       </div>
 
       <div class="c-divider"></div>
 
-      <div class="c-divider"></div>
-
-      <!-- WhatsApp -->
       <a class="contact-row" href="https://wa.me/4917620082850" target="_blank" rel="noopener noreferrer">
         <div class="contact-row-icon" style="background:#E7FBF0;">💬</div>
         <div class="contact-row-detail">
-          <span class="contact-row-label">WhatsApp</span>
+          <span class="contact-row-label" data-t="waLabel"></span>
           <span class="contact-row-value">+49 176 2008 2850</span>
         </div>
         <span class="contact-row-arrow">›</span>
@@ -407,11 +385,10 @@
 
       <div class="c-divider"></div>
 
-      <!-- Email -->
       <a class="contact-row" href="mailto:dmytro.naida@icloud.com">
         <div class="contact-row-icon" style="background:#EEF2FF;">📧</div>
         <div class="contact-row-detail">
-          <span class="contact-row-label">Email</span>
+          <span class="contact-row-label" data-t="emailLabel"></span>
           <span class="contact-row-value">dmytro.naida@icloud.com</span>
         </div>
         <span class="contact-row-arrow">›</span>
@@ -422,13 +399,13 @@
     <div class="photo-pair-card">
       <div class="photo-pane">
         <img src="photos/recent.jpg" alt="Dima — recent"
-          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>📷</span><span>Recent photo</span></div>'">
-        <div class="photo-pane-label">Recent</div>
+          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>📷</span><span>recent.jpg</span></div>'">
+        <div class="photo-pane-label" data-t="recentLabel"></div>
       </div>
       <div class="photo-pane">
         <img src="photos/childhood.jpg" alt="Dima — childhood"
-          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>👶</span><span>Childhood photo</span></div>'">
-        <div class="photo-pane-label">Childhood</div>
+          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>👶</span><span>childhood.jpg</span></div>'">
+        <div class="photo-pane-label" data-t="childhoodLabel"></div>
       </div>
     </div>
 
@@ -436,10 +413,10 @@
     <div class="card">
       <div class="card-header">
         <div class="card-dot">🌈</div>
-        When I'm not at work, I love to…
+        <span data-t="hobbyHeader"></span>
       </div>
       <div class="card-body">
-        <p>Doing CrossFit, walking (most recently 125 km in five days in Spain), searching for a new song I'll listen to on repeat, cooking some kind of cool breakfast food — pancakes with mascarpone cheese, honey, and peaches being my favorite.</p>
+        <p data-t-html="hobbyBody"></p>
       </div>
       <div class="gallery" id="gallery-crossfit-preview"></div>
       <div class="gallery" id="gallery-cooking-preview"></div>
@@ -447,25 +424,18 @@
 
     <!-- TAGS -->
     <div class="tags-card">
-      <p class="tags-label">Interests</p>
-      <div class="tags">
-        <span class="tag">🏋️ CrossFit</span>
-        <span class="tag">🥾 Long walks</span>
-        <span class="tag">🎵 Music hunting</span>
-        <span class="tag">🥞 Cooking</span>
-        <span class="tag">✈️ Travel</span>
-        <span class="tag">🌍 Spain</span>
-      </div>
+      <p class="tags-label" data-t="tagsLabel"></p>
+      <div class="tags" id="tags-list"></div>
     </div>
 
     <!-- PROMPT: ALTERNATE CAREER -->
     <div class="card">
       <div class="card-header">
         <div class="card-dot">🧑‍🏫</div>
-        My alternate career would be…
+        <span data-t="careerHeader"></span>
       </div>
       <div class="card-body">
-        <p>In another universe, I'd be a language or math teacher, the owner of a small CrossFit box, or the owner of a niche travel tour guide company.</p>
+        <p data-t="careerBody"></p>
       </div>
       <div class="gallery" id="gallery-travel-preview"></div>
     </div>
@@ -474,10 +444,10 @@
     <div class="card">
       <div class="card-header">
         <div class="card-dot">💬</div>
-        I could talk for hours about…
+        <span data-t="talkHeader"></span>
       </div>
       <div class="card-body">
-        <p>Weird, unexpected open-ended questions, like <em>"What is your most treasured memory?"</em>, <em>"If you had a nickname among your friends, what would it be?"</em> or <em>"What's the weirdest, most cringe-worthy topic you've discussed recently?"</em></p>
+        <p data-t-html="talkBody"></p>
       </div>
     </div>
 
@@ -485,7 +455,7 @@
     <div class="spotify-card">
       <div class="spotify-header">
         <div class="card-dot spotify">🎵</div>
-        A song I'll listen to on repeat right now
+        <span data-t="spotifyHeader"></span>
       </div>
       <iframe
         data-testid="embed-iframe"
@@ -499,12 +469,10 @@
 
   </main>
 
-  <footer>Dima Naida · 2026</footer>
+  <footer data-t="footer"></footer>
 
   <!-- STICKY CTA -->
-  <button class="sticky-cta hidden" id="sticky-cta" onclick="scrollToContact()">
-    Get in touch
-  </button>
+  <button class="sticky-cta hidden" id="sticky-cta" onclick="scrollToContact()" data-t="ctaText"></button>
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
@@ -516,29 +484,139 @@
   </div>
 
   <script>
+    // ── Translations ──
+    const T = {
+      uk: {
+        profileName:     '👋 Привіт! Я Діма',
+        profileTagline:  'Чорновбривий син Сумщини. Живу в Мюнхені.',
+        chipRole:        '🛠️ Продакт менеджер',
+        contactHeader:   "Зв'яжись зі мною",
+        igSubline:       'Instagram · подорожі, CrossFit та сніданки',
+        igDm:            'Написати',
+        igFollow:        'Підписатись',
+        waLabel:         'WhatsApp',
+        emailLabel:      'Електронна пошта',
+        hobbyHeader:     'Коли я не на роботі, я люблю…',
+        hobbyBody:       "CrossFit, прогулянки (нещодавно 125 км за п'ять днів в Іспанії), пошук нової пісні на репіт та класні сніданки — мій фаворит: млинці з маскарпоне, медом та персиками.",
+        tagsLabel:       'Інтереси',
+        tags:            ['🏋️ CrossFit', '🥾 Прогулянки', '🎵 Музика', '🥞 Готування', '✈️ Подорожі', '🌍 Іспанія'],
+        careerHeader:    'Моя альтернативна кар\'єра…',
+        careerBody:      "В іншому всесвіті я б став вчителем мов або математики, власником невеликого CrossFit-боксу або організатором нішевих тревел-турів.",
+        talkHeader:      'Я можу говорити годинами про…',
+        talkBody:        'Дивні, несподівані відкриті запитання — наприклад, <em>«Який твій найцінніший спогад?»</em>, <em>«Яким було б твоє прізвисько серед друзів?»</em> або <em>«Яку найдивнішу тему ти обговорював нещодавно?»</em>',
+        spotifyHeader:   'Пісня на репіті прямо зараз',
+        recentLabel:     'Нещодавнє',
+        childhoodLabel:  'Дитинство',
+        ctaText:         'Зв\'язатись',
+        footer:          'Діма Найда · 2026',
+        seeAll:          k => ({ crossfit: 'Всі CrossFit →', cooking: 'Все про готування →', travel: 'Всі тревел →' }[k]),
+        galleryTitles:   { crossfit: '🏋️ CrossFit', cooking: '🥞 Готування', travel: '✈️ Подорожі' },
+        ageLabel:        age => age + ' ' + ageWordUk(age),
+      },
+      en: {
+        profileName:     "👋 Hi! I'm Dima",
+        profileTagline:  'Son of Sumy. Living in Munich.',
+        chipRole:        '🛠️ Product Manager',
+        contactHeader:   'Get in touch',
+        igSubline:       'Instagram · travels, CrossFit & breakfast vibes',
+        igDm:            'DM me',
+        igFollow:        'Follow',
+        waLabel:         'WhatsApp',
+        emailLabel:      'Email',
+        hobbyHeader:     "When I'm not at work, I love to…",
+        hobbyBody:       "Doing CrossFit, walking (most recently 125 km in five days in Spain), searching for a new song I'll listen to on repeat, cooking some kind of cool breakfast food — pancakes with mascarpone cheese, honey, and peaches being my favorite.",
+        tagsLabel:       'Interests',
+        tags:            ['🏋️ CrossFit', '🥾 Long walks', '🎵 Music hunting', '🥞 Cooking', '✈️ Travel', '🌍 Spain'],
+        careerHeader:    'My alternate career would be…',
+        careerBody:      "In another universe, I'd be a language or math teacher, the owner of a small CrossFit box, or the owner of a niche travel tour guide company.",
+        talkHeader:      'I could talk for hours about…',
+        talkBody:        '<em>"What is your most treasured memory?"</em>, <em>"If you had a nickname among your friends, what would it be?"</em> or <em>"What\'s the weirdest, most cringe-worthy topic you\'ve discussed recently?"</em>',
+        spotifyHeader:   "A song I'll listen to on repeat right now",
+        recentLabel:     'Recent',
+        childhoodLabel:  'Childhood',
+        ctaText:         'Get in touch',
+        footer:          'Dima Naida · 2026',
+        seeAll:          k => `See all ${k} media →`,
+        galleryTitles:   { crossfit: '🏋️ CrossFit', cooking: '🥞 Cooking', travel: '✈️ Travel' },
+        ageLabel:        age => age + ' years old',
+      }
+    };
+
+    // Ukrainian grammatical declension for "рік/роки/років"
+    function ageWordUk(n) {
+      const last2 = n % 100, last1 = n % 10;
+      if (last2 >= 11 && last2 <= 19) return 'років';
+      if (last1 === 1) return 'рік';
+      if (last1 >= 2 && last1 <= 4) return 'роки';
+      return 'років';
+    }
+
+    // ── Age calculation ──
+    function calcAge() {
+      const bd = new Date(1993, 2, 10);
+      const now = new Date();
+      let age = now.getFullYear() - bd.getFullYear();
+      if (now < new Date(now.getFullYear(), 2, 10)) age--;
+      return age;
+    }
+
+    // ── Apply language ──
+    let currentLang = localStorage.getItem('lang') || 'uk';
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+
+      const t = T[lang];
+      const age = calcAge();
+
+      // plain text nodes
+      document.querySelectorAll('[data-t]').forEach(el => {
+        el.textContent = t[el.dataset.t] || '';
+      });
+
+      // html nodes
+      document.querySelectorAll('[data-t-html]').forEach(el => {
+        el.innerHTML = t[el.dataset.tHtml] || '';
+      });
+
+      // age chip
+      document.getElementById('age-chip').textContent = '🎂 ' + t.ageLabel(age);
+
+      // tags
+      document.getElementById('tags-list').innerHTML =
+        t.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+
+      // gallery CTAs & lightbox titles
+      renderPreviews();
+
+      // lang toggle active state
+      document.getElementById('btn-uk').classList.toggle('active', lang === 'uk');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    }
+
+    // ── Gallery data ──
     const galleries = {
       crossfit: {
-        title: '🏋️ CrossFit', emoji: '🏋️', label: 'CrossFit',
+        emoji: '🏋️',
         items: [
           'photos/crossfit-1.jpg','photos/crossfit-2.jpg','photos/crossfit-3.jpg',
           'photos/crossfit-4.jpg','photos/crossfit-5.jpg','photos/crossfit-6.jpg',
-          // 'photos/crossfit-v1.mp4',
         ]
       },
       cooking: {
-        title: '🥞 Cooking', emoji: '🥞', label: 'Cooking',
+        emoji: '🥞',
         items: [
           'photos/cooking-1.jpg','photos/cooking-2.jpg',
           'photos/cooking-3.jpg','photos/cooking-4.jpg',
-          // 'photos/cooking-v1.mp4',
         ]
       },
       travel: {
-        title: '✈️ Travel', emoji: '✈️', label: 'Travel',
+        emoji: '✈️',
         items: [
           'photos/travel-1.jpg','photos/travel-2.jpg','photos/travel-3.jpg',
           'photos/travel-4.jpg','photos/travel-5.jpg','photos/travel-6.jpg',
-          // 'photos/travel-v1.mp4',
         ]
       }
     };
@@ -555,16 +633,16 @@
     }
 
     function renderPreviews() {
+      const t = T[currentLang];
       Object.entries(galleries).forEach(([key, g]) => {
         const el = document.getElementById(`gallery-${key}-preview`);
         if (!el) return;
         const preview = g.items.slice(0, 3);
         const thumbs = preview.map((src, i) => thumbHTML(src, key, i, i === 2, g.items.length)).join('');
         el.innerHTML = `<div class="gallery-grid">${thumbs}</div>
-          <button class="gallery-cta" onclick="openLightbox('${key}',0)">See all ${g.label} media →</button>`;
+          <button class="gallery-cta" onclick="openLightbox('${key}',0)">${t.seeAll(key)}</button>`;
       });
     }
-    renderPreviews();
 
     function lbItemHTML(src, key) {
       if (isVideo(src)) {
@@ -579,9 +657,8 @@
     }
 
     function openLightbox(key) {
-      const g = galleries[key];
-      document.getElementById('lb-title').textContent = g.title;
-      document.getElementById('lb-grid').innerHTML = g.items.map(src => lbItemHTML(src, key)).join('');
+      document.getElementById('lb-title').textContent = T[currentLang].galleryTitles[key];
+      document.getElementById('lb-grid').innerHTML = galleries[key].items.map(src => lbItemHTML(src, key)).join('');
       document.querySelectorAll('.lb-video-wrap').forEach(wrap => {
         wrap.addEventListener('click', () => {
           const v = wrap.querySelector('video'), p = wrap.querySelector('.lb-play');
@@ -605,15 +682,7 @@
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-    // Age chip
-    (function() {
-      const bd = new Date(1993, 2, 10); // month is 0-indexed
-      const now = new Date();
-      let age = now.getFullYear() - bd.getFullYear();
-      if (now < new Date(now.getFullYear(), 2, 10)) age--;
-      document.getElementById('age-chip').textContent = '🎂 ' + age + ' years old';
-    })();
-
+    // ── Sticky CTA ──
     const cta = document.getElementById('sticky-cta');
     new IntersectionObserver(
       ([e]) => cta.classList.toggle('hidden', e.isIntersecting),
@@ -623,6 +692,9 @@
     function scrollToContact() {
       document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+
+    // ── Init ──
+    setLang(currentLang);
   </script>
 
 </body>
