@@ -362,7 +362,7 @@
   <!-- INFO CHIPS -->
   <div class="info-chips">
     <span class="chip">🛠️ Product Manager</span>
-    <span class="chip">🎂 10 March</span>
+    <span class="chip" id="age-chip"></span>
     <span class="chip chip-accent">eGym</span>
   </div>
 
@@ -604,6 +604,15 @@
     }
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    // Age chip
+    (function() {
+      const bd = new Date(1993, 2, 10); // month is 0-indexed
+      const now = new Date();
+      let age = now.getFullYear() - bd.getFullYear();
+      if (now < new Date(now.getFullYear(), 2, 10)) age--;
+      document.getElementById('age-chip').textContent = '🎂 ' + age + ' years old';
+    })();
 
     const cta = document.getElementById('sticky-cta');
     new IntersectionObserver(
