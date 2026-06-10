@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "dev": "live-server --port=3000 --no-browser",
+    "deploy": "git push origin main && git push origin main:gh-pages"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
