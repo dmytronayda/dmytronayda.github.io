@@ -333,7 +333,8 @@
   <!-- PROFILE CARD -->
   <div class="profile-card">
     <div class="profile-photo">
-      <img src="photos/recent.jpg" alt="Dima Naida"
+      <img src="photos/thumbs/hero.jpg" alt="Dima Naida"
+        fetchpriority="high" decoding="async"
         onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>🏔️</span><span>Add photos/recent.jpg</span></div>'">
     </div>
     <div class="profile-overlay">
@@ -359,7 +360,7 @@
 
       <div class="ig-row">
         <div class="ig-avatar">
-          <img src="photos/recent.jpg" alt="@cadet93000"
+          <img src="photos/thumbs/pair-recent.jpg" alt="@cadet93000" loading="lazy"
             onerror="this.parentElement.innerHTML='<div class=ig-avatar-ph>👤</div>'">
         </div>
         <div class="ig-info">
@@ -398,12 +399,12 @@
     <!-- PHOTO PAIR -->
     <div class="photo-pair-card">
       <div class="photo-pane">
-        <img src="photos/recent.jpg" alt="Dima — recent"
+        <img src="photos/thumbs/pair-recent.jpg" alt="Dima — recent" loading="lazy"
           onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>📷</span><span>recent.jpg</span></div>'">
         <div class="photo-pane-label" data-t="recentLabel"></div>
       </div>
       <div class="photo-pane">
-        <img src="photos/in-spain.jpg" alt="Dima — in Spain"
+        <img src="photos/thumbs/pair-in-spain.jpg" alt="Dima — in Spain" loading="lazy"
           onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>🌊</span><span>in-spain.jpg</span></div>'">
         <div class="photo-pane-label" data-t="inSpainLabel"></div>
       </div>
@@ -617,12 +618,18 @@
 
     function isVideo(src) { return /\.(mp4|mov|webm)$/i.test(src); }
 
+    // Returns thumbnail path: photos/thumbs/name.jpg or photos/thumbs/name-poster.jpg for videos
+    function thumbSrc(src) {
+      const t = src.replace('photos/', 'photos/thumbs/');
+      return isVideo(src) ? t.replace(/\.(mp4|mov|webm)$/i, '-poster.jpg') : t;
+    }
+
     function thumbHTML(src, key, index, isLast, total) {
       const extra = isLast && total > 3 ? ` more-overlay" data-label="+ ${total - 2} more` : '';
       const vidClass = isVideo(src) ? ' is-video' : '';
-      const media = isVideo(src)
-        ? `<video muted preload="metadata" playsinline><source src="${src}" type="video/mp4"></video>`
-        : `<img src="${src}" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>${galleries[key].emoji}</div>'">`;
+      // Always render an <img> (poster for video) — no video bytes loaded for thumbnails
+      const media = `<img src="${thumbSrc(src)}" alt="" loading="lazy"
+        onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>${galleries[key].emoji}</div>'">`;
       return `<div class="gallery-thumb${vidClass}${extra}" onclick="openLightbox('${key}',${index})">${media}</div>`;
     }
 
@@ -641,13 +648,15 @@
     function lbItemHTML(src, key) {
       if (isVideo(src)) {
         return `<div class="lb-video-wrap">
-          <video controls playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover">
+          <video controls playsinline preload="none" poster="${thumbSrc(src)}"
+            style="width:100%;height:100%;object-fit:cover">
             <source src="${src}" type="video/mp4">
           </video>
           <div class="lb-play">▶</div>
         </div>`;
       }
-      return `<img src="${src}" alt="" onerror="this.parentElement.innerHTML='<div class=lb-placeholder><span>${galleries[key].emoji}</span><span>${src}</span></div>'">`;
+      return `<img src="${src}" alt="" loading="lazy"
+        onerror="this.parentElement.innerHTML='<div class=lb-placeholder><span>${galleries[key].emoji}</span><span>${src}</span></div>'">`;
     }
 
     function openLightbox(key) {
