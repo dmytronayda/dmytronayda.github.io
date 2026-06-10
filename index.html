@@ -319,6 +319,7 @@
       </div>
       <div class="card-body" data-t-html="hobbyBody"></div>
       <div class="gallery" id="gallery-crossfit-preview"></div>
+      <div class="gallery" id="gallery-food-preview"></div>
     </div>
 
     <!-- TAGS -->
@@ -460,8 +461,8 @@
         ctaText:        'Написати в Instagram',
         ctaHint:        'Навіть «бачила твої фото» — підходить.',
         footer:         'Діма Найда · 2026',
-        seeAll:         k => ({ crossfit: 'Всі CrossFit →', travel: 'Всі фото →' }[k]),
-        galleryTitles:  { crossfit: '🏋️ CrossFit', travel: 'Каміно де Сантьяго · травень 2025' },
+        seeAll:         k => ({ crossfit: 'Всі CrossFit →', travel: 'Всі фото →', food: 'Всі страви →' }[k]),
+        galleryTitles:  { crossfit: '🏋️ CrossFit', travel: 'Каміно де Сантьяго · травень 2025', food: '🍳 Те, що готую' },
         ageLabel:       age => age + ' ' + ageWordUk(age),
       },
       en: {
@@ -490,8 +491,8 @@
         ctaText:        'Say hi on Instagram',
         ctaHint:        "Even 'I saw your Spain photos' works.",
         footer:         'Dima Naida · 2026',
-        seeAll:         k => ({ crossfit: 'See all CrossFit →', travel: 'See all photos →' }[k]),
-        galleryTitles:  { crossfit: '🏋️ CrossFit', travel: 'Camino de Santiago · May 2025' },
+        seeAll:         k => ({ crossfit: 'See all CrossFit →', travel: 'See all photos →', food: 'See all food →' }[k]),
+        galleryTitles:  { crossfit: '🏋️ CrossFit', travel: 'Camino de Santiago · May 2025', food: '🍳 Things I cook' },
         ageLabel:       age => age + ' years old',
       }
     };
@@ -557,6 +558,14 @@
           'photos/travel-4.jpg','photos/travel-5.jpg','photos/travel-6.jpg',
           'photos/travel-7.jpg','photos/travel-8.jpg',
           'photos/travel-9.mp4','photos/travel-10.mp4',
+        ]
+      },
+      food: {
+        emoji: '🍳',
+        items: [
+          'photos/food-1.jpg','photos/food-2.jpg','photos/food-3.jpg',
+          'photos/food-4.jpg','photos/food-5.jpg','photos/food-6.jpg',
+          'photos/food-7.jpg',
         ]
       }
     };
