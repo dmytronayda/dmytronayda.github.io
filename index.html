@@ -160,16 +160,41 @@
     .gallery { padding: .75rem 1.25rem 1.25rem; border-top: 1px solid var(--border); }
     .gallery + .gallery { padding-top: .75rem; }
     .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; border-radius: 10px; overflow: hidden; }
-    .gallery-thumb { aspect-ratio: 1; overflow: hidden; background: #e0ddd6; cursor: pointer; position: relative; }
-    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s; }
-    .gallery-thumb:hover img { transform: scale(1.06); }
-    .gallery-thumb .thumb-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #a0998e; font-size: 1.4rem; }
+
+    .gallery-thumb {
+      aspect-ratio: 1; overflow: hidden;
+      background: #e0ddd6; cursor: pointer; position: relative;
+    }
+    .gallery-thumb img,
+    .gallery-thumb video {
+      width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s;
+    }
+    .gallery-thumb:hover img,
+    .gallery-thumb:hover video { transform: scale(1.06); }
+    .gallery-thumb .thumb-placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center;
+      justify-content: center; color: #a0998e; font-size: 1.4rem;
+    }
+
+    /* play icon for video thumbs */
+    .gallery-thumb.is-video::after {
+      content: '▶';
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; color: #fff;
+      text-shadow: 0 1px 6px rgba(0,0,0,.6);
+      pointer-events: none;
+    }
+
+    /* "more" overlay on last thumb */
     .gallery-thumb.more-overlay::after {
       content: attr(data-label); position: absolute; inset: 0;
       background: rgba(0,0,0,.52); color: #fff;
       display: flex; align-items: center; justify-content: center;
       font-size: .88rem; font-weight: 700; cursor: pointer;
+      text-shadow: none;
     }
+
     .gallery-cta {
       display: block; margin-top: .65rem; font-size: .8rem; font-weight: 600;
       color: var(--muted); text-align: right; cursor: pointer;
@@ -256,6 +281,20 @@
     .lightbox-title { color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; text-align: center; margin-bottom: .85rem; }
     .lightbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; border-radius: 14px; overflow: hidden; }
     .lightbox-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+    .lightbox-grid .lb-video-wrap {
+      position: relative; aspect-ratio: 1; background: #000; overflow: hidden;
+    }
+    .lightbox-grid .lb-video-wrap video {
+      width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer;
+    }
+    .lightbox-grid .lb-video-wrap .lb-play {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,.7);
+      pointer-events: none; transition: opacity .2s;
+    }
+    .lightbox-grid .lb-video-wrap:hover .lb-play { opacity: 0; }
     .lightbox-grid .lb-placeholder {
       aspect-ratio: 1; background: #2a2a2a;
       display: flex; align-items: center; justify-content: center;
@@ -351,35 +390,8 @@
         <p>Doing CrossFit, walking (most recently 125 km in five days in Spain), searching for a new song I'll listen to on repeat, cooking some kind of cool breakfast food — pancakes with mascarpone cheese, honey, and peaches being my favorite.</p>
       </div>
 
-      <div class="gallery">
-        <div class="gallery-grid">
-          <div class="gallery-thumb" onclick="openLightbox('crossfit')">
-            <img src="photos/crossfit-1.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🏋️</div>'">
-          </div>
-          <div class="gallery-thumb" onclick="openLightbox('crossfit')">
-            <img src="photos/crossfit-2.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🏋️</div>'">
-          </div>
-          <div class="gallery-thumb more-overlay" data-label="+ more" onclick="openLightbox('crossfit')">
-            <img src="photos/crossfit-3.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🏋️</div>'">
-          </div>
-        </div>
-        <button class="gallery-cta" onclick="openLightbox('crossfit')">See all CrossFit photos →</button>
-      </div>
-
-      <div class="gallery">
-        <div class="gallery-grid">
-          <div class="gallery-thumb" onclick="openLightbox('cooking')">
-            <img src="photos/cooking-1.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🥞</div>'">
-          </div>
-          <div class="gallery-thumb" onclick="openLightbox('cooking')">
-            <img src="photos/cooking-2.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🥞</div>'">
-          </div>
-          <div class="gallery-thumb more-overlay" data-label="+ more" onclick="openLightbox('cooking')">
-            <img src="photos/cooking-3.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🥞</div>'">
-          </div>
-        </div>
-        <button class="gallery-cta" onclick="openLightbox('cooking')">See all cooking photos →</button>
-      </div>
+      <div class="gallery" id="gallery-crossfit-preview"></div>
+      <div class="gallery" id="gallery-cooking-preview"></div>
     </div>
 
     <!-- TAGS -->
@@ -405,20 +417,7 @@
         <p>In another universe, I'd be a language or math teacher, the owner of a small CrossFit box, or the owner of a niche travel tour guide company.</p>
       </div>
 
-      <div class="gallery">
-        <div class="gallery-grid">
-          <div class="gallery-thumb" onclick="openLightbox('travel')">
-            <img src="photos/travel-1.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>✈️</div>'">
-          </div>
-          <div class="gallery-thumb" onclick="openLightbox('travel')">
-            <img src="photos/travel-2.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>✈️</div>'">
-          </div>
-          <div class="gallery-thumb more-overlay" data-label="+ more" onclick="openLightbox('travel')">
-            <img src="photos/travel-3.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>✈️</div>'">
-          </div>
-        </div>
-        <button class="gallery-cta" onclick="openLightbox('travel')">See all travel photos →</button>
-      </div>
+      <div class="gallery" id="gallery-travel-preview"></div>
     </div>
 
     <!-- PROMPT: TALK FOR HOURS -->
@@ -467,48 +466,114 @@
   </div>
 
   <script>
-    // ── Sticky CTA: hide when contact section is visible ──
-    const cta = document.getElementById('sticky-cta');
-    const contactSection = document.getElementById('contact');
-
-    const observer = new IntersectionObserver(
-      ([entry]) => { cta.classList.toggle('hidden', entry.isIntersecting); },
-      { threshold: 0.2 }
-    );
-    observer.observe(contactSection);
-
-    function scrollToContact() {
-      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    // ── Lightbox ──
+    // ── Gallery data — add/remove items freely ──
+    // Images: any .jpg/.jpeg/.png/.webp
+    // Videos: any .mp4/.mov/.webm  (keep under 50 MB each for GitHub)
     const galleries = {
       crossfit: {
-        title: '🏋️ CrossFit',
-        photos: ['photos/crossfit-1.jpg','photos/crossfit-2.jpg','photos/crossfit-3.jpg','photos/crossfit-4.jpg','photos/crossfit-5.jpg','photos/crossfit-6.jpg']
+        title: '🏋️ CrossFit', emoji: '🏋️',
+        label: 'CrossFit',
+        items: [
+          'photos/crossfit-1.jpg',
+          'photos/crossfit-2.jpg',
+          'photos/crossfit-3.jpg',
+          'photos/crossfit-4.jpg',
+          'photos/crossfit-5.jpg',
+          'photos/crossfit-6.jpg',
+          // add video files here, e.g.: 'photos/crossfit-v1.mp4',
+        ]
       },
       cooking: {
-        title: '🥞 Cooking',
-        photos: ['photos/cooking-1.jpg','photos/cooking-2.jpg','photos/cooking-3.jpg','photos/cooking-4.jpg']
+        title: '🥞 Cooking', emoji: '🥞',
+        label: 'Cooking',
+        items: [
+          'photos/cooking-1.jpg',
+          'photos/cooking-2.jpg',
+          'photos/cooking-3.jpg',
+          'photos/cooking-4.jpg',
+          // 'photos/cooking-v1.mp4',
+        ]
       },
       travel: {
-        title: '✈️ Travel',
-        photos: ['photos/travel-1.jpg','photos/travel-2.jpg','photos/travel-3.jpg','photos/travel-4.jpg','photos/travel-5.jpg','photos/travel-6.jpg']
+        title: '✈️ Travel', emoji: '✈️',
+        label: 'Travel',
+        items: [
+          'photos/travel-1.jpg',
+          'photos/travel-2.jpg',
+          'photos/travel-3.jpg',
+          'photos/travel-4.jpg',
+          'photos/travel-5.jpg',
+          'photos/travel-6.jpg',
+          // 'photos/travel-v1.mp4',
+        ]
       }
     };
-    const emojis = { crossfit: '🏋️', cooking: '🥞', travel: '✈️' };
 
-    function openLightbox(key) {
+    function isVideo(src) { return /\.(mp4|mov|webm)$/i.test(src); }
+
+    // ── Build thumbnail HTML ──
+    function thumbHTML(src, key, index, isLast, total) {
+      const extra = isLast && total > 3 ? ` more-overlay" data-label="+ ${total - 2} more` : '';
+      const vidClass = isVideo(src) ? ' is-video' : '';
+      const media = isVideo(src)
+        ? `<video muted preload="metadata" playsinline><source src="${src}" type="video/mp4"></video>`
+        : `<img src="${src}" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>${galleries[key].emoji}</div>'">`;
+      return `<div class="gallery-thumb${vidClass}${extra}" onclick="openLightbox('${key}',${index})">${media}</div>`;
+    }
+
+    // ── Render preview grids (first 3 items) ──
+    function renderPreviews() {
+      Object.entries(galleries).forEach(([key, g]) => {
+        const el = document.getElementById(`gallery-${key}-preview`);
+        if (!el) return;
+        const preview = g.items.slice(0, 3);
+        const thumbs = preview.map((src, i) =>
+          thumbHTML(src, key, i, i === 2, g.items.length)
+        ).join('');
+        el.innerHTML = `
+          <div class="gallery-grid">${thumbs}</div>
+          <button class="gallery-cta" onclick="openLightbox('${key}',0)">See all ${g.label} media →</button>
+        `;
+      });
+    }
+    renderPreviews();
+
+    // ── Lightbox ──
+    let currentVideo = null;
+
+    function lbItemHTML(src, key) {
+      if (isVideo(src)) {
+        return `<div class="lb-video-wrap">
+          <video controls playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover">
+            <source src="${src}" type="video/mp4">
+          </video>
+          <div class="lb-play">▶</div>
+        </div>`;
+      }
+      return `<img src="${src}" alt="" onerror="this.parentElement.innerHTML='<div class=lb-placeholder><span>${galleries[key].emoji}</span><span>${src}</span></div>'">`;
+    }
+
+    function openLightbox(key, startIndex) {
       const g = galleries[key];
       document.getElementById('lb-title').textContent = g.title;
-      document.getElementById('lb-grid').innerHTML = g.photos.map(src =>
-        `<img src="${src}" alt="" onerror="this.parentElement.innerHTML='<div class=lb-placeholder><span>${emojis[key]}</span><span>Add ${src}</span></div>'">`
-      ).join('');
+      document.getElementById('lb-grid').innerHTML = g.items.map(src => lbItemHTML(src, key)).join('');
+
+      // wire up play-overlay hide on click
+      document.querySelectorAll('.lb-video-wrap').forEach(wrap => {
+        wrap.addEventListener('click', () => {
+          const v = wrap.querySelector('video');
+          const p = wrap.querySelector('.lb-play');
+          if (v.paused) { v.play(); if (p) p.style.opacity = '0'; }
+          else          { v.pause(); if (p) p.style.opacity = '1'; }
+        });
+      });
+
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
+      document.querySelectorAll('#lb-grid video').forEach(v => v.pause());
       document.getElementById('lightbox').classList.remove('open');
       document.body.style.overflow = '';
     }
@@ -518,6 +583,18 @@
     }
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    // ── Sticky CTA ──
+    const cta = document.getElementById('sticky-cta');
+    const contactSection = document.getElementById('contact');
+    new IntersectionObserver(
+      ([entry]) => cta.classList.toggle('hidden', entry.isIntersecting),
+      { threshold: 0.2 }
+    ).observe(contactSection);
+
+    function scrollToContact() {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   </script>
 
 </body>
