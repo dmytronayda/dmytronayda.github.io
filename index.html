@@ -3,326 +3,361 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hi! I'm Dima</title>
+  <title>Dima Naida</title>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --coral:  #FF4757;
-      --teal:   #1DD1A1;
-      --purple: #A55EEA;
-      --yellow: #FFA502;
-      --blue:   #45AAF2;
-      --dark:   #0D0D1A;
-      --dark2:  #13132A;
-      --card:   #1C1C35;
+      --yellow: #FFC629;
+      --yellow-light: #FFF5D6;
+      --text:   #1a1a1a;
+      --muted:  #6b7280;
+      --border: #e5e7eb;
+      --bg:     #f9f9f7;
+      --white:  #ffffff;
     }
+
+    html { font-size: 17px; }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--dark);
-      color: #fff;
-      line-height: 1.6;
+      font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
     }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-      background:
-        radial-gradient(ellipse 80% 60% at 80% 10%,  rgba(165,94,234,.18)  0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 10% 90%,  rgba(29,209,161,.14)  0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 50% 50%,  rgba(255,71,87,.08)   0%, transparent 70%),
-        var(--dark);
+    /* ── PROFILE CARD (Bumble hero) ── */
+    .profile-card {
       position: relative;
-      overflow: hidden;
-    }
-
-    .wave {
-      font-size: 3.5rem;
-      display: inline-block;
-      animation: wave 2.5s ease-in-out infinite;
-      transform-origin: 70% 70%;
-    }
-    @keyframes wave {
-      0%,100% { transform: rotate(0deg); }
-      25%      { transform: rotate(22deg); }
-      75%      { transform: rotate(-10deg); }
-    }
-
-    .hero h1 {
-      font-size: clamp(3.2rem, 12vw, 8rem);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      line-height: 1.05;
-      margin: 0.6rem 0 0.4rem;
-      background: linear-gradient(135deg, var(--coral) 0%, var(--purple) 50%, var(--blue) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero .tagline {
-      font-size: 1.15rem;
-      color: rgba(255,255,255,.5);
-      letter-spacing: 0.04em;
-    }
-
-    .scroll-cue {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: rgba(255,255,255,.25);
-      font-size: .85rem;
-      animation: bob 2s ease-in-out infinite;
-    }
-    @keyframes bob {
-      0%,100% { transform: translateX(-50%) translateY(0); }
-      50%      { transform: translateX(-50%) translateY(7px); }
-    }
-
-    /* ── SHARED ── */
-    section { padding: 5rem 1.5rem; }
-    section:nth-of-type(even) { background: var(--dark2); }
-
-    .eyebrow {
-      text-align: center;
-      font-size: .78rem;
-      letter-spacing: .35em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 3rem;
-    }
-
-    /* ── PHOTOS ── */
-    .photos-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      max-width: 800px;
+      width: 100%;
+      max-width: 480px;
       margin: 0 auto;
+      border-radius: 0 0 28px 28px;
+      overflow: hidden;
+      box-shadow: 0 4px 40px rgba(0,0,0,.1);
     }
 
-    .photo-label {
+    .profile-photo {
+      width: 100%;
+      height: 580px;
+      overflow: hidden;
+      background: #d4cfc8;
+    }
+
+    .profile-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .profile-photo .photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 1rem;
+      color: #8a8478;
       font-size: .85rem;
-      font-weight: 600;
-      color: rgba(255,255,255,.4);
-      margin-bottom: .6rem;
-      letter-spacing: .05em;
+    }
+    .profile-photo .photo-placeholder span:first-child { font-size: 3rem; }
+
+    /* gradient overlay at bottom of hero photo */
+    .profile-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 3.5rem 1.5rem 1.5rem;
+      background: linear-gradient(to top, rgba(0,0,0,.78) 0%, transparent 100%);
     }
 
-    .photo-frame {
+    .profile-name {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+    }
+
+    .profile-tagline {
+      font-size: .9rem;
+      color: rgba(255,255,255,.8);
+      margin-top: .3rem;
+    }
+
+    /* ── INFO CHIPS ROW ── */
+    .info-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--white);
+      max-width: 480px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      font-size: .82rem;
+      color: var(--text);
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      padding: .3rem .9rem;
+      font-weight: 500;
+    }
+
+    .chip.chip-yellow {
+      background: var(--yellow);
+      border-color: var(--yellow);
+      font-weight: 700;
+    }
+
+    /* ── MAIN COLUMN (Paul Stamatiou editorial layout) ── */
+    .main {
+      max-width: 480px;
+      margin: 0 auto;
+      padding-bottom: 4rem;
+    }
+
+    /* ── SECTION (Bumble prompt card style) ── */
+    .section {
+      background: var(--white);
+      margin: 1rem 1rem 0;
       border-radius: 18px;
       overflow: hidden;
-      aspect-ratio: 3/4;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
     }
 
-    .photo-frame img {
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      padding: 1.1rem 1.25rem .6rem;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-header .dot {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--yellow);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .section-body {
+      padding: .25rem 1.25rem 1.25rem;
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    .section-body p em {
+      font-style: italic;
+      color: #374151;
+    }
+
+    /* ── PHOTO PAIR SECTION ── */
+    .photo-pair-section {
+      margin: 1rem 1rem 0;
+      border-radius: 18px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+
+    .photo-pane {
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: #d4cfc8;
+      position: relative;
+    }
+
+    .photo-pane img {
       width: 100%; height: 100%;
       object-fit: cover; display: block;
     }
 
-    .photo-card:first-child .photo-frame {
-      border: 3px solid var(--coral);
-      box-shadow: 0 0 40px rgba(255,71,87,.3);
-    }
-    .photo-card:last-child .photo-frame {
-      border: 3px solid var(--purple);
-      box-shadow: 0 0 40px rgba(165,94,234,.3);
-    }
-
-    .photo-placeholder {
+    .photo-pane .photo-placeholder {
       width: 100%; height: 100%;
-      background: var(--card);
-      border: 2px dashed rgba(255,255,255,.12);
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      gap: .5rem;
-      color: rgba(255,255,255,.3);
-      font-size: .82rem;
+      gap: .4rem;
+      color: #8a8478;
+      font-size: .78rem;
       text-align: center;
-      padding: 1.5rem;
-      border-radius: 15px;
+      padding: 1rem;
     }
-    .photo-placeholder span:first-child { font-size: 2rem; }
+    .photo-pane .photo-placeholder span:first-child { font-size: 1.6rem; }
 
-    /* ── INFO CARDS ── */
-    .info-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .info-chip {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 1.75rem;
-      border-left: 4px solid;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .info-chip:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(0,0,0,.4);
-    }
-    .info-chip:nth-child(1) { border-color: var(--yellow); }
-    .info-chip:nth-child(2) { border-color: var(--blue); }
-
-    .info-chip .ic-icon { font-size: 1.75rem; display: block; margin-bottom: .5rem; }
-    .info-chip .ic-label {
-      font-size: .7rem; text-transform: uppercase;
-      letter-spacing: .18em; color: rgba(255,255,255,.4);
-      margin-bottom: .3rem;
-    }
-    .info-chip .ic-value { font-size: 1.05rem; font-weight: 700; }
-
-    /* ── CONTENT CARDS ── */
-    .card-wrap { max-width: 680px; margin: 0 auto; }
-
-    .ccard {
-      background: var(--card);
-      border-radius: 22px;
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .ccard:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 50px rgba(0,0,0,.5);
+    .photo-pane-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.5rem .75rem .55rem;
+      background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 100%);
+      font-size: .72rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.85);
+      letter-spacing: .04em;
     }
 
-    .ccard::after {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    }
-    .ccard-rainbow::after  { background: linear-gradient(90deg,#FF4757,#FFA502,#2ED573,#45AAF2,#A55EEA); }
-    .ccard-career::after   { background: linear-gradient(90deg, var(--purple), var(--blue)); }
-    .ccard-talk::after     { background: linear-gradient(90deg, var(--teal), var(--yellow)); }
-
-    .ccard-emoji { font-size: 2.4rem; display: block; margin-bottom: .9rem; }
-
-    .ccard h2 {
-      font-size: 1.4rem; font-weight: 800; margin-bottom: .85rem;
+    /* ── INTEREST TAGS ── */
+    .tags-section {
+      background: var(--white);
+      margin: 1rem 1rem 0;
+      border-radius: 18px;
+      padding: 1.1rem 1.25rem 1.25rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
     }
 
-    .ccard p {
-      font-size: 1rem; color: rgba(255,255,255,.72); line-height: 1.8;
+    .tags-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .85rem;
     }
 
-    .ccard p em { color: rgba(255,255,255,.9); font-style: italic; }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .tag {
+      font-size: .85rem;
+      color: var(--text);
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      padding: .35rem 1rem;
+      font-weight: 500;
+    }
 
     /* ── FOOTER ── */
     footer {
-      background: #07070F;
+      max-width: 480px;
+      margin: 2rem auto 0;
+      padding: 1.5rem 1rem;
+      font-size: .78rem;
+      color: var(--muted);
       text-align: center;
-      padding: 2.5rem 1.5rem;
-      color: rgba(255,255,255,.25);
-      font-size: .85rem;
+      border-top: 1px solid var(--border);
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 580px) {
-      .photos-grid, .info-row { grid-template-columns: 1fr; }
+    @media (min-width: 600px) {
+      .profile-card,
+      .info-chips,
+      .main { max-width: 420px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <span class="wave">👋</span>
-    <h1>Hi! I'm Dima</h1>
-    <p class="tagline">Product · Company Growth team · eGym</p>
-    <p class="scroll-cue">↓ scroll</p>
-  </section>
+  <!-- BUMBLE-STYLE PROFILE CARD (hero photo + name overlay) -->
+  <div class="profile-card">
+    <div class="profile-photo">
+      <img
+        src="photos/recent.jpg"
+        alt="Dima Naida"
+        onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>🏔️</span><span>Add photos/recent.jpg</span></div>'"
+      >
+    </div>
+    <div class="profile-overlay">
+      <h1 class="profile-name">👋 Hi! I'm Dima</h1>
+      <p class="profile-tagline">Product · Company Growth · eGym</p>
+    </div>
+  </div>
 
-  <!-- PHOTOS -->
-  <section>
-    <p class="eyebrow">📸 Two sides of the same person</p>
-    <div class="photos-grid">
-      <div class="photo-card">
-        <p class="photo-label">📷 Recent Photo</p>
-        <div class="photo-frame" id="frame-recent">
-          <img
-            src="photos/recent.jpg"
-            alt="Dima — recent photo"
-            onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>🏔️</span><span>Drop recent.jpg<br>into /photos</span></div>'"
-          >
-        </div>
+  <!-- INFO CHIPS -->
+  <div class="info-chips">
+    <span class="chip">🛠️ Product Manager</span>
+    <span class="chip">🎂 10 March</span>
+    <span class="chip chip-yellow">eGym</span>
+  </div>
+
+  <!-- MAIN EDITORIAL COLUMN -->
+  <main class="main">
+
+    <!-- PHOTO PAIR -->
+    <div class="photo-pair-section">
+      <div class="photo-pane">
+        <img
+          src="photos/recent.jpg"
+          alt="Dima — recent"
+          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>📷</span><span>Recent photo</span></div>'"
+        >
+        <div class="photo-pane-label">Recent</div>
       </div>
-      <div class="photo-card">
-        <p class="photo-label">📷 Childhood Photo</p>
-        <div class="photo-frame" id="frame-childhood">
-          <img
-            src="photos/childhood.jpg"
-            alt="Dima — childhood photo"
-            onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>👶</span><span>Drop childhood.jpg<br>into /photos</span></div>'"
-          >
-        </div>
+      <div class="photo-pane">
+        <img
+          src="photos/childhood.jpg"
+          alt="Dima — childhood"
+          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>👶</span><span>Childhood photo</span></div>'"
+        >
+        <div class="photo-pane-label">Childhood</div>
       </div>
     </div>
-  </section>
 
-  <!-- INFO -->
-  <section>
-    <div class="info-row">
-      <div class="info-chip">
-        <span class="ic-icon">🎂</span>
-        <p class="ic-label">Birthday</p>
-        <p class="ic-value">10 March</p>
+    <!-- PROMPT: HOBBIES -->
+    <div class="section">
+      <div class="section-header">
+        <div class="dot">🌈</div>
+        When I'm not at work, I love to…
       </div>
-      <div class="info-chip">
-        <span class="ic-icon">🛠️</span>
-        <p class="ic-label">Role &amp; Squad</p>
-        <p class="ic-value">Product @ Company Growth team</p>
+      <div class="section-body">
+        <p>Doing CrossFit, walking (most recently 125 km in five days in Spain), searching for a new song I'll listen to on repeat, cooking some kind of cool breakfast food — pancakes with mascarpone cheese, honey, and peaches being my favorite.</p>
       </div>
     </div>
-  </section>
 
-  <!-- HOBBIES -->
-  <section>
-    <div class="card-wrap">
-      <div class="ccard ccard-rainbow">
-        <span class="ccard-emoji">🌈</span>
-        <h2>When I'm not at work, I love to…</h2>
-        <p>Doing CrossFit, walking (most recently 125 km in five days in Spain), searching for a new song I'll listen to on repeat, cooking some kind of cool breakfast food (pancakes with mascarpone cheese, honey, and peaches being my favorite).</p>
+    <!-- INTEREST TAGS -->
+    <div class="tags-section">
+      <p class="tags-label">Interests</p>
+      <div class="tags">
+        <span class="tag">🏋️ CrossFit</span>
+        <span class="tag">🥾 Long walks</span>
+        <span class="tag">🎵 Music hunting</span>
+        <span class="tag">🥞 Cooking</span>
+        <span class="tag">✈️ Travel</span>
+        <span class="tag">🌍 Spain</span>
       </div>
     </div>
-  </section>
 
-  <!-- ALTERNATE CAREER -->
-  <section>
-    <div class="card-wrap">
-      <div class="ccard ccard-career">
-        <span class="ccard-emoji">🧑‍🏫</span>
-        <h2>My alternate career would be…</h2>
+    <!-- PROMPT: ALTERNATE CAREER -->
+    <div class="section">
+      <div class="section-header">
+        <div class="dot">🧑‍🏫</div>
+        My alternate career would be…
+      </div>
+      <div class="section-body">
         <p>In another universe, I'd be a language or math teacher, the owner of a small CrossFit box, or the owner of a niche travel tour guide company.</p>
       </div>
     </div>
-  </section>
 
-  <!-- TALK FOR HOURS -->
-  <section>
-    <div class="card-wrap">
-      <div class="ccard ccard-talk">
-        <span class="ccard-emoji">💬</span>
-        <h2>I could talk for hours about…</h2>
+    <!-- PROMPT: TALK FOR HOURS -->
+    <div class="section">
+      <div class="section-header">
+        <div class="dot">💬</div>
+        I could talk for hours about…
+      </div>
+      <div class="section-body">
         <p>Weird, unexpected open-ended questions, like <em>"What is your most treasured memory?"</em>, <em>"If you had a nickname among your friends, what would it be?"</em> or <em>"What's the weirdest, most cringe-worthy topic you've discussed recently?"</em></p>
       </div>
     </div>
-  </section>
 
-  <footer>
-    Made with ❤️ &nbsp;·&nbsp; Dima &nbsp;·&nbsp; 2026
-  </footer>
+  </main>
+
+  <footer>Dima Naida · 2026</footer>
 
 </body>
 </html>
