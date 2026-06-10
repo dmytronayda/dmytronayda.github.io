@@ -17,6 +17,20 @@
       --accent-light: #FDFBCC;
       --wa:           #25D366;
       --spotify:      #1DB954;
+
+      /* ── Design tokens ── */
+      --radius-pill:  999px;   /* language switcher, chips, sticky CTA, tags */
+      --radius-card:  14px;    /* all cards */
+      --radius-btn:   10px;    /* inline action buttons (ig-btn, etc.) */
+      --radius-icon:  10px;    /* icon squares inside rows */
+
+      /* Shared card shadow */
+      --card-shadow: 0 1px 3px rgba(28,25,21,.05), 0 4px 14px rgba(28,25,21,.07);
+
+      /* Shared card-header style */
+      --header-font-size:    .68rem;
+      --header-font-weight:  700;
+      --header-letter-spacing: .16em;
     }
 
     html { font-size: 17px; }
@@ -35,7 +49,7 @@
       display: flex;
       background: rgba(255,255,255,.9);
       backdrop-filter: blur(10px);
-      border-radius: 999px;
+      border-radius: var(--radius-pill);
       border: 1px solid var(--border);
       box-shadow: 0 2px 10px rgba(28,25,21,.12);
       overflow: hidden;
@@ -73,20 +87,15 @@
     .profile-name    { font-size: 2.1rem; font-weight: 800; color: #fff; letter-spacing: -.025em; line-height: 1.1; }
     .profile-tagline { font-size: .88rem; color: rgba(255,255,255,.75); margin-top: .35rem; letter-spacing: .01em; }
 
-    /* ── INFO CHIPS ── */
-    .info-chips {
-      display: flex; flex-wrap: wrap; gap: .45rem;
-      padding: 1.1rem 1rem; background: var(--white);
-      max-width: 480px; margin: 0 auto;
-      border-top: 1px solid var(--border);
+    /* ── OVERLAY CHIPS (on hero photo) ── */
+    .overlay-chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .65rem; }
+    .overlay-chip {
+      display: inline-flex; align-items: center;
+      font-size: .78rem; color: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.28);
+      border-radius: var(--radius-pill); padding: .26rem .78rem; font-weight: 500;
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
     }
-    .chip {
-      display: inline-flex; align-items: center; gap: .3rem;
-      font-size: .8rem; color: var(--text);
-      background: var(--bg); border: 1.5px solid var(--border);
-      border-radius: 999px; padding: .28rem .85rem; font-weight: 500;
-    }
-    .chip.chip-accent { background: var(--accent); border-color: var(--accent); color: var(--text); font-weight: 700; }
 
     /* ── MAIN COLUMN ── */
     .main { max-width: 480px; margin: 0 auto; padding-bottom: 6rem; }
@@ -94,23 +103,32 @@
     /* ── CARD BASE ── */
     .card {
       background: var(--white); margin: .7rem 1rem 0;
-      border-radius: 14px; overflow: hidden;
+      border-radius: var(--radius-card); overflow: hidden;
       border: 1px solid var(--border);
-      box-shadow: 0 1px 3px rgba(28,25,21,.05), 0 4px 14px rgba(28,25,21,.07);
+      box-shadow: var(--card-shadow);
     }
-    .card-header {
+
+    /* ── SHARED CARD HEADER ── */
+    /* Used by .card-header, .contact-header, .spotify-header */
+    .card-header,
+    .contact-header,
+    .spotify-header {
       display: flex; align-items: center; gap: .6rem;
-      padding: 1rem 1.2rem .45rem;
-      font-size: .68rem; font-weight: 700;
-      letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
+      padding: 1rem 1.2rem .6rem;
+      font-size: var(--header-font-size);
+      font-weight: var(--header-font-weight);
+      letter-spacing: var(--header-letter-spacing);
+      text-transform: uppercase; color: var(--muted);
     }
+
     .card-dot {
-      width: 26px; height: 26px; border-radius: 50%; background: var(--accent);
+      width: 28px; height: 28px; border-radius: 50%; background: var(--accent);
       display: flex; align-items: center; justify-content: center;
-      font-size: .9rem; flex-shrink: 0;
+      font-size: .88rem; flex-shrink: 0;
     }
     .card-dot.spotify { background: var(--spotify); }
-    .card-body { padding: .15rem 1.2rem 1rem; font-size: .98rem; color: #2E2820; line-height: 1.78; }
+
+    .card-body { padding: .2rem 1.2rem 1.1rem; font-size: .98rem; color: #2E2820; line-height: 1.78; }
     .card-body p { margin-bottom: .6rem; }
     .card-body p:last-child { margin-bottom: 0; }
     .card-body p em { font-style: italic; color: var(--text); }
@@ -118,24 +136,19 @@
     .card-body li { margin-bottom: .35rem; }
 
     /* ── CONTACT CARD ── */
+    /* Shares the same visual base as .card */
     .contact-card {
       background: var(--white); margin: .7rem 1rem 0;
-      border-radius: 14px; overflow: hidden;
+      border-radius: var(--radius-card); overflow: hidden;
       border: 1px solid var(--border);
-      box-shadow: 0 1px 3px rgba(28,25,21,.05), 0 4px 14px rgba(28,25,21,.07);
-    }
-    .contact-header {
-      display: flex; align-items: center; gap: .6rem;
-      padding: 1rem 1.2rem .9rem;
-      font-size: .68rem; font-weight: 700;
-      letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
+      box-shadow: var(--card-shadow);
     }
     .c-divider { height: 1px; background: var(--border); margin: 0 1.2rem; }
 
     /* Instagram row */
-    .ig-row { display: flex; align-items: center; gap: .9rem; padding: 1rem 1.2rem; }
+    .ig-row { display: flex; align-items: center; gap: .9rem; padding: .75rem 1.2rem 1rem; }
     .ig-avatar {
-      width: 54px; height: 54px; border-radius: 50%; flex-shrink: 0;
+      width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
       padding: 2px;
       background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
     }
@@ -143,28 +156,31 @@
     .ig-avatar .ig-avatar-ph { width: 100%; height: 100%; border-radius: 50%; background: #e8e0d5; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2.5px solid #fff; }
     .ig-info { flex: 1; min-width: 0; }
     .ig-username { font-size: .95rem; font-weight: 700; display: block; color: var(--text); }
-    .ig-subline  { font-size: .78rem; color: var(--muted); margin-top: .06rem; }
-    .ig-actions  { display: flex; gap: .45rem; margin-top: .55rem; }
+    .ig-subline  { font-size: .78rem; color: var(--muted); margin-top: .1rem; }
+    .ig-actions  { display: flex; gap: .45rem; margin-top: .5rem; }
+
+    /* ig-btn now uses --radius-btn so it matches contact-row-icon and feels like a cohesive "compact" button tier */
     .ig-btn {
       display: inline-flex; align-items: center; gap: .3rem;
-      padding: .36rem .9rem; border-radius: 8px; font-size: .78rem; font-weight: 700;
+      padding: .38rem .95rem; border-radius: var(--radius-btn);
+      font-size: .78rem; font-weight: 700;
       text-decoration: none; letter-spacing: .01em;
       transition: opacity .2s, transform .15s; white-space: nowrap;
     }
     .ig-btn:hover { opacity: .85; transform: translateY(-1px); }
-    .ig-btn-message { color: #fff; background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); box-shadow: 0 2px 8px rgba(131,58,180,.3); }
-    .ig-btn-follow  { color: var(--text); background: var(--bg); border: 1.5px solid var(--border); }
+    .ig-btn-message { color: var(--text); background: var(--accent); box-shadow: 0 2px 10px rgba(242,224,0,.4); }
+    .ig-btn-follow  { color: var(--muted); background: var(--bg); border: 1.5px solid var(--border); }
 
     /* Contact rows */
-    .contact-row { display: flex; align-items: center; gap: .75rem; padding: 1rem 1.2rem; text-decoration: none; color: inherit; transition: background .15s; cursor: pointer; }
-    .contact-row:last-child { padding-bottom: 1.2rem; }
+    .contact-row { display: flex; align-items: center; gap: .75rem; padding: .9rem 1.2rem; text-decoration: none; color: inherit; transition: background .15s; cursor: pointer; }
+    .contact-row:last-child { padding-bottom: 1.1rem; }
     .contact-row:hover  { background: var(--bg); }
     .contact-row:active { background: var(--border); }
-    .contact-row-icon   { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; flex-shrink: 0; }
+    .contact-row-icon   { width: 38px; height: 38px; border-radius: var(--radius-icon); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; flex-shrink: 0; }
     .contact-row-detail { min-width: 0; flex: 1; }
-    .contact-row-label  { font-size: .67rem; color: var(--muted); text-transform: uppercase; letter-spacing: .14em; font-weight: 700; display: block; margin-bottom: .05rem; }
+    .contact-row-label  { font-size: .67rem; color: var(--muted); text-transform: uppercase; letter-spacing: .14em; font-weight: 700; display: block; margin-bottom: .08rem; }
     .contact-row-value  { font-size: .9rem; font-weight: 600; color: var(--text); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .contact-row-arrow  { font-size: 1.25rem; color: var(--border); flex-shrink: 0; margin-left: .25rem; font-weight: 300; transition: color .15s, transform .15s; }
+    .contact-row-arrow  { font-size: 1.2rem; color: var(--border); flex-shrink: 0; margin-left: .25rem; font-weight: 300; transition: color .15s, transform .15s; }
     .contact-row:hover .contact-row-arrow { color: var(--muted); transform: translateX(2px); }
 
     /* ── VIBE NOTE ── */
@@ -175,23 +191,23 @@
     }
 
     /* ── MINI GALLERY ── */
-    .gallery { padding: .7rem 1.2rem 1.2rem; border-top: 1px solid var(--border); }
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; border-radius: 9px; overflow: hidden; }
+    .gallery { padding: .75rem 1.2rem 1.2rem; border-top: 1px solid var(--border); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; border-radius: 8px; overflow: hidden; }
     .gallery-thumb { aspect-ratio: 1; overflow: hidden; background: #ddd7cf; cursor: pointer; position: relative; }
     .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .22s; }
     .gallery-thumb:hover img { transform: scale(1.07); }
     .gallery-thumb .thumb-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #a09890; font-size: 1.4rem; }
     .gallery-thumb.is-video::after { content: '▶'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.55); pointer-events: none; }
     .gallery-thumb.more-overlay::after { content: attr(data-label); position: absolute; inset: 0; background: rgba(28,25,21,.54); color: #fff; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; cursor: pointer; text-shadow: none; }
-    .gallery-cta { display: block; margin-top: .6rem; font-size: .78rem; font-weight: 600; color: var(--muted); text-align: right; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; transition: color .15s; }
+    .gallery-cta { display: block; margin-top: .65rem; font-size: .78rem; font-weight: 600; color: var(--muted); text-align: right; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; transition: color .15s; }
     .gallery-cta:hover { color: var(--text); }
 
     /* ── PHOTO PAIR ── */
     .photo-pair-card {
-      margin: .7rem 1rem 0; border-radius: 14px; overflow: hidden;
+      margin: .7rem 1rem 0; border-radius: var(--radius-card); overflow: hidden;
       display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
       border: 1px solid var(--border);
-      box-shadow: 0 1px 3px rgba(28,25,21,.05), 0 4px 14px rgba(28,25,21,.07);
+      box-shadow: var(--card-shadow);
     }
     .photo-pane { overflow: hidden; aspect-ratio: 3/4; background: #c8bfb4; position: relative; }
     .photo-pane img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -208,25 +224,29 @@
     /* ── TAGS ── */
     .tags-card {
       background: var(--white); margin: .7rem 1rem 0;
-      border-radius: 14px; padding: 1rem 1.2rem 1.2rem;
+      border-radius: var(--radius-card); padding: 1rem 1.2rem 1.2rem;
       border: 1px solid var(--border);
-      box-shadow: 0 1px 3px rgba(28,25,21,.05), 0 4px 14px rgba(28,25,21,.07);
+      box-shadow: var(--card-shadow);
     }
-    .tags-label { font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: .8rem; }
+    /* tags-label matches card-header typographically for consistency */
+    .tags-label {
+      font-size: var(--header-font-size); font-weight: var(--header-font-weight);
+      letter-spacing: var(--header-letter-spacing); text-transform: uppercase;
+      color: var(--muted); margin-bottom: .85rem;
+    }
     .tags { display: flex; flex-wrap: wrap; gap: .45rem; }
-    .tag { font-size: .82rem; color: var(--text); background: var(--bg); border: 1.5px solid var(--border); border-radius: 999px; padding: .3rem .9rem; font-weight: 500; }
+    .tag { font-size: .82rem; color: var(--text); background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius-pill); padding: .3rem .9rem; font-weight: 500; }
 
     /* ── SPOTIFY ── */
     .spotify-card {
       background: var(--white); margin: .7rem 1rem 0;
-      border-radius: 14px; overflow: hidden;
+      border-radius: var(--radius-card); overflow: hidden;
       border: 1px solid var(--border);
-      box-shadow: 0 1px 3px rgba(28,25,21,.05), 0 4px 14px rgba(28,25,21,.07);
+      box-shadow: var(--card-shadow);
     }
-    .spotify-header { display: flex; align-items: center; gap: .6rem; padding: 1rem 1.2rem .75rem; font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
     .spotify-card iframe { display: block; }
 
-    /* ── STICKY CTA + HINT ── */
+    /* ── STICKY CTA ── */
     .sticky-group {
       position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%);
       z-index: 500; display: flex; flex-direction: column; align-items: center; gap: .35rem;
@@ -237,7 +257,7 @@
       display: flex; align-items: center; gap: .5rem;
       background: var(--accent); color: var(--text);
       font-size: .9rem; font-weight: 800; letter-spacing: .01em;
-      padding: .78rem 1.75rem; border-radius: 999px;
+      padding: .78rem 1.75rem; border-radius: var(--radius-pill);
       box-shadow: 0 4px 24px rgba(242,224,0,.45), 0 1px 4px rgba(28,25,21,.12);
       cursor: pointer; border: none; font-family: inherit; white-space: nowrap;
       transition: transform .2s, box-shadow .2s;
@@ -246,7 +266,7 @@
     .sticky-hint {
       font-size: .74rem; color: var(--muted);
       background: rgba(247,243,238,.92); backdrop-filter: blur(8px);
-      border-radius: 999px; padding: .2rem .75rem;
+      border-radius: var(--radius-pill); padding: .2rem .75rem;
       white-space: nowrap; text-align: center;
     }
 
@@ -258,13 +278,13 @@
     .lightbox-close:hover { background: rgba(255,255,255,.22); }
     .lightbox-title { color: rgba(255,255,255,.7); font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; text-align: center; margin-bottom: .8rem; }
     .lightbox-grid { display: flex; flex-direction: column; gap: 6px; }
-    .lightbox-grid img { width: 100%; height: auto; display: block; border-radius: 10px; }
-    .lightbox-grid .lb-video-wrap { position: relative; width: 100%; aspect-ratio: 9/16; background: #000; overflow: hidden; border-radius: 10px; }
+    .lightbox-grid img { width: 100%; height: auto; display: block; border-radius: var(--radius-btn); }
+    .lightbox-grid .lb-video-wrap { position: relative; width: 100%; aspect-ratio: 9/16; background: #000; overflow: hidden; border-radius: var(--radius-btn); }
     .lightbox-grid .lb-video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .lightbox-grid .lb-placeholder { aspect-ratio: 3/4; background: #1e1a16; display: flex; align-items: center; justify-content: center; color: #4a4540; font-size: 1.8rem; border-radius: 10px; }
+    .lightbox-grid .lb-placeholder { aspect-ratio: 3/4; background: #1e1a16; display: flex; align-items: center; justify-content: center; color: #4a4540; font-size: 1.8rem; border-radius: var(--radius-btn); }
 
     /* ── FOOTER ── */
-    footer { max-width: 480px; margin: 2rem auto 0; padding: 1.5rem 1rem; font-size: .76rem; color: var(--muted); text-align: center; border-top: 1px solid var(--border); }
+    footer { max-width: 480px; margin: 2.5rem auto 0; padding: 1.25rem 1rem 1.5rem; font-size: .76rem; color: var(--muted); text-align: center; border-top: 1px solid var(--border); letter-spacing: .02em; }
   </style>
 </head>
 <body>
@@ -285,31 +305,11 @@
     <div class="profile-overlay">
       <h1 class="profile-name" data-t="profileName"></h1>
       <p class="profile-tagline" data-t="profileTagline"></p>
+      <div class="overlay-chips" id="overlay-chips"></div>
     </div>
-  </div>
-
-  <!-- INFO CHIPS -->
-  <div class="info-chips">
-    <span class="chip" data-t="chipActivity"></span>
-    <span class="chip" data-t="chipLocation"></span>
-    <span class="chip" id="age-chip"></span>
   </div>
 
   <main class="main">
-
-    <!-- PHOTO PAIR -->
-    <div class="photo-pair-card">
-      <div class="photo-pane">
-        <img src="photos/thumbs/pair-recent.jpg" alt="Dima — recent" loading="lazy"
-          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>📷</span><span>recent.jpg</span></div>'">
-        <div class="photo-pane-label" data-t="recentLabel"></div>
-      </div>
-      <div class="photo-pane">
-        <img src="photos/thumbs/pair-in-spain.jpg" alt="Dima — in Spain" loading="lazy"
-          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>🌊</span><span>in-spain.jpg</span></div>'">
-        <div class="photo-pane-label" data-t="inSpainLabel"></div>
-      </div>
-    </div>
 
     <!-- PROMPT: HOBBIES -->
     <div class="card">
@@ -320,23 +320,6 @@
       <div class="card-body" data-t-html="hobbyBody"></div>
       <div class="gallery" id="gallery-crossfit-preview"></div>
       <div class="gallery" id="gallery-food-preview"></div>
-    </div>
-
-    <!-- TAGS -->
-    <div class="tags-card">
-      <p class="tags-label" data-t="tagsLabel"></p>
-      <div class="tags" id="tags-list"></div>
-    </div>
-
-    <!-- PROMPT: ALTERNATE CAREER -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-dot">🧑‍🏫</div>
-        <span data-t="careerHeader"></span>
-      </div>
-      <div class="card-body">
-        <p data-t-html="careerBody"></p>
-      </div>
       <div class="gallery" id="gallery-travel-preview"></div>
     </div>
 
@@ -348,9 +331,6 @@
       </div>
       <div class="card-body" data-t-html="talkBody"></div>
     </div>
-
-    <!-- VIBE NOTE -->
-    <p class="vibe-note" data-t="vibeNote"></p>
 
     <!-- GET IN TOUCH (moved after story) -->
     <div class="contact-card" id="contact">
@@ -365,8 +345,7 @@
             onerror="this.parentElement.innerHTML='<div class=ig-avatar-ph>👤</div>'">
         </div>
         <div class="ig-info">
-          <span class="ig-username">@cadet93000</span>
-          <p class="ig-subline" data-t="igSubline"></p>
+          <span class="ig-username">cadet93000</span>
           <div class="ig-actions">
             <a class="ig-btn ig-btn-message" href="https://ig.me/m/cadet93000" target="_blank" rel="noopener noreferrer" data-t="igDm"></a>
             <a class="ig-btn ig-btn-follow"  href="https://www.instagram.com/cadet93000" target="_blank" rel="noopener noreferrer" data-t="igFollow"></a>
@@ -377,7 +356,9 @@
       <div class="c-divider"></div>
 
       <a class="contact-row" href="https://wa.me/4917620082850" target="_blank" rel="noopener noreferrer">
-        <div class="contact-row-icon" style="background:#E7FBF0;">💬</div>
+        <div class="contact-row-icon" style="background:#25D366;">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.528 5.845L0 24l6.335-1.511A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        </div>
         <div class="contact-row-detail">
           <span class="contact-row-label" data-t="waLabel"></span>
           <span class="contact-row-value">+49 176 2008 2850</span>
@@ -388,7 +369,9 @@
       <div class="c-divider"></div>
 
       <a class="contact-row" href="mailto:dmytro.naida@icloud.com">
-        <div class="contact-row-icon" style="background:#EEF2FF;">📧</div>
+        <div class="contact-row-icon" style="background:linear-gradient(160deg,#1B8EF8,#0A7AFF);">
+          <svg viewBox="0 0 24 18" width="22" height="16" xmlns="http://www.w3.org/2000/svg" fill="none"><rect x=".75" y=".75" width="22.5" height="16.5" rx="2" stroke="white" stroke-width="1.5"/><path d="M1 3l11 8L23 3" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
         <div class="contact-row-detail">
           <span class="contact-row-label" data-t="emailLabel"></span>
           <span class="contact-row-value">dmytro.naida@icloud.com</span>
@@ -419,7 +402,6 @@
   <!-- STICKY CTA + HINT -->
   <div class="sticky-group hidden" id="sticky-group">
     <button class="sticky-cta" onclick="scrollToContact()" data-t="ctaText"></button>
-    <p class="sticky-hint" data-t="ctaHint"></p>
   </div>
 
   <!-- LIGHTBOX -->
@@ -436,7 +418,7 @@
     const T = {
       uk: {
         profileName:    '👋 Привіт! Я Діма',
-        profileTagline: 'Чорновбривий син Сумщини. Живу в Мюнхені.',
+        profileTagline: 'Чорнобривий син Сумщини.',
         chipActivity:   '🥾 Переживший Каміно',
         chipLocation:   '📍 Мюнхен',
         contactHeader:  "Зв'яжись зі мною",
@@ -446,22 +428,21 @@
         waLabel:        'WhatsApp',
         emailLabel:     'Електронна пошта',
         hobbyHeader:    'Коли я не на роботі, я люблю…',
-        hobbyBody:      '<p>Більшість ранків — кросфіт. Більшість вихідних — пошук пісні, яку буду слухати 40 разів поспіль.</p><p>Минулого травня пройшов 125 км по північній Іспанії за п\'ять днів — надмірно, але потрібно. Нагорода наприкінці — гарний сніданок.</p><p>Я нерозумно відданий млинцям з маскарпоне. Я готував їх рівно для трьох людей. Всі три просили рецепт. Я не дав нікому.</p>',
+        hobbyBody:      '<p>Лупашу кросфіт. Хайкаю. Зовсім недавно, наприклад, я пройшов 125 км в один бік за 5 днів по Іспанії. Шукаю новий трек і, знайшовши, слухаю на репіті та розсилаю всім своїм близьким. Щось готую їсти. Особливо люблю приготування крутезних сніданків. Мій улюблений — це панкейки з маскарпоне, медом та консервованими персиками.</p>',
         tagsLabel:      'Інтереси',
-        tags:           ['🏋️ CrossFit', '🥾 Ходьба', '🎵 Музика', '🥞 Готування', '✈️ Подорожі', '🌍 Іспанія'],
+        tags:           ['🏋️ CrossFit', '🥾 Hiking', '🎵 Музика', '🥞 Кулінарія', '✈️ Подорожі'],
         careerHeader:   'Моя альтернативна кар\'єра…',
         careerBody:     'Викладання. Я завжди вважав, що вчителі, які змінювали чиєсь життя, насправді викладали не предмет — вони викладали людині. Хотів би бути таким. Мабуть, математика. Можливо, українська.',
         talkHeader:     'Я можу говорити годинами про…',
-        talkBody:       '<p>Я підсів на питання, які люди ніколи не чули. Три, до яких постійно повертаюся:</p><ul><li><em>«Який твій найцінніший спогад?»</em> Мій — про поїздку, зламаний касетний програвач і бабусю.</li><li><em>«Яким було б твоє прізвисько серед друзів?»</em> Своє я вже знаю — і воно мені не подобається.</li><li><em>«Яку найдивнішу тему ти нещодавно досліджував?»</em></li></ul>',
+        talkBody:       '<p>Дивакуваті, зовсім неочікувані відкриті запитання по типу: «Яка твоя найбільш цінний спогад?», «Якби в тебе була клікуха серед друзів, як би вони тебе називали?», або «Який найдивніший, найбільш крінжовий топік ти обговорювала зовсім недавно?»</p>',
         vibeNote:       'Якщо ти з тих, хто має тверду думку про каву і хоч одне дивне захоплення, про яке не одразу розповідаєш — ми поладнаємо.',
         spotifyHeader:  'На репіті цього тижня — якщо ненавидиш, скажи чим замінити.',
         recentLabel:    'Мюнхен, березень 2025',
         inSpainLabel:   'День 4 · 90 км позаду · варто',
-        ctaText:        'Написати в Instagram',
-        ctaHint:        'Навіть «бачила твої фото» — підходить.',
+        ctaText:        "Зв'язатися",
         footer:         'Діма Найда · 2026',
-        seeAll:         k => ({ crossfit: 'Всі CrossFit →', travel: 'Всі фото →', food: 'Всі страви →' }[k]),
-        galleryTitles:  { crossfit: '🏋️ CrossFit', travel: 'Каміно де Сантьяго · травень 2025', food: '🍳 Те, що готую' },
+        seeAll:         k => ({ crossfit: 'Більше про CrossFit →', travel: 'Більше про подорожі →', food: 'Більше про страви →' }[k]),
+        galleryTitles:  { crossfit: '🏋️ CrossFit', travel: '✈️ Фото подорожей', food: '🍳 Те, що готую' },
         ageLabel:       age => age + ' ' + ageWordUk(age),
       },
       en: {
@@ -476,9 +457,9 @@
         waLabel:        'WhatsApp',
         emailLabel:     'Email',
         hobbyHeader:    "When I'm not at work, I love to…",
-        hobbyBody:      "<p>Most mornings start with CrossFit. Most weekends I'm hunting for a song I'll play 40 times in a row.</p><p>Last May I walked 125km across northern Spain in five days — which I'd call excessive, but it felt necessary. The reward at the end was a good breakfast.</p><p>I'm unreasonably committed to mascarpone pancakes. I have made them for exactly three people. All three asked for the recipe. I have not given it to anyone.</p>",
+        hobbyBody:      "<p>Doing CrossFit, walking (most recently 125 km in five days in Spain), searching for a new song I'll listen to on repeat, cooking some kind of cool breakfast food (pancakes with mascarpone cheese, honey, and peaches being my favorite).</p>",
         tagsLabel:      'Interests',
-        tags:           ['🏋️ CrossFit', '🥾 Long walks', '🎵 Music hunting', '🥞 Cooking', '✈️ Travel', '🌍 Spain'],
+        tags:           ['🏋️ CrossFit', '🥾 Hiking', '🎵 Music hunting', '🥞 Cooking', '✈️ Travel'],
         careerHeader:   'My alternate career…',
         careerBody:     "Teaching. I've always believed the teachers who changed people's lives weren't really teaching the subject — they were teaching the person. I'd want to be that kind. Probably math. Possibly Ukrainian.",
         talkHeader:     'I could talk for hours about…',
@@ -487,11 +468,10 @@
         spotifyHeader:  "On repeat this week — hate it? Tell me what you'd replace it with.",
         recentLabel:    'Munich, March 2025',
         inSpainLabel:   'Day 4 · 90km in · worth it',
-        ctaText:        'Say hi on Instagram',
-        ctaHint:        "Even 'I saw your Spain photos' works.",
+        ctaText:        'Get in touch',
         footer:         'Dima Naida · 2026',
-        seeAll:         k => ({ crossfit: 'See all CrossFit →', travel: 'See all photos →', food: 'See all food →' }[k]),
-        galleryTitles:  { crossfit: '🏋️ CrossFit', travel: 'Camino de Santiago · May 2025', food: '🍳 Things I cook' },
+        seeAll:         k => ({ crossfit: 'More CrossFit →', travel: 'More travels →', food: 'More food →' }[k]),
+        galleryTitles:  { crossfit: '🏋️ CrossFit', travel: '✈️ Travel photos', food: '🍳 Things I cook' },
         ageLabel:       age => age + ' years old',
       }
     };
@@ -530,10 +510,10 @@
         el.innerHTML = t[el.dataset.tHtml] || '';
       });
 
-      document.getElementById('age-chip').textContent = '🎂 ' + t.ageLabel(age);
-
-      document.getElementById('tags-list').innerHTML =
-        t.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+      document.getElementById('overlay-chips').innerHTML =
+        `<span class="overlay-chip">${t.chipLocation}</span>` +
+        `<span class="overlay-chip">🎂 ${t.ageLabel(age)}</span>` +
+        t.tags.map(tag => `<span class="overlay-chip">${tag}</span>`).join('');
 
       renderPreviews();
 
