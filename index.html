@@ -8,14 +8,13 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --yellow:       #FFC629;
-      --yellow-light: #FFF5D6;
-      --green:        #1DB954;
-      --text:         #1a1a1a;
-      --muted:        #6b7280;
-      --border:       #e5e7eb;
-      --bg:           #f2f2f0;
-      --white:        #ffffff;
+      --yellow:  #FFC629;
+      --green:   #1DB954;
+      --text:    #1a1a1a;
+      --muted:   #6b7280;
+      --border:  #e5e7eb;
+      --bg:      #f2f2f0;
+      --white:   #ffffff;
     }
 
     html { font-size: 17px; }
@@ -29,31 +28,16 @@
 
     /* ── PROFILE CARD ── */
     .profile-card {
-      position: relative;
-      width: 100%;
-      max-width: 480px;
-      margin: 0 auto;
-      border-radius: 0 0 28px 28px;
-      overflow: hidden;
-      box-shadow: 0 4px 40px rgba(0,0,0,.1);
+      position: relative; width: 100%; max-width: 480px;
+      margin: 0 auto; border-radius: 0 0 28px 28px;
+      overflow: hidden; box-shadow: 0 4px 40px rgba(0,0,0,.1);
     }
 
-    .profile-photo {
-      width: 100%;
-      height: 580px;
-      overflow: hidden;
-      background: #d4cfc8;
-    }
-
-    .profile-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top; display: block;
-    }
-
+    .profile-photo { width: 100%; height: 580px; overflow: hidden; background: #d4cfc8; }
+    .profile-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
     .profile-photo .photo-placeholder {
       width: 100%; height: 100%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
       gap: 1rem; color: #8a8478; font-size: .85rem;
     }
     .profile-photo .photo-placeholder span:first-child { font-size: 3rem; }
@@ -63,25 +47,15 @@
       padding: 3.5rem 1.5rem 1.5rem;
       background: linear-gradient(to top, rgba(0,0,0,.78) 0%, transparent 100%);
     }
-
-    .profile-name {
-      font-size: 2rem; font-weight: 800;
-      color: #fff; letter-spacing: -.02em; line-height: 1.1;
-    }
-
-    .profile-tagline {
-      font-size: .9rem; color: rgba(255,255,255,.8); margin-top: .3rem;
-    }
+    .profile-name  { font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -.02em; line-height: 1.1; }
+    .profile-tagline { font-size: .9rem; color: rgba(255,255,255,.8); margin-top: .3rem; }
 
     /* ── INFO CHIPS ── */
     .info-chips {
       display: flex; flex-wrap: wrap; gap: .5rem;
-      padding: 1.25rem 1rem;
-      background: var(--white);
-      max-width: 480px; margin: 0 auto;
-      border-top: 1px solid var(--border);
+      padding: 1.25rem 1rem; background: var(--white);
+      max-width: 480px; margin: 0 auto; border-top: 1px solid var(--border);
     }
-
     .chip {
       display: inline-flex; align-items: center; gap: .35rem;
       font-size: .82rem; color: var(--text);
@@ -91,130 +65,137 @@
     .chip.chip-yellow { background: var(--yellow); border-color: var(--yellow); font-weight: 700; }
 
     /* ── MAIN COLUMN ── */
-    .main { max-width: 480px; margin: 0 auto; padding-bottom: 4rem; }
+    .main { max-width: 480px; margin: 0 auto; padding-bottom: 6rem; }
 
     /* ── GENERIC CARD ── */
     .card {
-      background: var(--white);
-      margin: .75rem 1rem 0;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      background: var(--white); margin: .75rem 1rem 0;
+      border-radius: 18px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06);
     }
-
     .card-header {
       display: flex; align-items: center; gap: .6rem;
       padding: 1.1rem 1.25rem .5rem;
       font-size: .72rem; font-weight: 700;
       letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
     }
-
     .card-dot {
-      width: 28px; height: 28px; border-radius: 50%;
-      background: var(--yellow);
+      width: 28px; height: 28px; border-radius: 50%; background: var(--yellow);
       display: flex; align-items: center; justify-content: center;
       font-size: 1rem; flex-shrink: 0;
     }
     .card-dot.green { background: var(--green); }
-
-    .card-body {
-      padding: .2rem 1.25rem 1.1rem;
-      font-size: 1rem; color: var(--text); line-height: 1.75;
-    }
+    .card-body { padding: .2rem 1.25rem 1.1rem; font-size: 1rem; color: var(--text); line-height: 1.75; }
     .card-body p em { font-style: italic; color: #374151; }
 
+    /* ── GET IN TOUCH CARD ── */
+    .contact-card {
+      background: var(--white); margin: .75rem 1rem 0;
+      border-radius: 18px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    .contact-header {
+      display: flex; align-items: center; gap: .6rem;
+      padding: 1.1rem 1.25rem .85rem;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+    }
+
+    /* instagram row */
+    .contact-ig {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0 1.25rem 1.1rem;
+    }
+    .ig-avatar {
+      width: 60px; height: 60px; border-radius: 50%; flex-shrink: 0;
+      padding: 2px;
+      background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
+    }
+    .ig-avatar img {
+      width: 100%; height: 100%; border-radius: 50%;
+      object-fit: cover; display: block; border: 2px solid #fff;
+    }
+    .ig-avatar .ig-avatar-ph {
+      width: 100%; height: 100%; border-radius: 50%;
+      background: #e8e5de; display: flex; align-items: center;
+      justify-content: center; font-size: 1.5rem; border: 2px solid #fff;
+    }
+    .ig-info { flex: 1; min-width: 0; }
+    .ig-username { font-size: .98rem; font-weight: 700; display: block; }
+    .ig-subline  { font-size: .8rem; color: var(--muted); margin-top: .08rem; }
+    .ig-actions  { display: flex; gap: .5rem; margin-top: .6rem; flex-wrap: wrap; }
+    .ig-btn {
+      display: inline-block; padding: .38rem 1rem;
+      border-radius: 8px; font-size: .8rem; font-weight: 700;
+      text-decoration: none; letter-spacing: .02em;
+      transition: opacity .2s; white-space: nowrap;
+    }
+    .ig-btn:hover { opacity: .82; }
+    .ig-btn-follow { color: #fff; background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+    .ig-btn-message { color: var(--text); background: var(--bg); border: 1.5px solid var(--border); }
+
+    /* email row */
+    .contact-divider { height: 1px; background: var(--border); margin: 0 1.25rem; }
+    .contact-email {
+      display: flex; align-items: center; gap: .75rem;
+      padding: 1rem 1.25rem 1.25rem;
+    }
+    .email-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: #E8F0FE; display: flex; align-items: center;
+      justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+    }
+    .email-detail { min-width: 0; flex: 1; }
+    .email-label {
+      font-size: .7rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .12em; font-weight: 600;
+      display: block; margin-bottom: .05rem;
+    }
+    .email-value {
+      font-size: .92rem; font-weight: 600; color: var(--text);
+      text-decoration: none; display: block;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .email-value:hover { color: #374151; }
+
     /* ── MINI GALLERY ── */
-    .gallery {
-      padding: .75rem 1.25rem 1.25rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 4px;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .gallery-thumb {
-      aspect-ratio: 1;
-      overflow: hidden;
-      background: #e0ddd6;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .gallery-thumb img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-      transition: transform .25s;
-    }
-
+    .gallery { padding: .75rem 1.25rem 1.25rem; border-top: 1px solid var(--border); }
+    .gallery + .gallery { padding-top: .75rem; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; border-radius: 10px; overflow: hidden; }
+    .gallery-thumb { aspect-ratio: 1; overflow: hidden; background: #e0ddd6; cursor: pointer; position: relative; }
+    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s; }
     .gallery-thumb:hover img { transform: scale(1.06); }
-
-    .gallery-thumb .thumb-placeholder {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      color: #a0998e; font-size: 1.4rem;
-    }
-
-    /* "more" overlay on last thumb */
+    .gallery-thumb .thumb-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #a0998e; font-size: 1.4rem; }
     .gallery-thumb.more-overlay::after {
-      content: attr(data-label);
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,.52);
-      color: #fff;
+      content: attr(data-label); position: absolute; inset: 0;
+      background: rgba(0,0,0,.52); color: #fff;
       display: flex; align-items: center; justify-content: center;
-      font-size: .88rem; font-weight: 700;
-      letter-spacing: .02em;
-      cursor: pointer;
+      font-size: .88rem; font-weight: 700; cursor: pointer;
     }
-
     .gallery-cta {
-      display: block;
-      margin-top: .65rem;
-      font-size: .8rem; font-weight: 600;
-      color: var(--muted);
-      text-align: right;
-      cursor: pointer;
-      background: none; border: none; padding: 0;
-      font-family: inherit;
+      display: block; margin-top: .65rem; font-size: .8rem; font-weight: 600;
+      color: var(--muted); text-align: right; cursor: pointer;
+      background: none; border: none; padding: 0; font-family: inherit;
     }
     .gallery-cta:hover { color: var(--text); }
 
     /* ── PHOTO PAIR ── */
     .photo-pair-card {
-      margin: .75rem 1rem 0;
-      border-radius: 18px; overflow: hidden;
+      margin: .75rem 1rem 0; border-radius: 18px; overflow: hidden;
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 3px; box-shadow: 0 1px 4px rgba(0,0,0,.06);
     }
-
-    .photo-pane {
-      overflow: hidden; aspect-ratio: 3/4;
-      background: #d4cfc8; position: relative;
-    }
-
-    .photo-pane img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-    }
-
+    .photo-pane { overflow: hidden; aspect-ratio: 3/4; background: #d4cfc8; position: relative; }
+    .photo-pane img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .photo-pane .photo-placeholder {
-      width: 100%; height: 100%;
-      display: flex; flex-direction: column;
+      width: 100%; height: 100%; display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      gap: .4rem; color: #8a8478; font-size: .78rem;
-      text-align: center; padding: 1rem;
+      gap: .4rem; color: #8a8478; font-size: .78rem; text-align: center; padding: 1rem;
     }
     .photo-pane .photo-placeholder span:first-child { font-size: 1.6rem; }
-
     .photo-pane-label {
       position: absolute; bottom: 0; left: 0; right: 0;
       padding: 1.5rem .75rem .55rem;
       background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 100%);
-      font-size: .72rem; font-weight: 600;
-      color: rgba(255,255,255,.85); letter-spacing: .04em;
+      font-size: .72rem; font-weight: 600; color: rgba(255,255,255,.85); letter-spacing: .04em;
     }
 
     /* ── TAGS ── */
@@ -223,80 +204,58 @@
       border-radius: 18px; padding: 1.1rem 1.25rem 1.25rem;
       box-shadow: 0 1px 4px rgba(0,0,0,.06);
     }
-
-    .tags-label {
-      font-size: .72rem; font-weight: 700;
-      letter-spacing: .14em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: .85rem;
-    }
-
+    .tags-label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: .85rem; }
     .tags { display: flex; flex-wrap: wrap; gap: .5rem; }
-
-    .tag {
-      font-size: .85rem; color: var(--text);
-      background: var(--bg); border: 1.5px solid var(--border);
-      border-radius: 999px; padding: .35rem 1rem; font-weight: 500;
-    }
+    .tag { font-size: .85rem; color: var(--text); background: var(--bg); border: 1.5px solid var(--border); border-radius: 999px; padding: .35rem 1rem; font-weight: 500; }
 
     /* ── SPOTIFY ── */
     .spotify-card {
       background: var(--white); margin: .75rem 1rem 0;
-      border-radius: 18px; overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      border-radius: 18px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06);
     }
-
     .spotify-header {
       display: flex; align-items: center; gap: .6rem;
       padding: 1.1rem 1.25rem .75rem;
       font-size: .72rem; font-weight: 700;
       letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
     }
-
     .spotify-card iframe { display: block; }
+
+    /* ── STICKY CTA ── */
+    .sticky-cta {
+      position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      z-index: 500;
+      display: flex; align-items: center; gap: .5rem;
+      background: var(--yellow); color: var(--text);
+      font-size: .9rem; font-weight: 800;
+      padding: .75rem 1.6rem; border-radius: 999px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.18);
+      cursor: pointer; border: none; font-family: inherit;
+      white-space: nowrap;
+      transition: transform .2s, box-shadow .2s, opacity .35s;
+    }
+    .sticky-cta:hover { transform: translateX(-50%) translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,.22); }
+    .sticky-cta.hidden { opacity: 0; pointer-events: none; }
 
     /* ── LIGHTBOX ── */
     .lightbox {
-      display: none;
-      position: fixed; inset: 0; z-index: 1000;
-      background: rgba(0,0,0,.9);
-      flex-direction: column;
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,.9); flex-direction: column;
       align-items: center; justify-content: center;
     }
-
     .lightbox.open { display: flex; }
-
-    .lightbox-inner {
-      position: relative;
-      width: min(480px, 96vw);
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-
+    .lightbox-inner { position: relative; width: min(480px, 96vw); max-height: 90vh; overflow-y: auto; }
     .lightbox-close {
       position: fixed; top: 1rem; right: 1rem;
       background: rgba(255,255,255,.15); border: none;
       color: #fff; font-size: 1.4rem; width: 40px; height: 40px;
       border-radius: 50%; cursor: pointer; display: flex;
-      align-items: center; justify-content: center;
-      font-family: inherit; line-height: 1;
+      align-items: center; justify-content: center; font-family: inherit;
     }
     .lightbox-close:hover { background: rgba(255,255,255,.25); }
-
-    .lightbox-title {
-      color: #fff; font-size: .72rem; font-weight: 700;
-      letter-spacing: .16em; text-transform: uppercase;
-      text-align: center; margin-bottom: .85rem;
-    }
-
-    .lightbox-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
-      border-radius: 14px; overflow: hidden;
-    }
-
-    .lightbox-grid img {
-      width: 100%; aspect-ratio: 1; object-fit: cover; display: block;
-    }
-
+    .lightbox-title { color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; text-align: center; margin-bottom: .85rem; }
+    .lightbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; border-radius: 14px; overflow: hidden; }
+    .lightbox-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
     .lightbox-grid .lb-placeholder {
       aspect-ratio: 1; background: #2a2a2a;
       display: flex; align-items: center; justify-content: center;
@@ -305,149 +264,8 @@
     }
     .lightbox-grid .lb-placeholder span:first-child { font-size: 1.8rem; }
 
-    /* ── INSTAGRAM CARD ── */
-    .ig-card {
-      background: var(--white);
-      margin: .75rem 1rem 0;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,.06);
-    }
-
-    .ig-header {
-      display: flex; align-items: center; gap: .6rem;
-      padding: 1.1rem 1.25rem .75rem;
-      font-size: .72rem; font-weight: 700;
-      letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
-    }
-
-    .ig-dot {
-      width: 28px; height: 28px; border-radius: 50%;
-      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .95rem; flex-shrink: 0;
-    }
-
-    .ig-body {
-      padding: 0 1.25rem 1.25rem;
-      display: flex; align-items: center; gap: 1rem;
-    }
-
-    .ig-avatar {
-      width: 64px; height: 64px; border-radius: 50%;
-      overflow: hidden; flex-shrink: 0;
-      background: #e8e5de;
-      padding: 2px;
-      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-    }
-
-    .ig-avatar img {
-      width: 100%; height: 100%;
-      border-radius: 50%; object-fit: cover; display: block;
-      border: 2px solid #fff;
-    }
-
-    .ig-avatar .ig-avatar-placeholder {
-      width: 100%; height: 100%;
-      border-radius: 50%; background: #e8e5de;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem; border: 2px solid #fff;
-    }
-
-    .ig-info { flex: 1; min-width: 0; }
-
-    .ig-username {
-      font-size: 1rem; font-weight: 700;
-      color: var(--text); display: block;
-    }
-
-    .ig-subline {
-      font-size: .82rem; color: var(--muted); margin-top: .1rem;
-    }
-
-    .ig-actions { display: flex; gap: .5rem; margin-top: .65rem; flex-wrap: wrap; }
-
-    .ig-btn {
-      display: inline-block;
-      padding: .42rem 1.1rem;
-      border-radius: 8px;
-      font-size: .82rem; font-weight: 700;
-      text-decoration: none;
-      letter-spacing: .02em;
-      transition: opacity .2s;
-      white-space: nowrap;
-    }
-    .ig-btn:hover { opacity: .82; }
-
-    .ig-btn-follow {
-      color: #fff;
-      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-    }
-
-    .ig-btn-message {
-      color: var(--text);
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-    }
-
-    /* ── CONTACT CARD ── */
-    .contact-card {
-      background: var(--white);
-      margin: .75rem 1rem 0;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,.06);
-    }
-
-    .contact-header {
-      display: flex; align-items: center; gap: .6rem;
-      padding: 1.1rem 1.25rem .75rem;
-      font-size: .72rem; font-weight: 700;
-      letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
-    }
-
-    .contact-list {
-      padding: 0 1.25rem 1.25rem;
-      display: flex; flex-direction: column; gap: .65rem;
-    }
-
-    .contact-row {
-      display: flex; align-items: center; gap: .75rem;
-    }
-
-    .contact-icon {
-      width: 38px; height: 38px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem; flex-shrink: 0;
-    }
-
-    .contact-icon.email-icon  { background: #E8F0FE; }
-    .contact-icon.ig-icon     {
-      background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
-    }
-
-    .contact-detail { min-width: 0; flex: 1; }
-
-    .contact-label {
-      font-size: .7rem; color: var(--muted);
-      text-transform: uppercase; letter-spacing: .12em; font-weight: 600;
-      display: block; margin-bottom: .05rem;
-    }
-
-    .contact-value {
-      font-size: .92rem; font-weight: 600; color: var(--text);
-      text-decoration: none; display: block;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .contact-value:hover { color: #374151; }
-
     /* ── FOOTER ── */
-    footer {
-      max-width: 480px; margin: 2rem auto 0;
-      padding: 1.5rem 1rem;
-      font-size: .78rem; color: var(--muted);
-      text-align: center; border-top: 1px solid var(--border);
-    }
+    footer { max-width: 480px; margin: 2rem auto 0; padding: 1.5rem 1rem; font-size: .78rem; color: var(--muted); text-align: center; border-top: 1px solid var(--border); }
   </style>
 </head>
 <body>
@@ -473,6 +291,42 @@
 
   <main class="main">
 
+    <!-- GET IN TOUCH (top, anchor for sticky CTA) -->
+    <div class="contact-card" id="contact">
+      <div class="contact-header">
+        <div class="card-dot">✉️</div>
+        Get in touch
+      </div>
+
+      <!-- Instagram -->
+      <div class="contact-ig">
+        <div class="ig-avatar">
+          <img src="photos/recent.jpg" alt="@cadet93000"
+            onerror="this.parentElement.innerHTML='<div class=ig-avatar-ph>👤</div>'">
+        </div>
+        <div class="ig-info">
+          <span class="ig-username">@cadet93000</span>
+          <p class="ig-subline">Instagram — travels, CrossFit & breakfast vibes</p>
+          <div class="ig-actions">
+            <a class="ig-btn ig-btn-follow" href="https://www.instagram.com/cadet93000" target="_blank" rel="noopener noreferrer">Follow</a>
+            <a class="ig-btn ig-btn-message" href="https://ig.me/m/cadet93000" target="_blank" rel="noopener noreferrer">Message</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- divider -->
+      <div class="contact-divider"></div>
+
+      <!-- Email -->
+      <div class="contact-email">
+        <div class="email-icon">📧</div>
+        <div class="email-detail">
+          <span class="email-label">Email</span>
+          <a class="email-value" href="mailto:dmytro.naida@icloud.com">dmytro.naida@icloud.com</a>
+        </div>
+      </div>
+    </div>
+
     <!-- PHOTO PAIR -->
     <div class="photo-pair-card">
       <div class="photo-pane">
@@ -497,46 +351,38 @@
         <p>Doing CrossFit, walking (most recently 125 km in five days in Spain), searching for a new song I'll listen to on repeat, cooking some kind of cool breakfast food — pancakes with mascarpone cheese, honey, and peaches being my favorite.</p>
       </div>
 
-      <!-- CrossFit mini gallery -->
       <div class="gallery">
         <div class="gallery-grid">
           <div class="gallery-thumb" onclick="openLightbox('crossfit')">
-            <img src="photos/crossfit-1.jpg" alt=""
-              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🏋️</div>'">
+            <img src="photos/crossfit-1.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🏋️</div>'">
           </div>
           <div class="gallery-thumb" onclick="openLightbox('crossfit')">
-            <img src="photos/crossfit-2.jpg" alt=""
-              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🏋️</div>'">
+            <img src="photos/crossfit-2.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🏋️</div>'">
           </div>
           <div class="gallery-thumb more-overlay" data-label="+ more" onclick="openLightbox('crossfit')">
-            <img src="photos/crossfit-3.jpg" alt=""
-              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🏋️</div>'">
+            <img src="photos/crossfit-3.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🏋️</div>'">
           </div>
         </div>
         <button class="gallery-cta" onclick="openLightbox('crossfit')">See all CrossFit photos →</button>
       </div>
 
-      <!-- Cooking mini gallery -->
-      <div class="gallery" style="border-top:1px solid var(--border); padding-top:.75rem;">
+      <div class="gallery">
         <div class="gallery-grid">
           <div class="gallery-thumb" onclick="openLightbox('cooking')">
-            <img src="photos/cooking-1.jpg" alt=""
-              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🥞</div>'">
+            <img src="photos/cooking-1.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🥞</div>'">
           </div>
           <div class="gallery-thumb" onclick="openLightbox('cooking')">
-            <img src="photos/cooking-2.jpg" alt=""
-              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🥞</div>'">
+            <img src="photos/cooking-2.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🥞</div>'">
           </div>
           <div class="gallery-thumb more-overlay" data-label="+ more" onclick="openLightbox('cooking')">
-            <img src="photos/cooking-3.jpg" alt=""
-              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🥞</div>'">
+            <img src="photos/cooking-3.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🥞</div>'">
           </div>
         </div>
         <button class="gallery-cta" onclick="openLightbox('cooking')">See all cooking photos →</button>
       </div>
     </div>
 
-    <!-- INTEREST TAGS -->
+    <!-- TAGS -->
     <div class="tags-card">
       <p class="tags-label">Interests</p>
       <div class="tags">
@@ -559,20 +405,16 @@
         <p>In another universe, I'd be a language or math teacher, the owner of a small CrossFit box, or the owner of a niche travel tour guide company.</p>
       </div>
 
-      <!-- Travel gallery -->
       <div class="gallery">
         <div class="gallery-grid">
           <div class="gallery-thumb" onclick="openLightbox('travel')">
-            <img src="photos/travel-1.jpg" alt=""
-              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>✈️</div>'">
+            <img src="photos/travel-1.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>✈️</div>'">
           </div>
           <div class="gallery-thumb" onclick="openLightbox('travel')">
-            <img src="photos/travel-2.jpg" alt=""
-              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>✈️</div>'">
+            <img src="photos/travel-2.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>✈️</div>'">
           </div>
           <div class="gallery-thumb more-overlay" data-label="+ more" onclick="openLightbox('travel')">
-            <img src="photos/travel-3.jpg" alt=""
-              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>✈️</div>'">
+            <img src="photos/travel-3.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>✈️</div>'">
           </div>
         </div>
         <button class="gallery-cta" onclick="openLightbox('travel')">See all travel photos →</button>
@@ -600,70 +442,20 @@
         data-testid="embed-iframe"
         style="border-radius:0 0 18px 18px"
         src="https://open.spotify.com/embed/playlist/4UenN9KEuw35eCxEHNLo8x?utm_source=generator"
-        width="100%"
-        height="352"
-        frameBorder="0"
-        allowfullscreen=""
+        width="100%" height="352" frameBorder="0" allowfullscreen=""
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
       ></iframe>
     </div>
 
-    <!-- INSTAGRAM -->
-    <div class="ig-card">
-      <div class="ig-header">
-        <div class="ig-dot">📸</div>
-        Find me on Instagram
-      </div>
-      <div class="ig-body">
-        <div class="ig-avatar">
-          <img src="photos/recent.jpg" alt="@cadet93000"
-            onerror="this.parentElement.innerHTML='<div class=ig-avatar-placeholder>👤</div>'">
-        </div>
-        <div class="ig-info">
-          <span class="ig-username">@cadet93000</span>
-          <p class="ig-subline">Life through a lens — travels, CrossFit & breakfast vibes</p>
-          <div class="ig-actions">
-            <a class="ig-btn ig-btn-follow"
-               href="https://www.instagram.com/cadet93000"
-               target="_blank" rel="noopener noreferrer">Follow</a>
-            <a class="ig-btn ig-btn-message"
-               href="https://ig.me/m/cadet93000"
-               target="_blank" rel="noopener noreferrer">Message</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CONTACT -->
-    <div class="contact-card">
-      <div class="contact-header">
-        <div class="card-dot">✉️</div>
-        Get in touch
-      </div>
-      <div class="contact-list">
-        <div class="contact-row">
-          <div class="contact-icon email-icon">📧</div>
-          <div class="contact-detail">
-            <span class="contact-label">Email</span>
-            <a class="contact-value" href="mailto:dmytro.naida@icloud.com">dmytro.naida@icloud.com</a>
-          </div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-icon ig-icon">📸</div>
-          <div class="contact-detail">
-            <span class="contact-label">Instagram</span>
-            <a class="contact-value"
-               href="https://ig.me/m/cadet93000"
-               target="_blank" rel="noopener noreferrer">@cadet93000 — send a DM</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </main>
 
   <footer>Dima Naida · 2026</footer>
+
+  <!-- STICKY CTA -->
+  <button class="sticky-cta" id="sticky-cta" onclick="scrollToContact()">
+    ✉️ Get in touch
+  </button>
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
@@ -675,47 +467,41 @@
   </div>
 
   <script>
+    // ── Sticky CTA: hide when contact section is visible ──
+    const cta = document.getElementById('sticky-cta');
+    const contactSection = document.getElementById('contact');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => { cta.classList.toggle('hidden', entry.isIntersecting); },
+      { threshold: 0.2 }
+    );
+    observer.observe(contactSection);
+
+    function scrollToContact() {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ── Lightbox ──
     const galleries = {
       crossfit: {
         title: '🏋️ CrossFit',
-        photos: [
-          'photos/crossfit-1.jpg',
-          'photos/crossfit-2.jpg',
-          'photos/crossfit-3.jpg',
-          'photos/crossfit-4.jpg',
-          'photos/crossfit-5.jpg',
-          'photos/crossfit-6.jpg',
-        ]
+        photos: ['photos/crossfit-1.jpg','photos/crossfit-2.jpg','photos/crossfit-3.jpg','photos/crossfit-4.jpg','photos/crossfit-5.jpg','photos/crossfit-6.jpg']
       },
       cooking: {
         title: '🥞 Cooking',
-        photos: [
-          'photos/cooking-1.jpg',
-          'photos/cooking-2.jpg',
-          'photos/cooking-3.jpg',
-          'photos/cooking-4.jpg',
-        ]
+        photos: ['photos/cooking-1.jpg','photos/cooking-2.jpg','photos/cooking-3.jpg','photos/cooking-4.jpg']
       },
       travel: {
         title: '✈️ Travel',
-        photos: [
-          'photos/travel-1.jpg',
-          'photos/travel-2.jpg',
-          'photos/travel-3.jpg',
-          'photos/travel-4.jpg',
-          'photos/travel-5.jpg',
-          'photos/travel-6.jpg',
-        ]
+        photos: ['photos/travel-1.jpg','photos/travel-2.jpg','photos/travel-3.jpg','photos/travel-4.jpg','photos/travel-5.jpg','photos/travel-6.jpg']
       }
     };
-
     const emojis = { crossfit: '🏋️', cooking: '🥞', travel: '✈️' };
 
     function openLightbox(key) {
       const g = galleries[key];
       document.getElementById('lb-title').textContent = g.title;
-      const grid = document.getElementById('lb-grid');
-      grid.innerHTML = g.photos.map(src =>
+      document.getElementById('lb-grid').innerHTML = g.photos.map(src =>
         `<img src="${src}" alt="" onerror="this.parentElement.innerHTML='<div class=lb-placeholder><span>${emojis[key]}</span><span>Add ${src}</span></div>'">`
       ).join('');
       document.getElementById('lightbox').classList.add('open');
