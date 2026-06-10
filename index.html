@@ -47,10 +47,7 @@
       color: var(--muted); font-family: inherit;
       transition: color .15s, background .15s;
     }
-    .lang-btn.active {
-      background: var(--accent);
-      color: var(--text);
-    }
+    .lang-btn.active { background: var(--accent); color: var(--text); }
     .lang-btn:not(.active):hover { color: var(--text); }
 
     /* ── PROFILE CARD ── */
@@ -114,7 +111,11 @@
     }
     .card-dot.spotify { background: var(--spotify); }
     .card-body { padding: .15rem 1.2rem 1rem; font-size: .98rem; color: #2E2820; line-height: 1.78; }
+    .card-body p { margin-bottom: .6rem; }
+    .card-body p:last-child { margin-bottom: 0; }
     .card-body p em { font-style: italic; color: var(--text); }
+    .card-body ul { margin: .4rem 0 0 1.1rem; }
+    .card-body li { margin-bottom: .35rem; }
 
     /* ── CONTACT CARD ── */
     .contact-card {
@@ -132,100 +133,57 @@
     .c-divider { height: 1px; background: var(--border); margin: 0 1.2rem; }
 
     /* Instagram row */
-    .ig-row {
-      display: flex; align-items: center; gap: .9rem;
-      padding: 1rem 1.2rem;
-    }
+    .ig-row { display: flex; align-items: center; gap: .9rem; padding: 1rem 1.2rem; }
     .ig-avatar {
       width: 54px; height: 54px; border-radius: 50%; flex-shrink: 0;
       padding: 2px;
       background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
     }
-    .ig-avatar img {
-      width: 100%; height: 100%; border-radius: 50%;
-      object-fit: cover; display: block; border: 2.5px solid #fff;
-    }
-    .ig-avatar .ig-avatar-ph {
-      width: 100%; height: 100%; border-radius: 50%;
-      background: #e8e0d5; display: flex; align-items: center;
-      justify-content: center; font-size: 1.4rem; border: 2.5px solid #fff;
-    }
+    .ig-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; border: 2.5px solid #fff; }
+    .ig-avatar .ig-avatar-ph { width: 100%; height: 100%; border-radius: 50%; background: #e8e0d5; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2.5px solid #fff; }
     .ig-info { flex: 1; min-width: 0; }
     .ig-username { font-size: .95rem; font-weight: 700; display: block; color: var(--text); }
     .ig-subline  { font-size: .78rem; color: var(--muted); margin-top: .06rem; }
     .ig-actions  { display: flex; gap: .45rem; margin-top: .55rem; }
     .ig-btn {
       display: inline-flex; align-items: center; gap: .3rem;
-      padding: .36rem .9rem;
-      border-radius: 8px; font-size: .78rem; font-weight: 700;
+      padding: .36rem .9rem; border-radius: 8px; font-size: .78rem; font-weight: 700;
       text-decoration: none; letter-spacing: .01em;
       transition: opacity .2s, transform .15s; white-space: nowrap;
     }
     .ig-btn:hover { opacity: .85; transform: translateY(-1px); }
-    .ig-btn-message {
-      color: #fff;
-      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-      box-shadow: 0 2px 8px rgba(131,58,180,.3);
-    }
-    .ig-btn-follow { color: var(--text); background: var(--bg); border: 1.5px solid var(--border); }
+    .ig-btn-message { color: #fff; background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); box-shadow: 0 2px 8px rgba(131,58,180,.3); }
+    .ig-btn-follow  { color: var(--text); background: var(--bg); border: 1.5px solid var(--border); }
 
     /* Contact rows */
-    .contact-row {
-      display: flex; align-items: center; gap: .75rem;
-      padding: 1rem 1.2rem;
-      text-decoration: none; color: inherit;
-      transition: background .15s; cursor: pointer;
-    }
+    .contact-row { display: flex; align-items: center; gap: .75rem; padding: 1rem 1.2rem; text-decoration: none; color: inherit; transition: background .15s; cursor: pointer; }
     .contact-row:last-child { padding-bottom: 1.2rem; }
-    .contact-row:hover { background: var(--bg); }
+    .contact-row:hover  { background: var(--bg); }
     .contact-row:active { background: var(--border); }
-    .contact-row-icon {
-      width: 38px; height: 38px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.05rem; flex-shrink: 0;
-    }
+    .contact-row-icon   { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; flex-shrink: 0; }
     .contact-row-detail { min-width: 0; flex: 1; }
-    .contact-row-label {
-      font-size: .67rem; color: var(--muted);
-      text-transform: uppercase; letter-spacing: .14em; font-weight: 700;
-      display: block; margin-bottom: .05rem;
-    }
-    .contact-row-value {
-      font-size: .9rem; font-weight: 600; color: var(--text);
-      display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .contact-row-arrow {
-      font-size: 1.25rem; color: var(--border); flex-shrink: 0; margin-left: .25rem;
-      font-weight: 300; transition: color .15s, transform .15s;
-    }
+    .contact-row-label  { font-size: .67rem; color: var(--muted); text-transform: uppercase; letter-spacing: .14em; font-weight: 700; display: block; margin-bottom: .05rem; }
+    .contact-row-value  { font-size: .9rem; font-weight: 600; color: var(--text); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .contact-row-arrow  { font-size: 1.25rem; color: var(--border); flex-shrink: 0; margin-left: .25rem; font-weight: 300; transition: color .15s, transform .15s; }
     .contact-row:hover .contact-row-arrow { color: var(--muted); transform: translateX(2px); }
+
+    /* ── VIBE NOTE ── */
+    .vibe-note {
+      max-width: 480px; margin: .9rem 1rem 0;
+      font-size: .88rem; color: var(--muted); font-style: italic;
+      text-align: center; line-height: 1.65; padding: 0 .5rem;
+    }
 
     /* ── MINI GALLERY ── */
     .gallery { padding: .7rem 1.2rem 1.2rem; border-top: 1px solid var(--border); }
-    .gallery + .gallery { padding-top: .7rem; }
     .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; border-radius: 9px; overflow: hidden; }
     .gallery-thumb { aspect-ratio: 1; overflow: hidden; background: #ddd7cf; cursor: pointer; position: relative; }
-    .gallery-thumb img,
-    .gallery-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .22s; }
-    .gallery-thumb:hover img,
-    .gallery-thumb:hover video { transform: scale(1.07); }
+    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .22s; }
+    .gallery-thumb:hover img { transform: scale(1.07); }
     .gallery-thumb .thumb-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #a09890; font-size: 1.4rem; }
-    .gallery-thumb.is-video::after {
-      content: '▶'; position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.55); pointer-events: none;
-    }
-    .gallery-thumb.more-overlay::after {
-      content: attr(data-label); position: absolute; inset: 0;
-      background: rgba(28,25,21,.54); color: #fff;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .85rem; font-weight: 700; cursor: pointer; text-shadow: none;
-    }
-    .gallery-cta {
-      display: block; margin-top: .6rem; font-size: .78rem; font-weight: 600;
-      color: var(--muted); text-align: right; cursor: pointer;
-      background: none; border: none; padding: 0; font-family: inherit; transition: color .15s;
-    }
+    .gallery-thumb.is-video::after { content: '▶'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.55); pointer-events: none; }
+    .gallery-thumb.more-overlay::after { content: attr(data-label); position: absolute; inset: 0; background: rgba(28,25,21,.54); color: #fff; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; cursor: pointer; text-shadow: none; }
+    .gallery-cta { display: block; margin-top: .6rem; font-size: .78rem; font-weight: 600; color: var(--muted); text-align: right; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; transition: color .15s; }
     .gallery-cta:hover { color: var(--text); }
 
     /* ── PHOTO PAIR ── */
@@ -237,17 +195,14 @@
     }
     .photo-pane { overflow: hidden; aspect-ratio: 3/4; background: #c8bfb4; position: relative; }
     .photo-pane img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .photo-pane .photo-placeholder {
-      width: 100%; height: 100%; display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: .4rem; color: #8a7e74; font-size: .78rem; text-align: center; padding: 1rem;
-    }
+    .photo-pane .photo-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .4rem; color: #8a7e74; font-size: .78rem; text-align: center; padding: 1rem; }
     .photo-pane .photo-placeholder span:first-child { font-size: 1.6rem; }
     .photo-pane-label {
       position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 1.4rem .75rem .5rem;
-      background: linear-gradient(to top, rgba(28,18,10,.58) 0%, transparent 100%);
-      font-size: .7rem; font-weight: 600; color: rgba(255,255,255,.9); letter-spacing: .05em;
+      padding: 2.2rem .7rem .55rem;
+      background: linear-gradient(to top, rgba(28,18,10,.72) 0%, transparent 100%);
+      font-size: .64rem; font-weight: 600; color: rgba(255,255,255,.9);
+      letter-spacing: .03em; line-height: 1.45;
     }
 
     /* ── TAGS ── */
@@ -268,45 +223,38 @@
       border: 1px solid var(--border);
       box-shadow: 0 1px 3px rgba(28,25,21,.05), 0 4px 14px rgba(28,25,21,.07);
     }
-    .spotify-header {
-      display: flex; align-items: center; gap: .6rem;
-      padding: 1rem 1.2rem .75rem;
-      font-size: .68rem; font-weight: 700;
-      letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
-    }
+    .spotify-header { display: flex; align-items: center; gap: .6rem; padding: 1rem 1.2rem .75rem; font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
     .spotify-card iframe { display: block; }
 
-    /* ── STICKY CTA ── */
+    /* ── STICKY CTA + HINT ── */
+    .sticky-group {
+      position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%);
+      z-index: 500; display: flex; flex-direction: column; align-items: center; gap: .35rem;
+      transition: opacity .3s;
+    }
+    .sticky-group.hidden { opacity: 0; pointer-events: none; }
     .sticky-cta {
-      position: fixed; bottom: 1.4rem; left: 50%; transform: translateX(-50%);
-      z-index: 500;
       display: flex; align-items: center; gap: .5rem;
       background: var(--accent); color: var(--text);
       font-size: .9rem; font-weight: 800; letter-spacing: .01em;
       padding: .78rem 1.75rem; border-radius: 999px;
       box-shadow: 0 4px 24px rgba(242,224,0,.45), 0 1px 4px rgba(28,25,21,.12);
-      cursor: pointer; border: none; font-family: inherit;
-      white-space: nowrap;
-      transition: transform .2s, box-shadow .2s, opacity .3s;
+      cursor: pointer; border: none; font-family: inherit; white-space: nowrap;
+      transition: transform .2s, box-shadow .2s;
     }
-    .sticky-cta:hover { transform: translateX(-50%) translateY(-2px); box-shadow: 0 8px 32px rgba(242,224,0,.5), 0 2px 8px rgba(28,25,21,.12); }
-    .sticky-cta.hidden { opacity: 0; pointer-events: none; }
+    .sticky-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(242,224,0,.5), 0 2px 8px rgba(28,25,21,.12); }
+    .sticky-hint {
+      font-size: .74rem; color: var(--muted);
+      background: rgba(247,243,238,.92); backdrop-filter: blur(8px);
+      border-radius: 999px; padding: .2rem .75rem;
+      white-space: nowrap; text-align: center;
+    }
 
     /* ── LIGHTBOX ── */
-    .lightbox {
-      display: none; position: fixed; inset: 0; z-index: 1000;
-      background: rgba(18,14,10,.92); flex-direction: column;
-      align-items: center; justify-content: center;
-    }
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(18,14,10,.92); flex-direction: column; align-items: center; justify-content: center; }
     .lightbox.open { display: flex; }
     .lightbox-inner { position: relative; width: min(480px, 96vw); max-height: 90vh; overflow-y: auto; }
-    .lightbox-close {
-      position: fixed; top: 1rem; right: 1rem;
-      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
-      color: #fff; font-size: 1.3rem; width: 40px; height: 40px;
-      border-radius: 50%; cursor: pointer; display: flex;
-      align-items: center; justify-content: center; font-family: inherit; transition: background .2s;
-    }
+    .lightbox-close { position: fixed; top: 1rem; right: 1rem; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); color: #fff; font-size: 1.3rem; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: inherit; transition: background .2s; }
     .lightbox-close:hover { background: rgba(255,255,255,.22); }
     .lightbox-title { color: rgba(255,255,255,.7); font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; text-align: center; margin-bottom: .8rem; }
     .lightbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; border-radius: 12px; overflow: hidden; }
@@ -345,13 +293,68 @@
 
   <!-- INFO CHIPS -->
   <div class="info-chips">
-    <span class="chip" id="chip-role" data-t="chipRole"></span>
+    <span class="chip" data-t="chipActivity"></span>
+    <span class="chip" data-t="chipLocation"></span>
     <span class="chip" id="age-chip"></span>
   </div>
 
   <main class="main">
 
-    <!-- GET IN TOUCH -->
+    <!-- PHOTO PAIR -->
+    <div class="photo-pair-card">
+      <div class="photo-pane">
+        <img src="photos/thumbs/pair-recent.jpg" alt="Dima — recent" loading="lazy"
+          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>📷</span><span>recent.jpg</span></div>'">
+        <div class="photo-pane-label" data-t="recentLabel"></div>
+      </div>
+      <div class="photo-pane">
+        <img src="photos/thumbs/pair-in-spain.jpg" alt="Dima — in Spain" loading="lazy"
+          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>🌊</span><span>in-spain.jpg</span></div>'">
+        <div class="photo-pane-label" data-t="inSpainLabel"></div>
+      </div>
+    </div>
+
+    <!-- PROMPT: HOBBIES -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot">🌈</div>
+        <span data-t="hobbyHeader"></span>
+      </div>
+      <div class="card-body" data-t-html="hobbyBody"></div>
+      <div class="gallery" id="gallery-crossfit-preview"></div>
+    </div>
+
+    <!-- TAGS -->
+    <div class="tags-card">
+      <p class="tags-label" data-t="tagsLabel"></p>
+      <div class="tags" id="tags-list"></div>
+    </div>
+
+    <!-- PROMPT: ALTERNATE CAREER -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot">🧑‍🏫</div>
+        <span data-t="careerHeader"></span>
+      </div>
+      <div class="card-body">
+        <p data-t-html="careerBody"></p>
+      </div>
+      <div class="gallery" id="gallery-travel-preview"></div>
+    </div>
+
+    <!-- PROMPT: TALK FOR HOURS -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot">💬</div>
+        <span data-t="talkHeader"></span>
+      </div>
+      <div class="card-body" data-t-html="talkBody"></div>
+    </div>
+
+    <!-- VIBE NOTE -->
+    <p class="vibe-note" data-t="vibeNote"></p>
+
+    <!-- GET IN TOUCH (moved after story) -->
     <div class="contact-card" id="contact">
       <div class="contact-header">
         <div class="card-dot">✉️</div>
@@ -396,61 +399,6 @@
       </a>
     </div>
 
-    <!-- PHOTO PAIR -->
-    <div class="photo-pair-card">
-      <div class="photo-pane">
-        <img src="photos/thumbs/pair-recent.jpg" alt="Dima — recent" loading="lazy"
-          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>📷</span><span>recent.jpg</span></div>'">
-        <div class="photo-pane-label" data-t="recentLabel"></div>
-      </div>
-      <div class="photo-pane">
-        <img src="photos/thumbs/pair-in-spain.jpg" alt="Dima — in Spain" loading="lazy"
-          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>🌊</span><span>in-spain.jpg</span></div>'">
-        <div class="photo-pane-label" data-t="inSpainLabel"></div>
-      </div>
-    </div>
-
-    <!-- PROMPT: HOBBIES -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-dot">🌈</div>
-        <span data-t="hobbyHeader"></span>
-      </div>
-      <div class="card-body">
-        <p data-t-html="hobbyBody"></p>
-      </div>
-      <div class="gallery" id="gallery-crossfit-preview"></div>
-    </div>
-
-    <!-- TAGS -->
-    <div class="tags-card">
-      <p class="tags-label" data-t="tagsLabel"></p>
-      <div class="tags" id="tags-list"></div>
-    </div>
-
-    <!-- PROMPT: ALTERNATE CAREER -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-dot">🧑‍🏫</div>
-        <span data-t="careerHeader"></span>
-      </div>
-      <div class="card-body">
-        <p data-t="careerBody"></p>
-      </div>
-      <div class="gallery" id="gallery-travel-preview"></div>
-    </div>
-
-    <!-- PROMPT: TALK FOR HOURS -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-dot">💬</div>
-        <span data-t="talkHeader"></span>
-      </div>
-      <div class="card-body">
-        <p data-t-html="talkBody"></p>
-      </div>
-    </div>
-
     <!-- SPOTIFY -->
     <div class="spotify-card">
       <div class="spotify-header">
@@ -471,8 +419,11 @@
 
   <footer data-t="footer"></footer>
 
-  <!-- STICKY CTA -->
-  <button class="sticky-cta hidden" id="sticky-cta" onclick="scrollToContact()" data-t="ctaText"></button>
+  <!-- STICKY CTA + HINT -->
+  <div class="sticky-group hidden" id="sticky-group">
+    <button class="sticky-cta" onclick="scrollToContact()" data-t="ctaText"></button>
+    <p class="sticky-hint" data-t="ctaHint"></p>
+  </div>
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
@@ -487,62 +438,67 @@
     // ── Translations ──
     const T = {
       uk: {
-        profileName:     '👋 Привіт! Я Діма',
-        profileTagline:  'Чорновбривий син Сумщини. Живу в Мюнхені.',
-        chipRole:        '🛠️ Продакт менеджер',
-        contactHeader:   "Зв'яжись зі мною",
-        igSubline:       'Instagram · подорожі, CrossFit та сніданки',
-        igDm:            'Написати',
-        igFollow:        'Підписатись',
-        waLabel:         'WhatsApp',
-        emailLabel:      'Електронна пошта',
-        hobbyHeader:     'Коли я не на роботі, я люблю…',
-        hobbyBody:       "CrossFit, прогулянки (нещодавно 125 км за п'ять днів в Іспанії), пошук нової пісні на репіт та класні сніданки — мій фаворит: млинці з маскарпоне, медом та персиками.",
-        tagsLabel:       'Інтереси',
-        tags:            ['🏋️ CrossFit', '🥾 Прогулянки', '🎵 Музика', '🥞 Готування', '✈️ Подорожі', '🌍 Іспанія'],
-        careerHeader:    'Моя альтернативна кар\'єра…',
-        careerBody:      "В іншому всесвіті я б став вчителем мов або математики, власником невеликого CrossFit-боксу або організатором нішевих тревел-турів.",
-        talkHeader:      'Я можу говорити годинами про…',
-        talkBody:        'Дивні, несподівані відкриті запитання — наприклад, <em>«Який твій найцінніший спогад?»</em>, <em>«Яким було б твоє прізвисько серед друзів?»</em> або <em>«Яку найдивнішу тему ти обговорював нещодавно?»</em>',
-        spotifyHeader:   'Пісня на репіті прямо зараз',
-        recentLabel:     'Нещодавнє',
-        inSpainLabel:    'В Іспанії',
-        ctaText:         'Зв\'язатись',
-        footer:          'Діма Найда · 2026',
-        seeAll:          k => ({ crossfit: 'Всі CrossFit →', travel: 'Всі тревел →' }[k]),
-        galleryTitles:   { crossfit: '🏋️ CrossFit', travel: '✈️ Подорожі' },
-        ageLabel:        age => age + ' ' + ageWordUk(age),
+        profileName:    '👋 Привіт! Я Діма',
+        profileTagline: 'Чорновбривий син Сумщини. Живу в Мюнхені.',
+        chipActivity:   '🥾 Переживший Каміно',
+        chipLocation:   '📍 Мюнхен',
+        contactHeader:  "Зв'яжись зі мною",
+        igSubline:      'Instagram — фото з Каміно і те, що смішно о 7 ранку',
+        igDm:           'Написати',
+        igFollow:       'Підписатись',
+        waLabel:        'WhatsApp',
+        emailLabel:     'Електронна пошта',
+        hobbyHeader:    'Коли я не на роботі, я люблю…',
+        hobbyBody:      '<p>Більшість ранків — кросфіт. Більшість вихідних — пошук пісні, яку буду слухати 40 разів поспіль.</p><p>Минулого травня пройшов 125 км по північній Іспанії за п\'ять днів — надмірно, але потрібно. Нагорода наприкінці — гарний сніданок.</p><p>Я нерозумно відданий млинцям з маскарпоне. Я готував їх рівно для трьох людей. Всі три просили рецепт. Я не дав нікому.</p>',
+        tagsLabel:      'Інтереси',
+        tags:           ['🏋️ CrossFit', '🥾 Ходьба', '🎵 Музика', '🥞 Готування', '✈️ Подорожі', '🌍 Іспанія'],
+        careerHeader:   'Моя альтернативна кар\'єра…',
+        careerBody:     'Викладання. Я завжди вважав, що вчителі, які змінювали чиєсь життя, насправді викладали не предмет — вони викладали людині. Хотів би бути таким. Мабуть, математика. Можливо, українська.',
+        talkHeader:     'Я можу говорити годинами про…',
+        talkBody:       '<p>Я підсів на питання, які люди ніколи не чули. Три, до яких постійно повертаюся:</p><ul><li><em>«Який твій найцінніший спогад?»</em> Мій — про поїздку, зламаний касетний програвач і бабусю.</li><li><em>«Яким було б твоє прізвисько серед друзів?»</em> Своє я вже знаю — і воно мені не подобається.</li><li><em>«Яку найдивнішу тему ти нещодавно досліджував?»</em></li></ul>',
+        vibeNote:       'Якщо ти з тих, хто має тверду думку про каву і хоч одне дивне захоплення, про яке не одразу розповідаєш — ми поладнаємо.',
+        spotifyHeader:  'На репіті цього тижня — якщо ненавидиш, скажи чим замінити.',
+        recentLabel:    'Мюнхен, березень 2025',
+        inSpainLabel:   'День 4 · 90 км позаду · варто',
+        ctaText:        'Написати в Instagram',
+        ctaHint:        'Навіть «бачила твої фото» — підходить.',
+        footer:         'Діма Найда · 2026',
+        seeAll:         k => ({ crossfit: 'Всі CrossFit →', travel: 'Всі фото →' }[k]),
+        galleryTitles:  { crossfit: '🏋️ CrossFit', travel: 'Каміно де Сантьяго · травень 2025' },
+        ageLabel:       age => age + ' ' + ageWordUk(age),
       },
       en: {
-        profileName:     "👋 Hi! I'm Dima",
-        profileTagline:  'Son of Sumy. Living in Munich.',
-        chipRole:        '🛠️ Product Manager',
-        contactHeader:   'Get in touch',
-        igSubline:       'Instagram · travels, CrossFit & breakfast vibes',
-        igDm:            'DM me',
-        igFollow:        'Follow',
-        waLabel:         'WhatsApp',
-        emailLabel:      'Email',
-        hobbyHeader:     "When I'm not at work, I love to…",
-        hobbyBody:       "Doing CrossFit, walking (most recently 125 km in five days in Spain), searching for a new song I'll listen to on repeat, cooking some kind of cool breakfast food — pancakes with mascarpone cheese, honey, and peaches being my favorite.",
-        tagsLabel:       'Interests',
-        tags:            ['🏋️ CrossFit', '🥾 Long walks', '🎵 Music hunting', '🥞 Cooking', '✈️ Travel', '🌍 Spain'],
-        careerHeader:    'My alternate career would be…',
-        careerBody:      "In another universe, I'd be a language or math teacher, the owner of a small CrossFit box, or the owner of a niche travel tour guide company.",
-        talkHeader:      'I could talk for hours about…',
-        talkBody:        '<em>"What is your most treasured memory?"</em>, <em>"If you had a nickname among your friends, what would it be?"</em> or <em>"What\'s the weirdest, most cringe-worthy topic you\'ve discussed recently?"</em>',
-        spotifyHeader:   "A song I'll listen to on repeat right now",
-        recentLabel:     'Recent',
-        inSpainLabel:    'In Spain',
-        ctaText:         'Get in touch',
-        footer:          'Dima Naida · 2026',
-        seeAll:          k => `See all ${k} →`,
-        galleryTitles:   { crossfit: '🏋️ CrossFit', travel: '✈️ Travel' },
-        ageLabel:        age => age + ' years old',
+        profileName:    "👋 Hi! I'm Dima",
+        profileTagline: 'Walked 125km across Spain. Moved to Munich. Still figuring out the pancake-to-CrossFit ratio.',
+        chipActivity:   '🥾 Camino survivor',
+        chipLocation:   '📍 Munich',
+        contactHeader:  'Get in touch',
+        igSubline:      'Instagram — Camino photos and things I thought were funny before coffee.',
+        igDm:           'DM me',
+        igFollow:       'Follow',
+        waLabel:        'WhatsApp',
+        emailLabel:     'Email',
+        hobbyHeader:    "When I'm not at work, I love to…",
+        hobbyBody:      "<p>Most mornings start with CrossFit. Most weekends I'm hunting for a song I'll play 40 times in a row.</p><p>Last May I walked 125km across northern Spain in five days — which I'd call excessive, but it felt necessary. The reward at the end was a good breakfast.</p><p>I'm unreasonably committed to mascarpone pancakes. I have made them for exactly three people. All three asked for the recipe. I have not given it to anyone.</p>",
+        tagsLabel:      'Interests',
+        tags:           ['🏋️ CrossFit', '🥾 Long walks', '🎵 Music hunting', '🥞 Cooking', '✈️ Travel', '🌍 Spain'],
+        careerHeader:   'My alternate career…',
+        careerBody:     "Teaching. I've always believed the teachers who changed people's lives weren't really teaching the subject — they were teaching the person. I'd want to be that kind. Probably math. Possibly Ukrainian.",
+        talkHeader:     'I could talk for hours about…',
+        talkBody:       "<p>I got weirdly addicted to asking people questions they've never been asked before. Three I keep coming back to:</p><ul><li><em>\"What is your most treasured memory?\"</em> Mine involves a road trip, a broken cassette player, and my grandmother.</li><li><em>\"If your friends gave you a nickname, what would it be?\"</em> I already know mine and I hate it.</li><li><em>\"What's the weirdest topic you've gone deep on recently?\"</em></li></ul>",
+        vibeNote:       "If you're the kind of person who has a strong opinion about coffee orders and at least one very weird interest you don't tell people about right away — we'll probably get along.",
+        spotifyHeader:  "On repeat this week — hate it? Tell me what you'd replace it with.",
+        recentLabel:    'Munich, March 2025',
+        inSpainLabel:   'Day 4 · 90km in · worth it',
+        ctaText:        'Say hi on Instagram',
+        ctaHint:        "Even 'I saw your Spain photos' works.",
+        footer:         'Dima Naida · 2026',
+        seeAll:         k => ({ crossfit: 'See all CrossFit →', travel: 'See all photos →' }[k]),
+        galleryTitles:  { crossfit: '🏋️ CrossFit', travel: 'Camino de Santiago · May 2025' },
+        ageLabel:       age => age + ' years old',
       }
     };
 
-    // Ukrainian grammatical declension for "рік/роки/років"
     function ageWordUk(n) {
       const last2 = n % 100, last1 = n % 10;
       if (last2 >= 11 && last2 <= 19) return 'років';
@@ -551,7 +507,6 @@
       return 'років';
     }
 
-    // ── Age calculation ──
     function calcAge() {
       const bd = new Date(1993, 2, 10);
       const now = new Date();
@@ -560,7 +515,6 @@
       return age;
     }
 
-    // ── Apply language ──
     let currentLang = localStorage.getItem('lang') || 'uk';
 
     function setLang(lang) {
@@ -571,27 +525,21 @@
       const t = T[lang];
       const age = calcAge();
 
-      // plain text nodes
       document.querySelectorAll('[data-t]').forEach(el => {
         el.textContent = t[el.dataset.t] || '';
       });
 
-      // html nodes
       document.querySelectorAll('[data-t-html]').forEach(el => {
         el.innerHTML = t[el.dataset.tHtml] || '';
       });
 
-      // age chip
       document.getElementById('age-chip').textContent = '🎂 ' + t.ageLabel(age);
 
-      // tags
       document.getElementById('tags-list').innerHTML =
         t.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
 
-      // gallery CTAs & lightbox titles
       renderPreviews();
 
-      // lang toggle active state
       document.getElementById('btn-uk').classList.toggle('active', lang === 'uk');
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     }
@@ -618,7 +566,6 @@
 
     function isVideo(src) { return /\.(mp4|mov|webm)$/i.test(src); }
 
-    // Returns thumbnail path: photos/thumbs/name.jpg or photos/thumbs/name-poster.jpg for videos
     function thumbSrc(src) {
       const t = src.replace('photos/', 'photos/thumbs/');
       return isVideo(src) ? t.replace(/\.(mp4|mov|webm)$/i, '-poster.jpg') : t;
@@ -627,7 +574,6 @@
     function thumbHTML(src, key, index, isLast, total) {
       const extra = isLast && total > 3 ? ` more-overlay" data-label="+ ${total - 2} more` : '';
       const vidClass = isVideo(src) ? ' is-video' : '';
-      // Always render an <img> (poster for video) — no video bytes loaded for thumbnails
       const media = `<img src="${thumbSrc(src)}" alt="" loading="lazy"
         onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>${galleries[key].emoji}</div>'">`;
       return `<div class="gallery-thumb${vidClass}${extra}" onclick="openLightbox('${key}',${index})">${media}</div>`;
@@ -685,10 +631,10 @@
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-    // ── Sticky CTA ──
-    const cta = document.getElementById('sticky-cta');
+    // ── Sticky CTA ── observe contact section; show group when contact scrolls off screen
+    const stickyGroup = document.getElementById('sticky-group');
     new IntersectionObserver(
-      ([e]) => cta.classList.toggle('hidden', e.isIntersecting),
+      ([e]) => stickyGroup.classList.toggle('hidden', e.isIntersecting),
       { threshold: 0.2 }
     ).observe(document.getElementById('contact'));
 
@@ -696,7 +642,6 @@
       document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // ── Init ──
     setLang(currentLang);
   </script>
 
