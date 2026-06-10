@@ -8,13 +8,16 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --yellow:  #FFC629;
-      --green:   #1DB954;
-      --text:    #1a1a1a;
-      --muted:   #6b7280;
-      --border:  #e5e7eb;
-      --bg:      #f2f2f0;
-      --white:   #ffffff;
+      --bg:           #F7F3EE;
+      --white:        #FFFFFF;
+      --text:         #1C1915;
+      --muted:        #7A6B62;
+      --border:       #E5DDD5;
+      --accent:       #C4533B;
+      --accent-light: #FDEEE8;
+      --wa:           #25D366;
+      --wa-dark:      #128C7E;
+      --spotify:      #1DB954;
     }
 
     html { font-size: 17px; }
@@ -24,287 +27,305 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* ── PROFILE CARD ── */
     .profile-card {
       position: relative; width: 100%; max-width: 480px;
-      margin: 0 auto; border-radius: 0 0 28px 28px;
-      overflow: hidden; box-shadow: 0 4px 40px rgba(0,0,0,.1);
+      margin: 0 auto; border-radius: 0 0 24px 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 48px rgba(28,25,21,.22), 0 2px 8px rgba(28,25,21,.08);
     }
 
-    .profile-photo { width: 100%; height: 580px; overflow: hidden; background: #d4cfc8; }
+    .profile-photo { width: 100%; height: 580px; overflow: hidden; background: #c8bfb4; }
     .profile-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
     .profile-photo .photo-placeholder {
       width: 100%; height: 100%;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 1rem; color: #8a8478; font-size: .85rem;
+      gap: 1rem; color: #8a7e74; font-size: .85rem;
     }
     .profile-photo .photo-placeholder span:first-child { font-size: 3rem; }
 
     .profile-overlay {
       position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 3.5rem 1.5rem 1.5rem;
-      background: linear-gradient(to top, rgba(0,0,0,.78) 0%, transparent 100%);
+      padding: 4rem 1.5rem 1.6rem;
+      background: linear-gradient(to top, rgba(28,18,10,.82) 0%, rgba(28,18,10,.3) 55%, transparent 100%);
     }
-    .profile-name  { font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -.02em; line-height: 1.1; }
-    .profile-tagline { font-size: .9rem; color: rgba(255,255,255,.8); margin-top: .3rem; }
+    .profile-name    { font-size: 2.1rem; font-weight: 800; color: #fff; letter-spacing: -.025em; line-height: 1.1; }
+    .profile-tagline { font-size: .88rem; color: rgba(255,255,255,.75); margin-top: .35rem; letter-spacing: .01em; }
 
     /* ── INFO CHIPS ── */
     .info-chips {
-      display: flex; flex-wrap: wrap; gap: .5rem;
-      padding: 1.25rem 1rem; background: var(--white);
-      max-width: 480px; margin: 0 auto; border-top: 1px solid var(--border);
+      display: flex; flex-wrap: wrap; gap: .45rem;
+      padding: 1.1rem 1rem 1.1rem;
+      background: var(--white);
+      max-width: 480px; margin: 0 auto;
+      border-top: 1px solid var(--border);
     }
     .chip {
-      display: inline-flex; align-items: center; gap: .35rem;
-      font-size: .82rem; color: var(--text);
+      display: inline-flex; align-items: center; gap: .3rem;
+      font-size: .8rem; color: var(--text);
       background: var(--bg); border: 1.5px solid var(--border);
-      border-radius: 999px; padding: .3rem .9rem; font-weight: 500;
+      border-radius: 999px; padding: .28rem .85rem; font-weight: 500;
     }
-    .chip.chip-yellow { background: var(--yellow); border-color: var(--yellow); font-weight: 700; }
+    .chip.chip-accent { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
 
     /* ── MAIN COLUMN ── */
     .main { max-width: 480px; margin: 0 auto; padding-bottom: 6rem; }
 
-    /* ── GENERIC CARD ── */
+    /* ── CARD BASE ── */
     .card {
-      background: var(--white); margin: .75rem 1rem 0;
-      border-radius: 18px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      background: var(--white); margin: .7rem 1rem 0;
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(28,25,21,.05), 0 4px 14px rgba(28,25,21,.07);
     }
     .card-header {
       display: flex; align-items: center; gap: .6rem;
-      padding: 1.1rem 1.25rem .5rem;
-      font-size: .72rem; font-weight: 700;
-      letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+      padding: 1rem 1.2rem .45rem;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
     }
     .card-dot {
-      width: 28px; height: 28px; border-radius: 50%; background: var(--yellow);
+      width: 26px; height: 26px; border-radius: 50%; background: var(--accent);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; flex-shrink: 0;
+      font-size: .9rem; flex-shrink: 0;
     }
-    .card-dot.green { background: var(--green); }
-    .card-body { padding: .2rem 1.25rem 1.1rem; font-size: 1rem; color: var(--text); line-height: 1.75; }
-    .card-body p em { font-style: italic; color: #374151; }
+    .card-dot.spotify  { background: var(--spotify); }
+    .card-body { padding: .15rem 1.2rem 1rem; font-size: .98rem; color: #2E2820; line-height: 1.78; }
+    .card-body p em { font-style: italic; color: var(--text); }
 
-    /* ── GET IN TOUCH CARD ── */
+    /* ── GET IN TOUCH ── */
     .contact-card {
-      background: var(--white); margin: .75rem 1rem 0;
-      border-radius: 18px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      background: var(--white); margin: .7rem 1rem 0;
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(28,25,21,.05), 0 4px 14px rgba(28,25,21,.07);
     }
     .contact-header {
       display: flex; align-items: center; gap: .6rem;
-      padding: 1.1rem 1.25rem .85rem;
-      font-size: .72rem; font-weight: 700;
-      letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+      padding: 1rem 1.2rem .9rem;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
     }
 
-    /* instagram row */
-    .contact-ig {
-      display: flex; align-items: center; gap: 1rem;
-      padding: 0 1.25rem 1.1rem;
+    /* contact divider */
+    .c-divider { height: 1px; background: var(--border); margin: 0 1.2rem; }
+
+    /* Instagram row */
+    .ig-row {
+      display: flex; align-items: center; gap: .9rem;
+      padding: 1rem 1.2rem;
     }
     .ig-avatar {
-      width: 60px; height: 60px; border-radius: 50%; flex-shrink: 0;
+      width: 54px; height: 54px; border-radius: 50%; flex-shrink: 0;
       padding: 2px;
       background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
     }
     .ig-avatar img {
       width: 100%; height: 100%; border-radius: 50%;
-      object-fit: cover; display: block; border: 2px solid #fff;
+      object-fit: cover; display: block; border: 2.5px solid #fff;
     }
     .ig-avatar .ig-avatar-ph {
       width: 100%; height: 100%; border-radius: 50%;
-      background: #e8e5de; display: flex; align-items: center;
-      justify-content: center; font-size: 1.5rem; border: 2px solid #fff;
+      background: #e8e0d5; display: flex; align-items: center;
+      justify-content: center; font-size: 1.4rem; border: 2.5px solid #fff;
     }
     .ig-info { flex: 1; min-width: 0; }
-    .ig-username { font-size: .98rem; font-weight: 700; display: block; }
-    .ig-subline  { font-size: .8rem; color: var(--muted); margin-top: .08rem; }
-    .ig-actions  { display: flex; gap: .5rem; margin-top: .6rem; flex-wrap: wrap; }
+    .ig-username { font-size: .95rem; font-weight: 700; display: block; color: var(--text); }
+    .ig-subline  { font-size: .78rem; color: var(--muted); margin-top: .06rem; }
+    .ig-actions  { display: flex; gap: .45rem; margin-top: .55rem; }
     .ig-btn {
-      display: inline-block; padding: .38rem 1rem;
-      border-radius: 8px; font-size: .8rem; font-weight: 700;
-      text-decoration: none; letter-spacing: .02em;
-      transition: opacity .2s; white-space: nowrap;
+      display: inline-flex; align-items: center; gap: .3rem;
+      padding: .36rem .9rem;
+      border-radius: 8px; font-size: .78rem; font-weight: 700;
+      text-decoration: none; letter-spacing: .01em;
+      transition: opacity .2s, transform .15s; white-space: nowrap;
     }
-    .ig-btn:hover { opacity: .82; }
-    .ig-btn-follow { color: #fff; background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
-    .ig-btn-message { color: var(--text); background: var(--bg); border: 1.5px solid var(--border); }
+    .ig-btn:hover { opacity: .85; transform: translateY(-1px); }
+    .ig-btn-message {
+      color: #fff;
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      box-shadow: 0 2px 8px rgba(131,58,180,.3);
+    }
+    .ig-btn-follow {
+      color: var(--text); background: var(--bg); border: 1.5px solid var(--border);
+    }
 
-    /* email row */
-    .contact-divider { height: 1px; background: var(--border); margin: 0 1.25rem; }
-    .contact-email {
+    /* Email row */
+    .email-row {
       display: flex; align-items: center; gap: .75rem;
-      padding: 1rem 1.25rem 1.25rem;
+      padding: 1rem 1.2rem 1.2rem;
     }
     .email-icon {
       width: 38px; height: 38px; border-radius: 10px;
-      background: #E8F0FE; display: flex; align-items: center;
-      justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+      background: #EEF2FF;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.05rem; flex-shrink: 0;
     }
     .email-detail { min-width: 0; flex: 1; }
     .email-label {
-      font-size: .7rem; color: var(--muted);
-      text-transform: uppercase; letter-spacing: .12em; font-weight: 600;
+      font-size: .67rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .14em; font-weight: 700;
       display: block; margin-bottom: .05rem;
     }
     .email-value {
-      font-size: .92rem; font-weight: 600; color: var(--text);
+      font-size: .9rem; font-weight: 600; color: var(--text);
       text-decoration: none; display: block;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-    .email-value:hover { color: #374151; }
+    .email-value:hover { color: var(--accent); }
 
     /* ── MINI GALLERY ── */
-    .gallery { padding: .75rem 1.25rem 1.25rem; border-top: 1px solid var(--border); }
-    .gallery + .gallery { padding-top: .75rem; }
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; border-radius: 10px; overflow: hidden; }
-
+    .gallery { padding: .7rem 1.2rem 1.2rem; border-top: 1px solid var(--border); }
+    .gallery + .gallery { padding-top: .7rem; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; border-radius: 9px; overflow: hidden; }
     .gallery-thumb {
-      aspect-ratio: 1; overflow: hidden;
-      background: #e0ddd6; cursor: pointer; position: relative;
+      aspect-ratio: 1; overflow: hidden; background: #ddd7cf; cursor: pointer; position: relative;
     }
     .gallery-thumb img,
     .gallery-thumb video {
-      width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s;
+      width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .22s;
     }
     .gallery-thumb:hover img,
-    .gallery-thumb:hover video { transform: scale(1.06); }
+    .gallery-thumb:hover video { transform: scale(1.07); }
     .gallery-thumb .thumb-placeholder {
       width: 100%; height: 100%; display: flex; align-items: center;
-      justify-content: center; color: #a0998e; font-size: 1.4rem;
+      justify-content: center; color: #a09890; font-size: 1.4rem;
     }
-
-    /* play icon for video thumbs */
     .gallery-thumb.is-video::after {
-      content: '▶';
-      position: absolute; inset: 0;
+      content: '▶'; position: absolute; inset: 0;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem; color: #fff;
-      text-shadow: 0 1px 6px rgba(0,0,0,.6);
-      pointer-events: none;
+      font-size: 1.2rem; color: #fff;
+      text-shadow: 0 1px 6px rgba(0,0,0,.55); pointer-events: none;
     }
-
-    /* "more" overlay on last thumb */
     .gallery-thumb.more-overlay::after {
       content: attr(data-label); position: absolute; inset: 0;
-      background: rgba(0,0,0,.52); color: #fff;
+      background: rgba(28,25,21,.54); color: #fff;
       display: flex; align-items: center; justify-content: center;
-      font-size: .88rem; font-weight: 700; cursor: pointer;
-      text-shadow: none;
+      font-size: .85rem; font-weight: 700; cursor: pointer; text-shadow: none;
     }
-
     .gallery-cta {
-      display: block; margin-top: .65rem; font-size: .8rem; font-weight: 600;
+      display: block; margin-top: .6rem; font-size: .78rem; font-weight: 600;
       color: var(--muted); text-align: right; cursor: pointer;
       background: none; border: none; padding: 0; font-family: inherit;
+      transition: color .15s;
     }
-    .gallery-cta:hover { color: var(--text); }
+    .gallery-cta:hover { color: var(--accent); }
 
     /* ── PHOTO PAIR ── */
     .photo-pair-card {
-      margin: .75rem 1rem 0; border-radius: 18px; overflow: hidden;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 3px; box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      margin: .7rem 1rem 0; border-radius: 14px; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(28,25,21,.05), 0 4px 14px rgba(28,25,21,.07);
     }
-    .photo-pane { overflow: hidden; aspect-ratio: 3/4; background: #d4cfc8; position: relative; }
+    .photo-pane { overflow: hidden; aspect-ratio: 3/4; background: #c8bfb4; position: relative; }
     .photo-pane img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .photo-pane .photo-placeholder {
       width: 100%; height: 100%; display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      gap: .4rem; color: #8a8478; font-size: .78rem; text-align: center; padding: 1rem;
+      gap: .4rem; color: #8a7e74; font-size: .78rem; text-align: center; padding: 1rem;
     }
     .photo-pane .photo-placeholder span:first-child { font-size: 1.6rem; }
     .photo-pane-label {
       position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 1.5rem .75rem .55rem;
-      background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 100%);
-      font-size: .72rem; font-weight: 600; color: rgba(255,255,255,.85); letter-spacing: .04em;
+      padding: 1.4rem .75rem .5rem;
+      background: linear-gradient(to top, rgba(28,18,10,.58) 0%, transparent 100%);
+      font-size: .7rem; font-weight: 600; color: rgba(255,255,255,.9); letter-spacing: .05em;
     }
 
     /* ── TAGS ── */
     .tags-card {
-      background: var(--white); margin: .75rem 1rem 0;
-      border-radius: 18px; padding: 1.1rem 1.25rem 1.25rem;
-      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      background: var(--white); margin: .7rem 1rem 0;
+      border-radius: 14px; padding: 1rem 1.2rem 1.2rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(28,25,21,.05), 0 4px 14px rgba(28,25,21,.07);
     }
-    .tags-label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: .85rem; }
-    .tags { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .tag { font-size: .85rem; color: var(--text); background: var(--bg); border: 1.5px solid var(--border); border-radius: 999px; padding: .35rem 1rem; font-weight: 500; }
+    .tags-label { font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: .8rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .tag {
+      font-size: .82rem; color: var(--text); background: var(--bg);
+      border: 1.5px solid var(--border); border-radius: 999px; padding: .3rem .9rem; font-weight: 500;
+    }
 
     /* ── SPOTIFY ── */
     .spotify-card {
-      background: var(--white); margin: .75rem 1rem 0;
-      border-radius: 18px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      background: var(--white); margin: .7rem 1rem 0;
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(28,25,21,.05), 0 4px 14px rgba(28,25,21,.07);
     }
     .spotify-header {
       display: flex; align-items: center; gap: .6rem;
-      padding: 1.1rem 1.25rem .75rem;
-      font-size: .72rem; font-weight: 700;
-      letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+      padding: 1rem 1.2rem .75rem;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
     }
     .spotify-card iframe { display: block; }
 
     /* ── STICKY CTA ── */
     .sticky-cta {
-      position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      position: fixed; bottom: 1.4rem; left: 50%; transform: translateX(-50%);
       z-index: 500;
       display: flex; align-items: center; gap: .5rem;
-      background: var(--yellow); color: var(--text);
-      font-size: .9rem; font-weight: 800;
-      padding: .75rem 1.6rem; border-radius: 999px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.18);
+      background: var(--accent); color: #fff;
+      font-size: .9rem; font-weight: 800; letter-spacing: .01em;
+      padding: .78rem 1.75rem; border-radius: 999px;
+      box-shadow: 0 4px 24px rgba(196,83,59,.4), 0 1px 4px rgba(28,25,21,.1);
       cursor: pointer; border: none; font-family: inherit;
       white-space: nowrap;
-      transition: transform .2s, box-shadow .2s, opacity .35s;
+      transition: transform .2s, box-shadow .2s, opacity .3s;
     }
-    .sticky-cta:hover { transform: translateX(-50%) translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,.22); }
+    .sticky-cta:hover {
+      transform: translateX(-50%) translateY(-2px);
+      box-shadow: 0 8px 32px rgba(196,83,59,.45), 0 2px 8px rgba(28,25,21,.1);
+    }
     .sticky-cta.hidden { opacity: 0; pointer-events: none; }
 
     /* ── LIGHTBOX ── */
     .lightbox {
       display: none; position: fixed; inset: 0; z-index: 1000;
-      background: rgba(0,0,0,.9); flex-direction: column;
+      background: rgba(18,14,10,.92); flex-direction: column;
       align-items: center; justify-content: center;
     }
     .lightbox.open { display: flex; }
     .lightbox-inner { position: relative; width: min(480px, 96vw); max-height: 90vh; overflow-y: auto; }
     .lightbox-close {
       position: fixed; top: 1rem; right: 1rem;
-      background: rgba(255,255,255,.15); border: none;
-      color: #fff; font-size: 1.4rem; width: 40px; height: 40px;
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+      color: #fff; font-size: 1.3rem; width: 40px; height: 40px;
       border-radius: 50%; cursor: pointer; display: flex;
       align-items: center; justify-content: center; font-family: inherit;
+      transition: background .2s;
     }
-    .lightbox-close:hover { background: rgba(255,255,255,.25); }
-    .lightbox-title { color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; text-align: center; margin-bottom: .85rem; }
-    .lightbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; border-radius: 14px; overflow: hidden; }
+    .lightbox-close:hover { background: rgba(255,255,255,.22); }
+    .lightbox-title { color: rgba(255,255,255,.7); font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; text-align: center; margin-bottom: .8rem; }
+    .lightbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; border-radius: 12px; overflow: hidden; }
     .lightbox-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
-    .lightbox-grid .lb-video-wrap {
-      position: relative; aspect-ratio: 1; background: #000; overflow: hidden;
-    }
-    .lightbox-grid .lb-video-wrap video {
-      width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer;
-    }
+    .lightbox-grid .lb-video-wrap { position: relative; aspect-ratio: 1; background: #000; overflow: hidden; }
+    .lightbox-grid .lb-video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
     .lightbox-grid .lb-video-wrap .lb-play {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2rem; color: #fff;
-      text-shadow: 0 2px 10px rgba(0,0,0,.7);
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.7);
       pointer-events: none; transition: opacity .2s;
     }
     .lightbox-grid .lb-video-wrap:hover .lb-play { opacity: 0; }
     .lightbox-grid .lb-placeholder {
-      aspect-ratio: 1; background: #2a2a2a;
+      aspect-ratio: 1; background: #1e1a16;
       display: flex; align-items: center; justify-content: center;
-      color: #555; font-size: .8rem; text-align: center; padding: 1rem;
+      color: #4a4540; font-size: .8rem; text-align: center; padding: 1rem;
       flex-direction: column; gap: .4rem;
     }
     .lightbox-grid .lb-placeholder span:first-child { font-size: 1.8rem; }
 
     /* ── FOOTER ── */
-    footer { max-width: 480px; margin: 2rem auto 0; padding: 1.5rem 1rem; font-size: .78rem; color: var(--muted); text-align: center; border-top: 1px solid var(--border); }
+    footer {
+      max-width: 480px; margin: 2rem auto 0; padding: 1.5rem 1rem;
+      font-size: .76rem; color: var(--muted);
+      text-align: center; border-top: 1px solid var(--border);
+    }
   </style>
 </head>
 <body>
@@ -325,12 +346,12 @@
   <div class="info-chips">
     <span class="chip">🛠️ Product Manager</span>
     <span class="chip">🎂 10 March</span>
-    <span class="chip chip-yellow">eGym</span>
+    <span class="chip chip-accent">eGym</span>
   </div>
 
   <main class="main">
 
-    <!-- GET IN TOUCH (top, anchor for sticky CTA) -->
+    <!-- GET IN TOUCH -->
     <div class="contact-card" id="contact">
       <div class="contact-header">
         <div class="card-dot">✉️</div>
@@ -338,26 +359,38 @@
       </div>
 
       <!-- Instagram -->
-      <div class="contact-ig">
+      <div class="ig-row">
         <div class="ig-avatar">
           <img src="photos/recent.jpg" alt="@cadet93000"
             onerror="this.parentElement.innerHTML='<div class=ig-avatar-ph>👤</div>'">
         </div>
         <div class="ig-info">
           <span class="ig-username">@cadet93000</span>
-          <p class="ig-subline">Instagram — travels, CrossFit & breakfast vibes</p>
+          <p class="ig-subline">Instagram · travels, CrossFit & breakfast vibes</p>
           <div class="ig-actions">
-            <a class="ig-btn ig-btn-follow" href="https://www.instagram.com/cadet93000" target="_blank" rel="noopener noreferrer">Follow</a>
-            <a class="ig-btn ig-btn-message" href="https://ig.me/m/cadet93000" target="_blank" rel="noopener noreferrer">Message</a>
+            <a class="ig-btn ig-btn-message" href="https://ig.me/m/cadet93000" target="_blank" rel="noopener noreferrer">DM me</a>
+            <a class="ig-btn ig-btn-follow"  href="https://www.instagram.com/cadet93000" target="_blank" rel="noopener noreferrer">Follow</a>
           </div>
         </div>
       </div>
 
-      <!-- divider -->
-      <div class="contact-divider"></div>
+      <div class="c-divider"></div>
+
+      <div class="c-divider"></div>
+
+      <!-- WhatsApp -->
+      <div class="email-row">
+        <div class="email-icon" style="background:#E7FBF0;">📱</div>
+        <div class="email-detail">
+          <span class="email-label">WhatsApp</span>
+          <a class="email-value" href="https://wa.me/4917620082850" target="_blank" rel="noopener noreferrer">+49 176 2008 2850</a>
+        </div>
+      </div>
+
+      <div class="c-divider"></div>
 
       <!-- Email -->
-      <div class="contact-email">
+      <div class="email-row">
         <div class="email-icon">📧</div>
         <div class="email-detail">
           <span class="email-label">Email</span>
@@ -389,7 +422,6 @@
       <div class="card-body">
         <p>Doing CrossFit, walking (most recently 125 km in five days in Spain), searching for a new song I'll listen to on repeat, cooking some kind of cool breakfast food — pancakes with mascarpone cheese, honey, and peaches being my favorite.</p>
       </div>
-
       <div class="gallery" id="gallery-crossfit-preview"></div>
       <div class="gallery" id="gallery-cooking-preview"></div>
     </div>
@@ -416,7 +448,6 @@
       <div class="card-body">
         <p>In another universe, I'd be a language or math teacher, the owner of a small CrossFit box, or the owner of a niche travel tour guide company.</p>
       </div>
-
       <div class="gallery" id="gallery-travel-preview"></div>
     </div>
 
@@ -434,12 +465,12 @@
     <!-- SPOTIFY -->
     <div class="spotify-card">
       <div class="spotify-header">
-        <div class="card-dot green">🎵</div>
+        <div class="card-dot spotify">🎵</div>
         A song I'll listen to on repeat right now
       </div>
       <iframe
         data-testid="embed-iframe"
-        style="border-radius:0 0 18px 18px"
+        style="border-radius:0 0 14px 14px"
         src="https://open.spotify.com/embed/playlist/4UenN9KEuw35eCxEHNLo8x?utm_source=generator"
         width="100%" height="352" frameBorder="0" allowfullscreen=""
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -453,7 +484,7 @@
 
   <!-- STICKY CTA -->
   <button class="sticky-cta hidden" id="sticky-cta" onclick="scrollToContact()">
-    ✉️ Get in touch
+    💬 Say hi to Dima
   </button>
 
   <!-- LIGHTBOX -->
@@ -466,44 +497,28 @@
   </div>
 
   <script>
-    // ── Gallery data — add/remove items freely ──
-    // Images: any .jpg/.jpeg/.png/.webp
-    // Videos: any .mp4/.mov/.webm  (keep under 50 MB each for GitHub)
     const galleries = {
       crossfit: {
-        title: '🏋️ CrossFit', emoji: '🏋️',
-        label: 'CrossFit',
+        title: '🏋️ CrossFit', emoji: '🏋️', label: 'CrossFit',
         items: [
-          'photos/crossfit-1.jpg',
-          'photos/crossfit-2.jpg',
-          'photos/crossfit-3.jpg',
-          'photos/crossfit-4.jpg',
-          'photos/crossfit-5.jpg',
-          'photos/crossfit-6.jpg',
-          // add video files here, e.g.: 'photos/crossfit-v1.mp4',
+          'photos/crossfit-1.jpg','photos/crossfit-2.jpg','photos/crossfit-3.jpg',
+          'photos/crossfit-4.jpg','photos/crossfit-5.jpg','photos/crossfit-6.jpg',
+          // 'photos/crossfit-v1.mp4',
         ]
       },
       cooking: {
-        title: '🥞 Cooking', emoji: '🥞',
-        label: 'Cooking',
+        title: '🥞 Cooking', emoji: '🥞', label: 'Cooking',
         items: [
-          'photos/cooking-1.jpg',
-          'photos/cooking-2.jpg',
-          'photos/cooking-3.jpg',
-          'photos/cooking-4.jpg',
+          'photos/cooking-1.jpg','photos/cooking-2.jpg',
+          'photos/cooking-3.jpg','photos/cooking-4.jpg',
           // 'photos/cooking-v1.mp4',
         ]
       },
       travel: {
-        title: '✈️ Travel', emoji: '✈️',
-        label: 'Travel',
+        title: '✈️ Travel', emoji: '✈️', label: 'Travel',
         items: [
-          'photos/travel-1.jpg',
-          'photos/travel-2.jpg',
-          'photos/travel-3.jpg',
-          'photos/travel-4.jpg',
-          'photos/travel-5.jpg',
-          'photos/travel-6.jpg',
+          'photos/travel-1.jpg','photos/travel-2.jpg','photos/travel-3.jpg',
+          'photos/travel-4.jpg','photos/travel-5.jpg','photos/travel-6.jpg',
           // 'photos/travel-v1.mp4',
         ]
       }
@@ -511,7 +526,6 @@
 
     function isVideo(src) { return /\.(mp4|mov|webm)$/i.test(src); }
 
-    // ── Build thumbnail HTML ──
     function thumbHTML(src, key, index, isLast, total) {
       const extra = isLast && total > 3 ? ` more-overlay" data-label="+ ${total - 2} more` : '';
       const vidClass = isVideo(src) ? ' is-video' : '';
@@ -521,25 +535,17 @@
       return `<div class="gallery-thumb${vidClass}${extra}" onclick="openLightbox('${key}',${index})">${media}</div>`;
     }
 
-    // ── Render preview grids (first 3 items) ──
     function renderPreviews() {
       Object.entries(galleries).forEach(([key, g]) => {
         const el = document.getElementById(`gallery-${key}-preview`);
         if (!el) return;
         const preview = g.items.slice(0, 3);
-        const thumbs = preview.map((src, i) =>
-          thumbHTML(src, key, i, i === 2, g.items.length)
-        ).join('');
-        el.innerHTML = `
-          <div class="gallery-grid">${thumbs}</div>
-          <button class="gallery-cta" onclick="openLightbox('${key}',0)">See all ${g.label} media →</button>
-        `;
+        const thumbs = preview.map((src, i) => thumbHTML(src, key, i, i === 2, g.items.length)).join('');
+        el.innerHTML = `<div class="gallery-grid">${thumbs}</div>
+          <button class="gallery-cta" onclick="openLightbox('${key}',0)">See all ${g.label} media →</button>`;
       });
     }
     renderPreviews();
-
-    // ── Lightbox ──
-    let currentVideo = null;
 
     function lbItemHTML(src, key) {
       if (isVideo(src)) {
@@ -553,21 +559,17 @@
       return `<img src="${src}" alt="" onerror="this.parentElement.innerHTML='<div class=lb-placeholder><span>${galleries[key].emoji}</span><span>${src}</span></div>'">`;
     }
 
-    function openLightbox(key, startIndex) {
+    function openLightbox(key) {
       const g = galleries[key];
       document.getElementById('lb-title').textContent = g.title;
       document.getElementById('lb-grid').innerHTML = g.items.map(src => lbItemHTML(src, key)).join('');
-
-      // wire up play-overlay hide on click
       document.querySelectorAll('.lb-video-wrap').forEach(wrap => {
         wrap.addEventListener('click', () => {
-          const v = wrap.querySelector('video');
-          const p = wrap.querySelector('.lb-play');
+          const v = wrap.querySelector('video'), p = wrap.querySelector('.lb-play');
           if (v.paused) { v.play(); if (p) p.style.opacity = '0'; }
           else          { v.pause(); if (p) p.style.opacity = '1'; }
         });
       });
-
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -584,16 +586,14 @@
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-    // ── Sticky CTA ──
     const cta = document.getElementById('sticky-cta');
-    const contactSection = document.getElementById('contact');
     new IntersectionObserver(
-      ([entry]) => cta.classList.toggle('hidden', entry.isIntersecting),
+      ([e]) => cta.classList.toggle('hidden', e.isIntersecting),
       { threshold: 0.2 }
-    ).observe(contactSection);
+    ).observe(document.getElementById('contact'));
 
     function scrollToContact() {
-      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   </script>
 
