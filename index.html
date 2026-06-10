@@ -257,14 +257,11 @@
     .lightbox-close { position: fixed; top: 1rem; right: 1rem; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); color: #fff; font-size: 1.3rem; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: inherit; transition: background .2s; }
     .lightbox-close:hover { background: rgba(255,255,255,.22); }
     .lightbox-title { color: rgba(255,255,255,.7); font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; text-align: center; margin-bottom: .8rem; }
-    .lightbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; align-items: start; }
-    .lightbox-grid img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; border-radius: 8px; }
-    .lightbox-grid .lb-video-wrap { position: relative; aspect-ratio: 9/16; background: #000; overflow: hidden; border-radius: 8px; }
-    .lightbox-grid .lb-video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
-    .lightbox-grid .lb-video-wrap .lb-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.7); pointer-events: none; transition: opacity .2s; }
-    .lightbox-grid .lb-video-wrap:hover .lb-play { opacity: 0; }
-    .lightbox-grid .lb-placeholder { aspect-ratio: 1; background: #1e1a16; display: flex; align-items: center; justify-content: center; color: #4a4540; font-size: .8rem; text-align: center; padding: 1rem; flex-direction: column; gap: .4rem; }
-    .lightbox-grid .lb-placeholder span:first-child { font-size: 1.8rem; }
+    .lightbox-grid { display: flex; flex-direction: column; gap: 6px; }
+    .lightbox-grid img { width: 100%; height: auto; display: block; border-radius: 10px; }
+    .lightbox-grid .lb-video-wrap { position: relative; width: 100%; aspect-ratio: 9/16; background: #000; overflow: hidden; border-radius: 10px; }
+    .lightbox-grid .lb-video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .lightbox-grid .lb-placeholder { aspect-ratio: 3/4; background: #1e1a16; display: flex; align-items: center; justify-content: center; color: #4a4540; font-size: 1.8rem; border-radius: 10px; }
 
     /* ── FOOTER ── */
     footer { max-width: 480px; margin: 2rem auto 0; padding: 1.5rem 1rem; font-size: .76rem; color: var(--muted); text-align: center; border-top: 1px solid var(--border); }
@@ -594,26 +591,23 @@
     function lbItemHTML(src, key) {
       if (isVideo(src)) {
         return `<div class="lb-video-wrap">
-          <video controls playsinline preload="none" poster="${thumbSrc(src)}"
+          <video autoplay muted loop playsinline preload="metadata" poster="${thumbSrc(src)}"
             style="width:100%;height:100%;object-fit:cover">
             <source src="${src}" type="video/mp4">
           </video>
-          <div class="lb-play">▶</div>
         </div>`;
       }
-      return `<img src="${src}" alt=""
-        onerror="this.parentElement.innerHTML='<div class=lb-placeholder><span>${galleries[key].emoji}</span><span>${src}</span></div>'">`;
+      return `<img src="${thumbSrc(src)}" data-full="${src}" alt=""
+        onerror="this.innerHTML='<div class=lb-placeholder>${galleries[key].emoji}</div>'">`;
     }
 
     function openLightbox(key) {
       document.getElementById('lb-title').textContent = T[currentLang].galleryTitles[key];
       document.getElementById('lb-grid').innerHTML = galleries[key].items.map(src => lbItemHTML(src, key)).join('');
-      document.querySelectorAll('.lb-video-wrap').forEach(wrap => {
-        wrap.addEventListener('click', () => {
-          const v = wrap.querySelector('video'), p = wrap.querySelector('.lb-play');
-          if (v.paused) { v.play(); if (p) p.style.opacity = '0'; }
-          else          { v.pause(); if (p) p.style.opacity = '1'; }
-        });
+      document.querySelectorAll('#lb-grid img[data-full]').forEach(img => {
+        const full = new Image();
+        full.onload = () => { img.src = img.dataset.full; };
+        full.src = img.dataset.full;
       });
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
