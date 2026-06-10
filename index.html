@@ -403,9 +403,9 @@
         <div class="photo-pane-label" data-t="recentLabel"></div>
       </div>
       <div class="photo-pane">
-        <img src="photos/childhood.jpg" alt="Dima — childhood"
-          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>👶</span><span>childhood.jpg</span></div>'">
-        <div class="photo-pane-label" data-t="childhoodLabel"></div>
+        <img src="photos/in-spain.jpg" alt="Dima — in Spain"
+          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>🌊</span><span>in-spain.jpg</span></div>'">
+        <div class="photo-pane-label" data-t="inSpainLabel"></div>
       </div>
     </div>
 
@@ -419,7 +419,6 @@
         <p data-t-html="hobbyBody"></p>
       </div>
       <div class="gallery" id="gallery-crossfit-preview"></div>
-      <div class="gallery" id="gallery-cooking-preview"></div>
     </div>
 
     <!-- TAGS -->
@@ -506,11 +505,11 @@
         talkBody:        'Дивні, несподівані відкриті запитання — наприклад, <em>«Який твій найцінніший спогад?»</em>, <em>«Яким було б твоє прізвисько серед друзів?»</em> або <em>«Яку найдивнішу тему ти обговорював нещодавно?»</em>',
         spotifyHeader:   'Пісня на репіті прямо зараз',
         recentLabel:     'Нещодавнє',
-        childhoodLabel:  'Дитинство',
+        inSpainLabel:    'В Іспанії',
         ctaText:         'Зв\'язатись',
         footer:          'Діма Найда · 2026',
-        seeAll:          k => ({ crossfit: 'Всі CrossFit →', cooking: 'Все про готування →', travel: 'Всі тревел →' }[k]),
-        galleryTitles:   { crossfit: '🏋️ CrossFit', cooking: '🥞 Готування', travel: '✈️ Подорожі' },
+        seeAll:          k => ({ crossfit: 'Всі CrossFit →', travel: 'Всі тревел →' }[k]),
+        galleryTitles:   { crossfit: '🏋️ CrossFit', travel: '✈️ Подорожі' },
         ageLabel:        age => age + ' ' + ageWordUk(age),
       },
       en: {
@@ -533,11 +532,11 @@
         talkBody:        '<em>"What is your most treasured memory?"</em>, <em>"If you had a nickname among your friends, what would it be?"</em> or <em>"What\'s the weirdest, most cringe-worthy topic you\'ve discussed recently?"</em>',
         spotifyHeader:   "A song I'll listen to on repeat right now",
         recentLabel:     'Recent',
-        childhoodLabel:  'Childhood',
+        inSpainLabel:    'In Spain',
         ctaText:         'Get in touch',
         footer:          'Dima Naida · 2026',
-        seeAll:          k => `See all ${k} media →`,
-        galleryTitles:   { crossfit: '🏋️ CrossFit', cooking: '🥞 Cooking', travel: '✈️ Travel' },
+        seeAll:          k => `See all ${k} →`,
+        galleryTitles:   { crossfit: '🏋️ CrossFit', travel: '✈️ Travel' },
         ageLabel:        age => age + ' years old',
       }
     };
@@ -601,15 +600,8 @@
       crossfit: {
         emoji: '🏋️',
         items: [
-          'photos/crossfit-1.jpg','photos/crossfit-2.jpg','photos/crossfit-3.jpg',
-          'photos/crossfit-4.jpg','photos/crossfit-5.jpg','photos/crossfit-6.jpg',
-        ]
-      },
-      cooking: {
-        emoji: '🥞',
-        items: [
-          'photos/cooking-1.jpg','photos/cooking-2.jpg',
-          'photos/cooking-3.jpg','photos/cooking-4.jpg',
+          'photos/crossfit-1.jpg',
+          'photos/crossfit-2.mp4',
         ]
       },
       travel: {
@@ -617,6 +609,8 @@
         items: [
           'photos/travel-1.jpg','photos/travel-2.jpg','photos/travel-3.jpg',
           'photos/travel-4.jpg','photos/travel-5.jpg','photos/travel-6.jpg',
+          'photos/travel-7.jpg','photos/travel-8.jpg',
+          'photos/travel-9.mp4','photos/travel-10.mp4',
         ]
       }
     };
