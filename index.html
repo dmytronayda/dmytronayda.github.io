@@ -305,6 +305,142 @@
     }
     .lightbox-grid .lb-placeholder span:first-child { font-size: 1.8rem; }
 
+    /* ── INSTAGRAM CARD ── */
+    .ig-card {
+      background: var(--white);
+      margin: .75rem 1rem 0;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+
+    .ig-header {
+      display: flex; align-items: center; gap: .6rem;
+      padding: 1.1rem 1.25rem .75rem;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+    }
+
+    .ig-dot {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .95rem; flex-shrink: 0;
+    }
+
+    .ig-body {
+      padding: 0 1.25rem 1.25rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+
+    .ig-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      overflow: hidden; flex-shrink: 0;
+      background: #e8e5de;
+      padding: 2px;
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+
+    .ig-avatar img {
+      width: 100%; height: 100%;
+      border-radius: 50%; object-fit: cover; display: block;
+      border: 2px solid #fff;
+    }
+
+    .ig-avatar .ig-avatar-placeholder {
+      width: 100%; height: 100%;
+      border-radius: 50%; background: #e8e5de;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; border: 2px solid #fff;
+    }
+
+    .ig-info { flex: 1; min-width: 0; }
+
+    .ig-username {
+      font-size: 1rem; font-weight: 700;
+      color: var(--text); display: block;
+    }
+
+    .ig-subline {
+      font-size: .82rem; color: var(--muted); margin-top: .1rem;
+    }
+
+    .ig-actions { display: flex; gap: .5rem; margin-top: .65rem; flex-wrap: wrap; }
+
+    .ig-btn {
+      display: inline-block;
+      padding: .42rem 1.1rem;
+      border-radius: 8px;
+      font-size: .82rem; font-weight: 700;
+      text-decoration: none;
+      letter-spacing: .02em;
+      transition: opacity .2s;
+      white-space: nowrap;
+    }
+    .ig-btn:hover { opacity: .82; }
+
+    .ig-btn-follow {
+      color: #fff;
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    }
+
+    .ig-btn-message {
+      color: var(--text);
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+    }
+
+    /* ── CONTACT CARD ── */
+    .contact-card {
+      background: var(--white);
+      margin: .75rem 1rem 0;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+
+    .contact-header {
+      display: flex; align-items: center; gap: .6rem;
+      padding: 1.1rem 1.25rem .75rem;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+    }
+
+    .contact-list {
+      padding: 0 1.25rem 1.25rem;
+      display: flex; flex-direction: column; gap: .65rem;
+    }
+
+    .contact-row {
+      display: flex; align-items: center; gap: .75rem;
+    }
+
+    .contact-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+
+    .contact-icon.email-icon  { background: #E8F0FE; }
+    .contact-icon.ig-icon     {
+      background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
+    }
+
+    .contact-detail { min-width: 0; flex: 1; }
+
+    .contact-label {
+      font-size: .7rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .12em; font-weight: 600;
+      display: block; margin-bottom: .05rem;
+    }
+
+    .contact-value {
+      font-size: .92rem; font-weight: 600; color: var(--text);
+      text-decoration: none; display: block;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .contact-value:hover { color: #374151; }
+
     /* ── FOOTER ── */
     footer {
       max-width: 480px; margin: 2rem auto 0;
@@ -471,6 +607,58 @@
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
       ></iframe>
+    </div>
+
+    <!-- INSTAGRAM -->
+    <div class="ig-card">
+      <div class="ig-header">
+        <div class="ig-dot">📸</div>
+        Find me on Instagram
+      </div>
+      <div class="ig-body">
+        <div class="ig-avatar">
+          <img src="photos/recent.jpg" alt="@cadet93000"
+            onerror="this.parentElement.innerHTML='<div class=ig-avatar-placeholder>👤</div>'">
+        </div>
+        <div class="ig-info">
+          <span class="ig-username">@cadet93000</span>
+          <p class="ig-subline">Life through a lens — travels, CrossFit & breakfast vibes</p>
+          <div class="ig-actions">
+            <a class="ig-btn ig-btn-follow"
+               href="https://www.instagram.com/cadet93000"
+               target="_blank" rel="noopener noreferrer">Follow</a>
+            <a class="ig-btn ig-btn-message"
+               href="https://ig.me/m/cadet93000"
+               target="_blank" rel="noopener noreferrer">Message</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="contact-card">
+      <div class="contact-header">
+        <div class="card-dot">✉️</div>
+        Get in touch
+      </div>
+      <div class="contact-list">
+        <div class="contact-row">
+          <div class="contact-icon email-icon">📧</div>
+          <div class="contact-detail">
+            <span class="contact-label">Email</span>
+            <a class="contact-value" href="mailto:dmytro.naida@icloud.com">dmytro.naida@icloud.com</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon ig-icon">📸</div>
+          <div class="contact-detail">
+            <span class="contact-label">Instagram</span>
+            <a class="contact-value"
+               href="https://ig.me/m/cadet93000"
+               target="_blank" rel="noopener noreferrer">@cadet93000 — send a DM</a>
+          </div>
+        </div>
+      </div>
     </div>
 
   </main>
