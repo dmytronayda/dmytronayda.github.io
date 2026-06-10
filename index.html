@@ -8,13 +8,14 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --yellow: #FFC629;
+      --yellow:       #FFC629;
       --yellow-light: #FFF5D6;
-      --text:   #1a1a1a;
-      --muted:  #6b7280;
-      --border: #e5e7eb;
-      --bg:     #f9f9f7;
-      --white:  #ffffff;
+      --green:        #1DB954;
+      --text:         #1a1a1a;
+      --muted:        #6b7280;
+      --border:       #e5e7eb;
+      --bg:           #f2f2f0;
+      --white:        #ffffff;
     }
 
     html { font-size: 17px; }
@@ -26,7 +27,7 @@
       line-height: 1.7;
     }
 
-    /* ── PROFILE CARD (Bumble hero) ── */
+    /* ── PROFILE CARD ── */
     .profile-card {
       position: relative;
       width: 100%;
@@ -46,232 +47,280 @@
 
     .profile-photo img {
       width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
+      object-fit: cover; object-position: center top; display: block;
     }
 
     .profile-photo .photo-placeholder {
       width: 100%; height: 100%;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      gap: 1rem;
-      color: #8a8478;
-      font-size: .85rem;
+      gap: 1rem; color: #8a8478; font-size: .85rem;
     }
     .profile-photo .photo-placeholder span:first-child { font-size: 3rem; }
 
-    /* gradient overlay at bottom of hero photo */
     .profile-overlay {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
+      position: absolute; bottom: 0; left: 0; right: 0;
       padding: 3.5rem 1.5rem 1.5rem;
       background: linear-gradient(to top, rgba(0,0,0,.78) 0%, transparent 100%);
     }
 
     .profile-name {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -.02em;
-      line-height: 1.1;
+      font-size: 2rem; font-weight: 800;
+      color: #fff; letter-spacing: -.02em; line-height: 1.1;
     }
 
     .profile-tagline {
-      font-size: .9rem;
-      color: rgba(255,255,255,.8);
-      margin-top: .3rem;
+      font-size: .9rem; color: rgba(255,255,255,.8); margin-top: .3rem;
     }
 
-    /* ── INFO CHIPS ROW ── */
+    /* ── INFO CHIPS ── */
     .info-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      padding: 1.25rem 1.5rem;
+      display: flex; flex-wrap: wrap; gap: .5rem;
+      padding: 1.25rem 1rem;
       background: var(--white);
-      max-width: 480px;
-      margin: 0 auto;
+      max-width: 480px; margin: 0 auto;
       border-top: 1px solid var(--border);
     }
 
     .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: .35rem;
-      font-size: .82rem;
-      color: var(--text);
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      border-radius: 999px;
-      padding: .3rem .9rem;
-      font-weight: 500;
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .82rem; color: var(--text);
+      background: var(--bg); border: 1.5px solid var(--border);
+      border-radius: 999px; padding: .3rem .9rem; font-weight: 500;
     }
+    .chip.chip-yellow { background: var(--yellow); border-color: var(--yellow); font-weight: 700; }
 
-    .chip.chip-yellow {
-      background: var(--yellow);
-      border-color: var(--yellow);
-      font-weight: 700;
-    }
+    /* ── MAIN COLUMN ── */
+    .main { max-width: 480px; margin: 0 auto; padding-bottom: 4rem; }
 
-    /* ── MAIN COLUMN (Paul Stamatiou editorial layout) ── */
-    .main {
-      max-width: 480px;
-      margin: 0 auto;
-      padding-bottom: 4rem;
-    }
-
-    /* ── SECTION (Bumble prompt card style) ── */
-    .section {
+    /* ── GENERIC CARD ── */
+    .card {
       background: var(--white);
-      margin: 1rem 1rem 0;
+      margin: .75rem 1rem 0;
       border-radius: 18px;
       overflow: hidden;
       box-shadow: 0 1px 4px rgba(0,0,0,.06);
     }
 
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-      padding: 1.1rem 1.25rem .6rem;
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--muted);
+    .card-header {
+      display: flex; align-items: center; gap: .6rem;
+      padding: 1.1rem 1.25rem .5rem;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
     }
 
-    .section-header .dot {
-      width: 28px; height: 28px;
-      border-radius: 50%;
+    .card-dot {
+      width: 28px; height: 28px; border-radius: 50%;
       background: var(--yellow);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .card-dot.green { background: var(--green); }
+
+    .card-body {
+      padding: .2rem 1.25rem 1.1rem;
+      font-size: 1rem; color: var(--text); line-height: 1.75;
+    }
+    .card-body p em { font-style: italic; color: #374151; }
+
+    /* ── MINI GALLERY ── */
+    .gallery {
+      padding: .75rem 1.25rem 1.25rem;
+      border-top: 1px solid var(--border);
     }
 
-    .section-body {
-      padding: .25rem 1.25rem 1.25rem;
-      font-size: 1rem;
-      color: var(--text);
-      line-height: 1.75;
-    }
-
-    .section-body p em {
-      font-style: italic;
-      color: #374151;
-    }
-
-    /* ── PHOTO PAIR SECTION ── */
-    .photo-pair-section {
-      margin: 1rem 1rem 0;
-      border-radius: 18px;
-      overflow: hidden;
+    .gallery-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3px;
-      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      border-radius: 10px;
+      overflow: hidden;
     }
 
-    .photo-pane {
+    .gallery-thumb {
+      aspect-ratio: 1;
       overflow: hidden;
-      aspect-ratio: 3/4;
-      background: #d4cfc8;
+      background: #e0ddd6;
+      cursor: pointer;
       position: relative;
     }
 
-    .photo-pane img {
+    .gallery-thumb img {
       width: 100%; height: 100%;
       object-fit: cover; display: block;
+      transition: transform .25s;
+    }
+
+    .gallery-thumb:hover img { transform: scale(1.06); }
+
+    .gallery-thumb .thumb-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      color: #a0998e; font-size: 1.4rem;
+    }
+
+    /* "more" overlay on last thumb */
+    .gallery-thumb.more-overlay::after {
+      content: attr(data-label);
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,.52);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .88rem; font-weight: 700;
+      letter-spacing: .02em;
+      cursor: pointer;
+    }
+
+    .gallery-cta {
+      display: block;
+      margin-top: .65rem;
+      font-size: .8rem; font-weight: 600;
+      color: var(--muted);
+      text-align: right;
+      cursor: pointer;
+      background: none; border: none; padding: 0;
+      font-family: inherit;
+    }
+    .gallery-cta:hover { color: var(--text); }
+
+    /* ── PHOTO PAIR ── */
+    .photo-pair-card {
+      margin: .75rem 1rem 0;
+      border-radius: 18px; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3px; box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+
+    .photo-pane {
+      overflow: hidden; aspect-ratio: 3/4;
+      background: #d4cfc8; position: relative;
+    }
+
+    .photo-pane img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
     }
 
     .photo-pane .photo-placeholder {
       width: 100%; height: 100%;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      gap: .4rem;
-      color: #8a8478;
-      font-size: .78rem;
-      text-align: center;
-      padding: 1rem;
+      gap: .4rem; color: #8a8478; font-size: .78rem;
+      text-align: center; padding: 1rem;
     }
     .photo-pane .photo-placeholder span:first-child { font-size: 1.6rem; }
 
     .photo-pane-label {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
+      position: absolute; bottom: 0; left: 0; right: 0;
       padding: 1.5rem .75rem .55rem;
       background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 100%);
-      font-size: .72rem;
-      font-weight: 600;
-      color: rgba(255,255,255,.85);
-      letter-spacing: .04em;
+      font-size: .72rem; font-weight: 600;
+      color: rgba(255,255,255,.85); letter-spacing: .04em;
     }
 
-    /* ── INTEREST TAGS ── */
-    .tags-section {
-      background: var(--white);
-      margin: 1rem 1rem 0;
-      border-radius: 18px;
-      padding: 1.1rem 1.25rem 1.25rem;
+    /* ── TAGS ── */
+    .tags-card {
+      background: var(--white); margin: .75rem 1rem 0;
+      border-radius: 18px; padding: 1.1rem 1.25rem 1.25rem;
       box-shadow: 0 1px 4px rgba(0,0,0,.06);
     }
 
     .tags-label {
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: .85rem;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: .85rem;
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-    }
+    .tags { display: flex; flex-wrap: wrap; gap: .5rem; }
 
     .tag {
-      font-size: .85rem;
-      color: var(--text);
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      border-radius: 999px;
-      padding: .35rem 1rem;
-      font-weight: 500;
+      font-size: .85rem; color: var(--text);
+      background: var(--bg); border: 1.5px solid var(--border);
+      border-radius: 999px; padding: .35rem 1rem; font-weight: 500;
     }
+
+    /* ── SPOTIFY ── */
+    .spotify-card {
+      background: var(--white); margin: .75rem 1rem 0;
+      border-radius: 18px; overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+
+    .spotify-header {
+      display: flex; align-items: center; gap: .6rem;
+      padding: 1.1rem 1.25rem .75rem;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+    }
+
+    .spotify-card iframe { display: block; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,.9);
+      flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox-inner {
+      position: relative;
+      width: min(480px, 96vw);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .lightbox-close {
+      position: fixed; top: 1rem; right: 1rem;
+      background: rgba(255,255,255,.15); border: none;
+      color: #fff; font-size: 1.4rem; width: 40px; height: 40px;
+      border-radius: 50%; cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      font-family: inherit; line-height: 1;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,.25); }
+
+    .lightbox-title {
+      color: #fff; font-size: .72rem; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase;
+      text-align: center; margin-bottom: .85rem;
+    }
+
+    .lightbox-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+      border-radius: 14px; overflow: hidden;
+    }
+
+    .lightbox-grid img {
+      width: 100%; aspect-ratio: 1; object-fit: cover; display: block;
+    }
+
+    .lightbox-grid .lb-placeholder {
+      aspect-ratio: 1; background: #2a2a2a;
+      display: flex; align-items: center; justify-content: center;
+      color: #555; font-size: .8rem; text-align: center; padding: 1rem;
+      flex-direction: column; gap: .4rem;
+    }
+    .lightbox-grid .lb-placeholder span:first-child { font-size: 1.8rem; }
 
     /* ── FOOTER ── */
     footer {
-      max-width: 480px;
-      margin: 2rem auto 0;
+      max-width: 480px; margin: 2rem auto 0;
       padding: 1.5rem 1rem;
-      font-size: .78rem;
-      color: var(--muted);
-      text-align: center;
-      border-top: 1px solid var(--border);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (min-width: 600px) {
-      .profile-card,
-      .info-chips,
-      .main { max-width: 420px; }
+      font-size: .78rem; color: var(--muted);
+      text-align: center; border-top: 1px solid var(--border);
     }
   </style>
 </head>
 <body>
 
-  <!-- BUMBLE-STYLE PROFILE CARD (hero photo + name overlay) -->
+  <!-- PROFILE CARD -->
   <div class="profile-card">
     <div class="profile-photo">
-      <img
-        src="photos/recent.jpg"
-        alt="Dima Naida"
-        onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>🏔️</span><span>Add photos/recent.jpg</span></div>'"
-      >
+      <img src="photos/recent.jpg" alt="Dima Naida"
+        onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>🏔️</span><span>Add photos/recent.jpg</span></div>'">
     </div>
     <div class="profile-overlay">
       <h1 class="profile-name">👋 Hi! I'm Dima</h1>
@@ -286,42 +335,73 @@
     <span class="chip chip-yellow">eGym</span>
   </div>
 
-  <!-- MAIN EDITORIAL COLUMN -->
   <main class="main">
 
     <!-- PHOTO PAIR -->
-    <div class="photo-pair-section">
+    <div class="photo-pair-card">
       <div class="photo-pane">
-        <img
-          src="photos/recent.jpg"
-          alt="Dima — recent"
-          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>📷</span><span>Recent photo</span></div>'"
-        >
+        <img src="photos/recent.jpg" alt="Dima — recent"
+          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>📷</span><span>Recent photo</span></div>'">
         <div class="photo-pane-label">Recent</div>
       </div>
       <div class="photo-pane">
-        <img
-          src="photos/childhood.jpg"
-          alt="Dima — childhood"
-          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>👶</span><span>Childhood photo</span></div>'"
-        >
+        <img src="photos/childhood.jpg" alt="Dima — childhood"
+          onerror="this.parentElement.innerHTML='<div class=photo-placeholder><span>👶</span><span>Childhood photo</span></div>'">
         <div class="photo-pane-label">Childhood</div>
       </div>
     </div>
 
     <!-- PROMPT: HOBBIES -->
-    <div class="section">
-      <div class="section-header">
-        <div class="dot">🌈</div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot">🌈</div>
         When I'm not at work, I love to…
       </div>
-      <div class="section-body">
+      <div class="card-body">
         <p>Doing CrossFit, walking (most recently 125 km in five days in Spain), searching for a new song I'll listen to on repeat, cooking some kind of cool breakfast food — pancakes with mascarpone cheese, honey, and peaches being my favorite.</p>
+      </div>
+
+      <!-- CrossFit mini gallery -->
+      <div class="gallery">
+        <div class="gallery-grid">
+          <div class="gallery-thumb" onclick="openLightbox('crossfit')">
+            <img src="photos/crossfit-1.jpg" alt=""
+              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🏋️</div>'">
+          </div>
+          <div class="gallery-thumb" onclick="openLightbox('crossfit')">
+            <img src="photos/crossfit-2.jpg" alt=""
+              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🏋️</div>'">
+          </div>
+          <div class="gallery-thumb more-overlay" data-label="+ more" onclick="openLightbox('crossfit')">
+            <img src="photos/crossfit-3.jpg" alt=""
+              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🏋️</div>'">
+          </div>
+        </div>
+        <button class="gallery-cta" onclick="openLightbox('crossfit')">See all CrossFit photos →</button>
+      </div>
+
+      <!-- Cooking mini gallery -->
+      <div class="gallery" style="border-top:1px solid var(--border); padding-top:.75rem;">
+        <div class="gallery-grid">
+          <div class="gallery-thumb" onclick="openLightbox('cooking')">
+            <img src="photos/cooking-1.jpg" alt=""
+              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🥞</div>'">
+          </div>
+          <div class="gallery-thumb" onclick="openLightbox('cooking')">
+            <img src="photos/cooking-2.jpg" alt=""
+              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🥞</div>'">
+          </div>
+          <div class="gallery-thumb more-overlay" data-label="+ more" onclick="openLightbox('cooking')">
+            <img src="photos/cooking-3.jpg" alt=""
+              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>🥞</div>'">
+          </div>
+        </div>
+        <button class="gallery-cta" onclick="openLightbox('cooking')">See all cooking photos →</button>
       </div>
     </div>
 
     <!-- INTEREST TAGS -->
-    <div class="tags-section">
+    <div class="tags-card">
       <p class="tags-label">Interests</p>
       <div class="tags">
         <span class="tag">🏋️ CrossFit</span>
@@ -334,30 +414,134 @@
     </div>
 
     <!-- PROMPT: ALTERNATE CAREER -->
-    <div class="section">
-      <div class="section-header">
-        <div class="dot">🧑‍🏫</div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot">🧑‍🏫</div>
         My alternate career would be…
       </div>
-      <div class="section-body">
+      <div class="card-body">
         <p>In another universe, I'd be a language or math teacher, the owner of a small CrossFit box, or the owner of a niche travel tour guide company.</p>
+      </div>
+
+      <!-- Travel gallery -->
+      <div class="gallery">
+        <div class="gallery-grid">
+          <div class="gallery-thumb" onclick="openLightbox('travel')">
+            <img src="photos/travel-1.jpg" alt=""
+              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>✈️</div>'">
+          </div>
+          <div class="gallery-thumb" onclick="openLightbox('travel')">
+            <img src="photos/travel-2.jpg" alt=""
+              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>✈️</div>'">
+          </div>
+          <div class="gallery-thumb more-overlay" data-label="+ more" onclick="openLightbox('travel')">
+            <img src="photos/travel-3.jpg" alt=""
+              onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>✈️</div>'">
+          </div>
+        </div>
+        <button class="gallery-cta" onclick="openLightbox('travel')">See all travel photos →</button>
       </div>
     </div>
 
     <!-- PROMPT: TALK FOR HOURS -->
-    <div class="section">
-      <div class="section-header">
-        <div class="dot">💬</div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot">💬</div>
         I could talk for hours about…
       </div>
-      <div class="section-body">
+      <div class="card-body">
         <p>Weird, unexpected open-ended questions, like <em>"What is your most treasured memory?"</em>, <em>"If you had a nickname among your friends, what would it be?"</em> or <em>"What's the weirdest, most cringe-worthy topic you've discussed recently?"</em></p>
       </div>
+    </div>
+
+    <!-- SPOTIFY -->
+    <div class="spotify-card">
+      <div class="spotify-header">
+        <div class="card-dot green">🎵</div>
+        A song I'll listen to on repeat right now
+      </div>
+      <iframe
+        src="https://open.spotify.com/embed/playlist/4UenN9KEuw35eCxEHNLo8x?utm_source=generator&theme=0"
+        width="100%"
+        height="380"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+      ></iframe>
     </div>
 
   </main>
 
   <footer>Dima Naida · 2026</footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <div class="lightbox-inner">
+      <p class="lightbox-title" id="lb-title"></p>
+      <div class="lightbox-grid" id="lb-grid"></div>
+    </div>
+  </div>
+
+  <script>
+    const galleries = {
+      crossfit: {
+        title: '🏋️ CrossFit',
+        photos: [
+          'photos/crossfit-1.jpg',
+          'photos/crossfit-2.jpg',
+          'photos/crossfit-3.jpg',
+          'photos/crossfit-4.jpg',
+          'photos/crossfit-5.jpg',
+          'photos/crossfit-6.jpg',
+        ]
+      },
+      cooking: {
+        title: '🥞 Cooking',
+        photos: [
+          'photos/cooking-1.jpg',
+          'photos/cooking-2.jpg',
+          'photos/cooking-3.jpg',
+          'photos/cooking-4.jpg',
+        ]
+      },
+      travel: {
+        title: '✈️ Travel',
+        photos: [
+          'photos/travel-1.jpg',
+          'photos/travel-2.jpg',
+          'photos/travel-3.jpg',
+          'photos/travel-4.jpg',
+          'photos/travel-5.jpg',
+          'photos/travel-6.jpg',
+        ]
+      }
+    };
+
+    const emojis = { crossfit: '🏋️', cooking: '🥞', travel: '✈️' };
+
+    function openLightbox(key) {
+      const g = galleries[key];
+      document.getElementById('lb-title').textContent = g.title;
+      const grid = document.getElementById('lb-grid');
+      grid.innerHTML = g.photos.map(src =>
+        `<img src="${src}" alt="" onerror="this.parentElement.innerHTML='<div class=lb-placeholder><span>${emojis[key]}</span><span>Add ${src}</span></div>'">`
+      ).join('');
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeLightboxOnBg(e) {
+      if (e.target === document.getElementById('lightbox')) closeLightbox();
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
 
 </body>
 </html>
