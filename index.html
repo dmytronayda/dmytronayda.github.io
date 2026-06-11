@@ -169,9 +169,10 @@
     /* ── MINI GALLERY ── */
     .gallery { padding: .75rem 1.2rem 1.2rem; border-top: 1px solid var(--border); }
     .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; border-radius: 8px; overflow: hidden; }
-    .gallery-thumb { aspect-ratio: 1; overflow: hidden; background: #ddd7cf; cursor: pointer; position: relative; }
-    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .22s; }
-    .gallery-thumb:hover img { transform: scale(1.07); }
+    .gallery-thumb { aspect-ratio: 1; overflow: hidden; background: #ddd7cf; cursor: pointer; position: relative; transition: box-shadow .22s; }
+    .gallery-thumb:hover { box-shadow: 0 4px 18px rgba(28,25,21,.18); }
+    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .28s, filter .28s; }
+    .gallery-thumb:hover img { transform: scale(1.07); filter: brightness(1.06); }
     .gallery-thumb .thumb-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #a09890; font-size: 1.4rem; }
     .gallery-thumb.is-video::after {
       content: '';
@@ -271,6 +272,11 @@
     .lightbox-grid .lb-video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
     .lightbox-grid .lb-placeholder { aspect-ratio: 3/4; background: #1e1a16; display: flex; align-items: center; justify-content: center; color: #4a4540; font-size: 1.8rem; border-radius: var(--radius-btn); }
 
+    /* ── SCROLL HINT ── */
+    .scroll-hint { display: flex; justify-content: center; padding: .6rem 0 0; }
+    .scroll-hint svg { color: var(--muted); animation: scrollBounce 2.2s ease-in-out infinite; opacity: .55; }
+    @keyframes scrollBounce { 0%,100% { transform: translateY(0); } 55% { transform: translateY(6px); } }
+
     /* ── FOOTER ── */
     footer { max-width: 480px; margin: 2.5rem auto 0; padding: 1.25rem 1rem 1.5rem; font-size: .76rem; color: var(--muted); text-align: center; border-top: 1px solid var(--border); letter-spacing: .02em; }
   </style>
@@ -297,6 +303,10 @@
     </div>
   </div>
 
+  <div class="scroll-hint" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+
   <main class="main">
 
     <!-- PROMPT: HOBBIES -->
@@ -320,7 +330,22 @@
       <div class="card-body" data-t-html="talkBody"></div>
     </div>
 
-    <!-- GET IN TOUCH (moved after story) -->
+    <!-- SPOTIFY -->
+    <div class="spotify-card">
+      <div class="spotify-header">
+        <div class="card-dot spotify">🎵</div>
+        <span data-t="spotifyHeader"></span>
+      </div>
+      <iframe
+        data-testid="embed-iframe"
+        style="border-radius:0 0 14px 14px"
+        src="https://open.spotify.com/embed/playlist/4UenN9KEuw35eCxEHNLo8x?utm_source=generator"
+        width="100%" height="460" frameBorder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      ></iframe>
+    </div>
+
+    <!-- GET IN TOUCH -->
     <div class="contact-card" id="contact">
       <div class="contact-header">
         <div class="card-dot">✉️</div>
@@ -369,28 +394,13 @@
       </a>
     </div>
 
-    <!-- SPOTIFY -->
-    <div class="spotify-card">
-      <div class="spotify-header">
-        <div class="card-dot spotify">🎵</div>
-        <span data-t="spotifyHeader"></span>
-      </div>
-      <iframe
-        data-testid="embed-iframe"
-        style="border-radius:0 0 14px 14px"
-        src="https://open.spotify.com/embed/playlist/4UenN9KEuw35eCxEHNLo8x?utm_source=generator"
-        width="100%" height="460" frameBorder="0" allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      ></iframe>
-    </div>
-
   </main>
 
   <footer data-t="footer"></footer>
 
   <!-- STICKY CTA + HINT -->
   <div class="sticky-group hidden" id="sticky-group">
-    <button class="sticky-cta" onclick="scrollToContact()" data-t="ctaText"></button>
+    <a class="sticky-cta" href="https://wa.me/4917620082850" target="_blank" rel="noopener noreferrer" data-t="ctaText"></a>
   </div>
 
   <!-- LIGHTBOX -->
@@ -640,10 +650,6 @@
       ([e]) => stickyGroup.classList.toggle('hidden', e.isIntersecting),
       { threshold: 0.2 }
     ).observe(document.getElementById('contact'));
-
-    function scrollToContact() {
-      document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
 
     setLang(currentLang);
   </script>
