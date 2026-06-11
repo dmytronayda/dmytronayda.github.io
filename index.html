@@ -86,6 +86,7 @@
     }
     .profile-name    { font-size: 2.1rem; font-weight: 800; color: #fff; letter-spacing: -.025em; line-height: 1.1; }
     .profile-tagline { font-size: .88rem; color: rgba(255,255,255,.75); margin-top: .35rem; letter-spacing: .01em; }
+    .profile-work { font-size: .78rem; color: rgba(255,255,255,.58); margin-top: .25rem; letter-spacing: .01em; font-weight: 400; }
 
     /* ── OVERLAY CHIPS (on hero photo) ── */
     .overlay-chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .65rem; }
@@ -133,6 +134,10 @@
     .card-body p:last-child { margin-bottom: 0; }
     .card-body p em { font-style: italic; color: var(--text); }
     .card-body ul { margin: .4rem 0 0 1.1rem; }
+    .now-list { list-style: none; padding: 0; margin: .25rem 0 0; display: flex; flex-direction: column; gap: .55rem; }
+    .now-list li { font-size: .95rem; line-height: 1.6; color: var(--text); }
+    .now-list a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--border); transition: text-decoration-color .15s; }
+    .now-list a:hover { text-decoration-color: var(--text); }
     .card-body li { margin-bottom: .35rem; }
 
     /* ── CONTACT CARD ── */
@@ -299,6 +304,7 @@
     <div class="profile-overlay">
       <h1 class="profile-name" data-t="profileName"></h1>
       <p class="profile-tagline" data-t-html="profileTagline"></p>
+      <p class="profile-work" data-t="profileWork"></p>
       <div class="overlay-chips" id="overlay-chips"></div>
     </div>
   </div>
@@ -319,6 +325,15 @@
       <div class="gallery" id="gallery-crossfit-preview"></div>
       <div class="gallery" id="gallery-food-preview"></div>
       <div class="gallery" id="gallery-travel-preview"></div>
+    </div>
+
+    <!-- RIGHT NOW -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot">⏱</div>
+        <span data-t="nowHeader"></span>
+      </div>
+      <div class="card-body" data-t-html="nowBody"></div>
     </div>
 
     <!-- PROMPT: TALK FOR HOURS -->
@@ -420,6 +435,7 @@
       uk: {
         profileName:    '👋 Привіт! Я Діма',
         profileTagline: 'Чорнобровий син <a href="https://uk.wikipedia.org/wiki/%D0%9B%D0%B5%D0%B1%D0%B5%D0%B4%D0%B8%D0%BD" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(255,255,255,.5);">Сумщини</a> ↗.',
+        profileWork:    'Роблю фітнес та wellness більш доступним в EGYM Wellpass.',
         chipActivity:   '🥾 Переживший Каміно',
         chipLocation:   '📍 Мюнхен',
         contactHeader:  "Зв'яжись зі мною",
@@ -427,6 +443,8 @@
         igLabel:        'Instagram',
         waLabel:        'WhatsApp',
         emailLabel:     'Електронна пошта',
+        nowHeader:      'Зараз',
+        nowBody:        '<ul class="now-list"><li>📺 Дивлюся серіал <em>"The Boys"</em> на Prime Video.</li><li>😂 Переглядав сольний стендап Чиркова <a href="https://youtu.be/bIhwgQ4BXLM?t=2584" target="_blank" rel="noopener">"Кафе‑шантан"</a>.</li><li>📖 Читаю і плачу від <em>"Гемінгвей нічого не знає"</em> Артура Дроня.</li></ul>',
         hobbyHeader:    'Коли я не на роботі, я …',
         hobbyBody:      '<p>Лупашу кросфіт. Хайкаю. Зовсім недавно, наприклад, я пройшов 125 км в один бік за 5 днів по Іспанії. Шукаю новий трек і, знайшовши, слухаю на репіті та розсилаю всім своїм близьким. Щось готую їсти. Особливо люблю приготування крутезних сніданків. Мій улюблений — це панкейки з маскарпоне, медом та консервованими персиками.</p>',
         tagsLabel:      'Інтереси',
@@ -448,6 +466,7 @@
       en: {
         profileName:    "👋 Hi! I'm Dima",
         profileTagline: 'From <a href="https://en.wikipedia.org/wiki/Lebedyn" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(255,255,255,.5);">Lebedyn, Ukraine</a> ↗',
+        profileWork:    'Building fitness tech at EGYM Wellpass.',
         chipActivity:   '🥾 Camino survivor',
         chipLocation:   '📍 Munich',
         contactHeader:  'Get in touch',
@@ -455,6 +474,8 @@
         igLabel:        'Instagram',
         waLabel:        'WhatsApp',
         emailLabel:     'Email',
+        nowHeader:      'Right now',
+        nowBody:        '<ul class="now-list"><li>📺 Watching <em>"The Boys"</em> on Prime Video.</li><li>😂 Laughing at Chirkov\'s stand-up <a href="https://youtu.be/bIhwgQ4BXLM?t=2584" target="_blank" rel="noopener">"Кафе‑шантан"</a> (Ukrainian).</li><li>📖 Reading and crying from <em>"Гемінгвей нічого не знає"</em> by Artur Dron.</li></ul>',
         hobbyHeader:    "When I'm not at work, I love to…",
         hobbyBody:      "<p>Doing CrossFit, walking (most recently 125 km in five days in Spain), searching for a new song I'll listen to on repeat, cooking some kind of cool breakfast food (pancakes with mascarpone cheese, honey, and peaches being my favorite).</p>",
         tagsLabel:      'Interests',
