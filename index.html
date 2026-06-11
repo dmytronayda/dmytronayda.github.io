@@ -185,7 +185,7 @@
       box-shadow: 0 2px 12px rgba(0,0,0,.4);
       pointer-events: none;
     }
-    .gallery-thumb.more-overlay::after { content: attr(data-label); position: absolute; inset: 0; background: rgba(28,25,21,.54); color: #fff; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; cursor: pointer; text-shadow: none; }
+    .gallery-thumb.more-overlay::after { content: attr(data-label); position: absolute; inset: 0; width: auto; height: auto; transform: none; border-radius: 0; border: none; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none; background: rgba(28,25,21,.54); color: #fff; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; cursor: pointer; text-shadow: none; pointer-events: auto; }
     .gallery-cta { display: block; margin-top: .65rem; font-size: .78rem; font-weight: 600; color: var(--muted); text-align: right; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; transition: color .15s; }
     .gallery-cta:hover { color: var(--text); }
 
@@ -400,7 +400,7 @@
 
   <!-- STICKY CTA + HINT -->
   <div class="sticky-group hidden" id="sticky-group">
-    <a class="sticky-cta" href="https://wa.me/4917620082850" target="_blank" rel="noopener noreferrer" data-t="ctaText"></a>
+    <button class="sticky-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth',block:'start'})" data-t="ctaText"></button>
   </div>
 
   <!-- LIGHTBOX -->
@@ -563,7 +563,7 @@
     }
 
     function thumbHTML(src, key, index, isLast, total) {
-      const extra = isLast && total > 3 ? ` more-overlay" data-label="+ ${total - 2} more` : '';
+      const extra = isLast && total > 3 ? ` more-overlay" data-label="+ ${total - 3} more` : '';
       const vidClass = isVideo(src) ? ' is-video' : '';
       const media = `<img src="${thumbSrc(src)}" alt="" loading="lazy"
         onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>${galleries[key].emoji}</div>'">`;
