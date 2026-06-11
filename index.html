@@ -148,12 +148,10 @@
     /* Instagram row */
     .ig-row { display: flex; align-items: center; gap: .9rem; padding: .75rem 1.2rem 1rem; }
     .ig-avatar {
-      width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
-      padding: 2px;
-      background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
+      width: 44px; height: 44px; border-radius: var(--radius-icon); flex-shrink: 0;
+      background: linear-gradient(135deg, #f09433 0%, #dc2743 50%, #bc1888 100%);
+      display: flex; align-items: center; justify-content: center;
     }
-    .ig-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; border: 2.5px solid #fff; }
-    .ig-avatar .ig-avatar-ph { width: 100%; height: 100%; border-radius: 50%; background: #e8e0d5; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2.5px solid #fff; }
     .ig-info { flex: 1; min-width: 0; }
     .ig-username { font-size: .95rem; font-weight: 700; display: block; color: var(--text); }
     .ig-subline  { font-size: .78rem; color: var(--muted); margin-top: .1rem; }
@@ -352,8 +350,11 @@
 
       <div class="ig-row">
         <div class="ig-avatar">
-          <img src="photos/thumbs/pair-recent.jpg" alt="@cadet93000" loading="lazy"
-            onerror="this.parentElement.innerHTML='<div class=ig-avatar-ph>👤</div>'">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="6" stroke="white" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="1.8"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
+          </svg>
         </div>
         <div class="ig-info">
           <span class="ig-username">cadet93000</span>
@@ -610,9 +611,8 @@
     function lbItemHTML(src, key) {
       if (isVideo(src)) {
         return `<div class="lb-video-wrap">
-          <video autoplay muted loop playsinline preload="metadata" poster="${thumbSrc(src)}"
-            style="width:100%;height:100%;object-fit:cover">
-            <source src="${src}" type="video/mp4">
+          <video muted loop playsinline preload="none" poster="${thumbSrc(src)}"
+            data-src="${src}" style="width:100%;height:100%;object-fit:cover">
           </video>
         </div>`;
       }
@@ -623,17 +623,35 @@
     function openLightbox(key) {
       document.getElementById('lb-title').textContent = T[currentLang].galleryTitles[key];
       document.getElementById('lb-grid').innerHTML = galleries[key].items.map(src => lbItemHTML(src, key)).join('');
+
       document.querySelectorAll('#lb-grid img[data-full]').forEach(img => {
         const full = new Image();
         full.onload = () => { img.src = img.dataset.full; };
         full.src = img.dataset.full;
       });
+
+      const lbScroll = document.querySelector('.lightbox-inner');
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const v = entry.target;
+          if (!v.dataset.src) return;
+          v.src = v.dataset.src;
+          delete v.dataset.src;
+          v.load();
+          v.play().catch(() => {});
+          videoObserver.unobserve(v);
+        });
+      }, { root: lbScroll, threshold: 0.15 });
+
+      document.querySelectorAll('#lb-grid video[data-src]').forEach(v => videoObserver.observe(v));
+
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
-      document.querySelectorAll('#lb-grid video').forEach(v => v.pause());
+      document.querySelectorAll('#lb-grid video').forEach(v => { v.pause(); v.src = ''; });
       document.getElementById('lightbox').classList.remove('open');
       document.body.style.overflow = '';
     }
