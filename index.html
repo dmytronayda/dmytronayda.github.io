@@ -180,7 +180,7 @@
     .contact-row-detail { min-width: 0; flex: 1; }
     .contact-row-label  { font-size: .67rem; color: var(--muted); text-transform: uppercase; letter-spacing: .14em; font-weight: 700; display: block; margin-bottom: .08rem; }
     .contact-row-value  { font-size: .9rem; font-weight: 600; color: var(--text); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .contact-row-arrow  { font-size: 1.2rem; color: var(--border); flex-shrink: 0; margin-left: .25rem; font-weight: 300; transition: color .15s, transform .15s; }
+    .contact-row-arrow  { display: flex; align-items: center; color: var(--border); flex-shrink: 0; margin-left: .25rem; transition: color .15s, transform .15s; }
     .contact-row:hover .contact-row-arrow { color: var(--muted); transform: translateX(2px); }
 
     /* ── VIBE NOTE ── */
@@ -197,7 +197,7 @@
     .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .22s; }
     .gallery-thumb:hover img { transform: scale(1.07); }
     .gallery-thumb .thumb-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #a09890; font-size: 1.4rem; }
-    .gallery-thumb.is-video::after { content: '▶'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.55); pointer-events: none; }
+    .gallery-thumb.is-video::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 30px; height: 30px; border-radius: 50%; background: rgba(0,0,0,.42) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/16px no-repeat; pointer-events: none; }
     .gallery-thumb.more-overlay::after { content: attr(data-label); position: absolute; inset: 0; background: rgba(28,25,21,.54); color: #fff; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; cursor: pointer; text-shadow: none; }
     .gallery-cta { display: block; margin-top: .65rem; font-size: .78rem; font-weight: 600; color: var(--muted); text-align: right; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; transition: color .15s; }
     .gallery-cta:hover { color: var(--text); }
@@ -263,6 +263,7 @@
       transition: transform .2s, box-shadow .2s;
     }
     .sticky-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(242,224,0,.5), 0 2px 8px rgba(28,25,21,.12); }
+    .sticky-cta::before { content: ''; display: inline-block; width: 17px; height: 17px; flex-shrink: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C1915' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/%3E%3C/svg%3E") center/17px no-repeat; }
     .sticky-hint {
       font-size: .74rem; color: var(--muted);
       background: rgba(247,243,238,.92); backdrop-filter: blur(8px);
@@ -314,7 +315,7 @@
     <!-- PROMPT: HOBBIES -->
     <div class="card">
       <div class="card-header">
-        <div class="card-dot">🌈</div>
+        <div class="card-dot">⚡</div>
         <span data-t="hobbyHeader"></span>
       </div>
       <div class="card-body" data-t-html="hobbyBody"></div>
@@ -356,27 +357,27 @@
       <div class="c-divider"></div>
 
       <a class="contact-row" href="https://wa.me/4917620082850" target="_blank" rel="noopener noreferrer">
-        <div class="contact-row-icon" style="background:#25D366;">
+        <div class="contact-row-icon" style="background:#fff;">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.528 5.845L0 24l6.335-1.511A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
         </div>
         <div class="contact-row-detail">
           <span class="contact-row-label" data-t="waLabel"></span>
           <span class="contact-row-value">+49 176 2008 2850</span>
         </div>
-        <span class="contact-row-arrow">›</span>
+        <span class="contact-row-arrow"><svg viewBox="0 0 8 14" width="8" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg></span>
       </a>
 
       <div class="c-divider"></div>
 
       <a class="contact-row" href="mailto:dmytro.naida@icloud.com">
         <div class="contact-row-icon" style="background:linear-gradient(160deg,#1B8EF8,#0A7AFF);">
-          <svg viewBox="0 0 24 18" width="22" height="16" xmlns="http://www.w3.org/2000/svg" fill="none"><rect x=".75" y=".75" width="22.5" height="16.5" rx="2" stroke="white" stroke-width="1.5"/><path d="M1 3l11 8L23 3" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 24 18" width="28" height="21" xmlns="http://www.w3.org/2000/svg" fill="none"><rect x=".75" y=".75" width="22.5" height="16.5" rx="2" stroke="white" stroke-width="1.5"/><path d="M1 3l11 8L23 3" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>
         </div>
         <div class="contact-row-detail">
           <span class="contact-row-label" data-t="emailLabel"></span>
           <span class="contact-row-value">dmytro.naida@icloud.com</span>
         </div>
-        <span class="contact-row-arrow">›</span>
+        <span class="contact-row-arrow"><svg viewBox="0 0 8 14" width="8" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg></span>
       </a>
     </div>
 
@@ -436,7 +437,7 @@
         talkHeader:     'Я можу говорити годинами про…',
         talkBody:       '<p>Дивакуваті, зовсім неочікувані відкриті запитання по типу: «Яка твоя найбільш цінний спогад?», «Якби в тебе була клікуха серед друзів, як би вони тебе називали?», або «Який найдивніший, найбільш крінжовий топік ти обговорювала зовсім недавно?»</p>',
         vibeNote:       'Якщо ти з тих, хто має тверду думку про каву і хоч одне дивне захоплення, про яке не одразу розповідаєш — ми поладнаємо.',
-        spotifyHeader:  'На репіті цього тижня — якщо ненавидиш, скажи чим замінити.',
+        spotifyHeader:  'Музика, яку слухаю останнім часом — не заходить, скажи що додати.',
         recentLabel:    'Мюнхен, березень 2025',
         inSpainLabel:   'День 4 · 90 км позаду · варто',
         ctaText:        "Зв'язатися",
