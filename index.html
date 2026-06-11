@@ -463,7 +463,7 @@
         careerHeader:   'My alternate career…',
         careerBody:     "Teaching. I've always believed the teachers who changed people's lives weren't really teaching the subject — they were teaching the person. I'd want to be that kind. Probably math. Possibly Ukrainian.",
         talkHeader:     'I could talk for hours about…',
-        talkBody:       "<p>I got weirdly addicted to asking people questions they've never been asked before. Three I keep coming back to:</p><ul><li><em>\"What is your most treasured memory?\"</em> Mine involves a road trip, a broken cassette player, and my grandmother.</li><li><em>\"If your friends gave you a nickname, what would it be?\"</em> I already know mine and I hate it.</li><li><em>\"What's the weirdest topic you've gone deep on recently?\"</em></li></ul>",
+        talkBody:       "<p>Weird, completely unexpected open questions — like \"What's your most treasured memory?\", \"If your friends gave you a nickname, what would they call you?\", or \"What's the strangest, most cringe-worthy topic you've discussed recently?\"</p>",
         vibeNote:       "If you're the kind of person who has a strong opinion about coffee orders and at least one very weird interest you don't tell people about right away — we'll probably get along.",
         spotifyHeader:  "On repeat this week — hate it? Tell me what you'd replace it with.",
         recentLabel:    'Munich, March 2025',
@@ -572,10 +572,23 @@
       Object.entries(galleries).forEach(([key, g]) => {
         const el = document.getElementById(`gallery-${key}-preview`);
         if (!el) return;
-        const preview = g.items.slice(0, 3);
-        const thumbs = preview.map((src, i) => thumbHTML(src, key, i, i === 2, g.items.length)).join('');
-        el.innerHTML = `<div class="gallery-grid">${thumbs}</div>
-          <button class="gallery-cta" onclick="openLightbox('${key}',0)">${t.seeAll(key)}</button>`;
+        // Build grid only once — recreating lazy <img> on language switch
+        // destroys already-loaded images and causes blank flash when out of viewport
+        if (!el.querySelector('.gallery-grid')) {
+          const preview = g.items.slice(0, 3);
+          const thumbs = preview.map((src, i) => thumbHTML(src, key, i, i === 2, g.items.length)).join('');
+          const grid = document.createElement('div');
+          grid.className = 'gallery-grid';
+          grid.innerHTML = thumbs;
+          el.appendChild(grid);
+          const btn = document.createElement('button');
+          btn.className = 'gallery-cta';
+          btn.onclick = () => openLightbox(key, 0);
+          el.appendChild(btn);
+        }
+        // Always update button label for current language
+        const btn = el.querySelector('.gallery-cta');
+        if (btn) btn.textContent = t.seeAll(key);
       });
     }
 
