@@ -146,28 +146,6 @@
     .c-divider { height: 1px; background: var(--border); margin: 0 1.2rem; }
 
     /* Instagram row */
-    .ig-row { display: flex; align-items: center; gap: .9rem; padding: .75rem 1.2rem 1rem; }
-    .ig-avatar {
-      width: 44px; height: 44px; border-radius: var(--radius-icon); flex-shrink: 0;
-      background: linear-gradient(135deg, #f09433 0%, #dc2743 50%, #bc1888 100%);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .ig-info { flex: 1; min-width: 0; }
-    .ig-username { font-size: .95rem; font-weight: 700; display: block; color: var(--text); }
-    .ig-subline  { font-size: .78rem; color: var(--muted); margin-top: .1rem; }
-    .ig-actions  { display: flex; gap: .45rem; margin-top: .5rem; }
-
-    /* ig-btn now uses --radius-btn so it matches contact-row-icon and feels like a cohesive "compact" button tier */
-    .ig-btn {
-      display: inline-flex; align-items: center; gap: .3rem;
-      padding: .38rem .95rem; border-radius: var(--radius-btn);
-      font-size: .78rem; font-weight: 700;
-      text-decoration: none; letter-spacing: .01em;
-      transition: opacity .2s, transform .15s; white-space: nowrap;
-    }
-    .ig-btn:hover { opacity: .85; transform: translateY(-1px); }
-    .ig-btn-message { color: var(--text); background: var(--accent); box-shadow: 0 2px 10px rgba(242,224,0,.4); }
-    .ig-btn-follow  { color: var(--muted); background: var(--bg); border: 1.5px solid var(--border); }
 
     /* Contact rows */
     .contact-row { display: flex; align-items: center; gap: .75rem; padding: .9rem 1.2rem; text-decoration: none; color: inherit; transition: background .15s; cursor: pointer; }
@@ -349,22 +327,20 @@
         <span data-t="contactHeader"></span>
       </div>
 
-      <div class="ig-row">
-        <div class="ig-avatar">
-          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <a class="contact-row" href="https://www.instagram.com/cadet93000" target="_blank" rel="noopener noreferrer">
+        <div class="contact-row-icon" style="background:linear-gradient(135deg,#f09433 0%,#dc2743 50%,#bc1888 100%);">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="2" y="2" width="20" height="20" rx="6" stroke="white" stroke-width="1.8"/>
             <circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="1.8"/>
             <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
           </svg>
         </div>
-        <div class="ig-info">
-          <span class="ig-username">Instagram</span>
-          <div class="ig-actions">
-            <a class="ig-btn ig-btn-message" href="https://ig.me/m/cadet93000" target="_blank" rel="noopener noreferrer" data-t="igDm"></a>
-            <a class="ig-btn ig-btn-follow"  href="https://www.instagram.com/cadet93000" target="_blank" rel="noopener noreferrer" data-t="igFollow"></a>
-          </div>
+        <div class="contact-row-detail">
+          <span class="contact-row-label" data-t="igLabel"></span>
+          <span class="contact-row-value">@cadet93000</span>
         </div>
-      </div>
+        <span class="contact-row-arrow"><svg viewBox="0 0 8 14" width="8" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg></span>
+      </a>
 
       <div class="c-divider"></div>
 
@@ -438,8 +414,7 @@
         chipLocation:   '📍 Мюнхен',
         contactHeader:  "Зв'яжись зі мною",
         igSubline:      'Instagram — фото з Каміно і те, що смішно о 7 ранку',
-        igDm:           'Написати',
-        igFollow:       'Підписатись',
+        igLabel:        'Instagram',
         waLabel:        'WhatsApp',
         emailLabel:     'Електронна пошта',
         hobbyHeader:    'Коли я не на роботі, я …',
@@ -467,8 +442,7 @@
         chipLocation:   '📍 Munich',
         contactHeader:  'Get in touch',
         igSubline:      'Instagram — Camino photos and things I thought were funny before coffee.',
-        igDm:           'DM me',
-        igFollow:       'Follow',
+        igLabel:        'Instagram',
         waLabel:        'WhatsApp',
         emailLabel:     'Email',
         hobbyHeader:    "When I'm not at work, I love to…",
