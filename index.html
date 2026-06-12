@@ -343,6 +343,7 @@
         <span data-t="factsHeader"></span>
       </div>
       <div class="card-body" data-t-html="factsBody"></div>
+      <div class="gallery" id="gallery-facts-preview"></div>
     </div>
 
     <!-- PROMPT: TALK FOR HOURS -->
@@ -471,7 +472,7 @@
         ctaText:        "Зв'язатися",
         footer:         'Діма Найда · 2026',
         seeAll:         k => ({ crossfit: 'Більше про CrossFit →', travel: 'Більше про подорожі →', food: 'Більше про страви →' }[k]),
-        galleryTitles:  { crossfit: '🏋️ CrossFit', travel: '✈️ Фото подорожей', food: '🍳 Те, що готую' },
+        galleryTitles:  { crossfit: '🏋️ CrossFit', travel: '✈️ Фото подорожей', food: '🍳 Те, що готую', facts: '🙋 Трохи більше' },
         ageLabel:       age => age + ' ' + ageWordUk(age),
       },
       en: {
@@ -504,7 +505,7 @@
         ctaText:        'Get in touch',
         footer:         'Dima Naida · 2026',
         seeAll:         k => ({ crossfit: 'More CrossFit →', travel: 'More travels →', food: 'More food →' }[k]),
-        galleryTitles:  { crossfit: '🏋️ CrossFit', travel: '✈️ Travel photos', food: '🍳 Things I cook' },
+        galleryTitles:  { crossfit: '🏋️ CrossFit', travel: '✈️ Travel photos', food: '🍳 Things I cook', facts: '🙋 A bit more' },
         ageLabel:       age => age + ' years old',
       }
     };
@@ -586,6 +587,10 @@
           'photos/food-4.jpg','photos/food-5.jpg','photos/food-6.jpg',
           'photos/food-7.jpg',
         ]
+      },
+      facts: {
+        emoji: '🙋',
+        items: ['photos/ato.jpg', 'photos/flex.jpg']
       }
     };
 
@@ -618,10 +623,12 @@
           grid.className = 'gallery-grid';
           grid.innerHTML = thumbs;
           el.appendChild(grid);
-          const btn = document.createElement('button');
-          btn.className = 'gallery-cta';
-          btn.onclick = () => openLightbox(key, 0);
-          el.appendChild(btn);
+          if (g.items.length > 3) {
+            const btn = document.createElement('button');
+            btn.className = 'gallery-cta';
+            btn.onclick = () => openLightbox(key, 0);
+            el.appendChild(btn);
+          }
         }
         // Always update button label for current language
         const btn = el.querySelector('.gallery-cta');
