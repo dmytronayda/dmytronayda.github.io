@@ -284,51 +284,6 @@
 
     /* ── FOOTER ── */
     footer { max-width: 480px; margin: 2.5rem auto 0; padding: 1.25rem 1rem 1.5rem; font-size: .76rem; color: var(--muted); text-align: center; border-top: 1px solid var(--border); letter-spacing: .02em; }
-
-    /* ── DESKTOP (≥860px) ── */
-    @media (min-width: 860px) {
-      body {
-        display: grid;
-        grid-template-columns: 400px minmax(0, 520px);
-        grid-template-areas:
-          "profile hint"
-          "profile main"
-          "profile footer";
-        column-gap: 1.5rem;
-        max-width: 980px;
-        margin: 0 auto;
-      }
-
-      .profile-card {
-        grid-area: profile;
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        max-width: none;
-        width: 100%;
-        margin: 0;
-        border-radius: 0 24px 24px 0;
-        align-self: start;
-      }
-
-      .profile-photo { height: 100vh; }
-
-      .scroll-hint { grid-area: hint; display: none; }
-
-      .main {
-        grid-area: main;
-        max-width: none;
-        margin: 0;
-        padding-top: .5rem;
-        padding-bottom: 6rem;
-      }
-
-      footer {
-        grid-area: footer;
-        max-width: none;
-        margin: 0;
-      }
-    }
   </style>
 </head>
 <body>
