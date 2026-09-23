@@ -381,33 +381,42 @@
   .contact-row:hover .contact-row-arrow { color: #7A6B62; transform: translateX(2px); }
 
   /* Sticky mobile CTA */
-  .sticky-cta {
-    display: none;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 500;
-    background: var(--white);
-    border-top: 1px solid rgba(0,0,0,0.1);
-    box-shadow: 0 -4px 16px rgba(0,0,0,0.12);
-    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
-  }
-  .sticky-cta a {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background: var(--accent);
-    color: var(--white);
-    padding: 15px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.05rem;
-  }
   @media (max-width: 700px) {
-    .sticky-cta { display: block; }
-    body { padding-bottom: 84px; }
+    .sticky-cta {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      background: rgba(255, 255, 255, 0.96);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
+      transform: translateY(110%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      z-index: 999;
+    }
+    .sticky-cta.is-visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    body.has-sticky-cta {
+      padding-bottom: 92px;
+    }
+    .sticky-cta a {
+      width: 100%;
+      display: block;
+      text-align: center;
+      background: var(--accent);
+      color: var(--white);
+      padding: 15px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
   }
 </style>
 </head>
@@ -423,7 +432,7 @@
       <span class="badge">🏡 2 вілли з басейном</span>
       <span class="badge">💶 ≈ €1000 без їжі</span>
     </div>
-    <a class="cta-btn" href="#confirm">Підтвердити участь</a>
+    <a id="hero-confirm-btn" class="cta-btn" href="#confirm">Підтвердити участь</a>
   </div>
 </header>
 
@@ -683,9 +692,52 @@
 
 <p class="small-note">Мадейра, лютий 2027 · Організатор: Діма Найда</p>
 
-<div class="sticky-cta">
+<div id="sticky-cta" class="sticky-cta" aria-hidden="true">
   <a href="#confirm">Підтвердити участь</a>
 </div>
+
+<script>
+  (function () {
+    const sticky = document.getElementById('sticky-cta');
+    const triggerBtn = document.getElementById('hero-confirm-btn');
+    const confirmBlock = document.getElementById('confirm');
+
+    if (!sticky || !triggerBtn || !confirmBlock) return;
+
+    let triggerInView = true;
+    let confirmInView = false;
+
+    const mq = window.matchMedia('(max-width: 700px)');
+
+    function updateSticky() {
+      const show = mq.matches && !triggerInView && !confirmInView;
+      sticky.classList.toggle('is-visible', show);
+      document.body.classList.toggle('has-sticky-cta', show);
+      sticky.setAttribute('aria-hidden', show ? 'false' : 'true');
+    }
+
+    const triggerObserver = new IntersectionObserver(
+      (entries) => {
+        triggerInView = entries[0].isIntersecting;
+        updateSticky();
+      },
+      { threshold: 0.01 }
+    );
+
+    const confirmObserver = new IntersectionObserver(
+      (entries) => {
+        confirmInView = entries[0].isIntersecting;
+        updateSticky();
+      },
+      { threshold: 0.1 }
+    );
+
+    triggerObserver.observe(triggerBtn);
+    confirmObserver.observe(confirmBlock);
+    mq.addEventListener('change', updateSticky);
+    updateSticky();
+  })();
+</script>
 
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="lightbox-close">&times;</span>
