@@ -379,6 +379,36 @@
   .contact-row-value  { font-size: .9rem; font-weight: 600; color: #1C1915; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .contact-row-arrow  { display: flex; align-items: center; color: #E5DDD5; flex-shrink: 0; margin-left: .25rem; transition: color .15s, transform .15s; }
   .contact-row:hover .contact-row-arrow { color: #7A6B62; transform: translateX(2px); }
+
+  /* Sticky mobile CTA */
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 500;
+    background: var(--white);
+    border-top: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.12);
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  }
+  .sticky-cta a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--accent);
+    color: var(--white);
+    padding: 15px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  @media (max-width: 700px) {
+    .sticky-cta { display: block; }
+    body { padding-bottom: 84px; }
+  }
 </style>
 </head>
 <body>
@@ -652,6 +682,10 @@
 </footer>
 
 <p class="small-note">Мадейра, лютий 2027 · Організатор: Діма Найда</p>
+
+<div class="sticky-cta">
+  <a href="#confirm">Підтвердити участь</a>
+</div>
 
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="lightbox-close">&times;</span>
