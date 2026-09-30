@@ -380,6 +380,42 @@
   .contact-row-arrow  { display: flex; align-items: center; color: #E5DDD5; flex-shrink: 0; margin-left: .25rem; transition: color .15s, transform .15s; }
   .contact-row:hover .contact-row-arrow { color: #7A6B62; transform: translateX(2px); }
 
+  /* Participant count animation */
+  .participant-counter {
+    display: inline-block;
+    position: relative;
+  }
+  .participant-counter.animate {
+    animation: participantFlip 2.5s ease-in-out forwards;
+  }
+  @keyframes participantFlip {
+    0% {
+      opacity: 1;
+      text-decoration: none;
+    }
+    30% {
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    50.1% {
+      content: "4 учасники";
+    }
+    51% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      text-decoration: none;
+    }
+  }
+
   /* Sticky mobile CTA */
   @media (max-width: 700px) {
     .sticky-cta {
@@ -428,7 +464,7 @@
     <p class="subtitle">8 днів на острові вічної весни: схід сонця на Пiку-ду-Аріейру, дикі узбережжя, дегустація вина та ліс Фанал. Тільки для тісної компанії — 6 учасників + організатор.</p>
     <div class="badges">
       <span class="badge">📅 8 днів / 7 ночей</span>
-      <span class="badge">👥 6 учасників + Діма</span>
+      <span class="badge">👥 <span id="participant-badge" class="participant-counter">6 учасників</span> + Діма</span>
       <span class="badge">🏡 2 вілли з басейном</span>
       <span class="badge">💶 ≈ €1000 без їжі</span>
     </div>
@@ -642,7 +678,7 @@
 
 <footer class="deadline" id="confirm">
   <div class="container">
-    <h2>Місця обмежені — лише 6 учасників</h2>
+    <h2>Місця обмежені — лише <span id="participant-footer" class="participant-counter">6 учасників</span></h2>
     <p>Напишіть мені на будь-якій зручній для вас платформі нижче. Я з радістю відповім на всі ваші питання.</p>
     <p>Для остаточного бронювання місця потрібно внести передоплату в розмірі €330.</p>
 
@@ -753,6 +789,42 @@
     confirmObserver.observe(confirmBlock);
     mq.addEventListener('change', updateSticky);
     updateSticky();
+  })();
+
+  // Participant counter animation: 6 -> 4
+  (function () {
+    const counters = document.querySelectorAll('.participant-counter');
+    if (!counters.length) return;
+
+    let played = false;
+
+    function playAnimation() {
+      if (played) return;
+      played = true;
+      counters.forEach(function (el) {
+        el.classList.add('animate');
+        setTimeout(function () {
+          el.textContent = '4 учасники';
+          el.classList.remove('animate');
+        }, 1250);
+      });
+    }
+
+    const footer = document.getElementById('confirm');
+    if (footer) {
+      const obs = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          playAnimation();
+          obs.disconnect();
+        }
+      }, { threshold: 0.3 });
+      obs.observe(footer);
+    }
+
+    const ctaButtons = document.querySelectorAll('a[href="#confirm"]');
+    ctaButtons.forEach(function (btn) {
+      btn.addEventListener('click', playAnimation);
+    });
   })();
 </script>
 
