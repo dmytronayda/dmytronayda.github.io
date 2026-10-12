@@ -101,6 +101,15 @@
     display: block;
     margin-bottom: 8px;
   }
+  .stat-card small {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.72rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(20,33,61,0.62);
+  }
 
   .two-col {
     display: grid;
@@ -167,6 +176,14 @@
     max-width: 480px;
     margin: 0 auto;
   }
+  .price-includes-label {
+    color: #9ad9d6;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
   .price-box .amount {
     font-size: 3rem;
     font-weight: 800;
@@ -185,9 +202,20 @@
   .not-included {
     max-width: 480px;
     margin: 24px auto 0;
+    padding: 18px 22px;
     text-align: center;
-    opacity: 0.85;
+    color: #7a3b1e;
+    background: #fff3e0;
+    border: 1px solid rgba(224,122,95,0.45);
+    border-radius: 10px;
     font-size: 0.95rem;
+  }
+  .not-included strong,
+  .not-included span {
+    display: block;
+  }
+  .not-included strong {
+    margin-bottom: 4px;
   }
 
   .warning-box {
@@ -480,7 +508,7 @@
       <span class="badge">📅 8 днів / 7 ночей</span>
       <span class="badge">👥 <span id="participant-badge" class="participant-counter"><span class="badge-original">6 учасників</span></span> + Діма</span>
       <span class="badge">🏡 2 вілли з басейном</span>
-      <span class="badge">💶 ≈ €1000 без їжі</span>
+      <span class="badge">💶 ≈ €770 + переліт і їжа</span>
     </div>
     <a id="hero-confirm-btn" class="cta-btn" href="#confirm">Перевірити наявність місць</a>
   </div>
@@ -491,7 +519,7 @@
     <h2>Коротко про подорож</h2>
     <div class="grid-4">
       <div class="stat-card"><span class="num">9 - 16 лютого 2027</span>Дати поїздки</div>
-      <div class="stat-card"><span class="num">€1000</span>Орієнтовна вартість без їжі</div>
+      <div class="stat-card"><span class="num">€770</span>Орієнтовна вартість із проживанням, трансфером по острову та організацією<br><small>Без їжі та перельоту</small></div>
       <div class="stat-card"><span class="num">€330</span>Депозит для підтвердження</div>
     </div>
   </div>
@@ -623,7 +651,7 @@
 
 <section class="alt">
   <div class="container">
-    <h2>Що входить у €1000</h2>
+    <h2>Що входить у €770</h2>
 
     <div class="warning-box">
       ⚠️ Передоплата у розмірі <strong>€330</strong> на проживання обов'язкова та <strong>не повертається</strong> у випадку відмови від участі пізніше!
@@ -632,7 +660,8 @@
     <p style="text-align:center; max-width:640px; margin:0 auto 28px; opacity:0.85;">Загальна розбивка витрат буде десь такою:</p>
 
     <div class="price-box">
-      <div class="amount">€1000<small> / особа</small></div>
+      <div class="price-includes-label">У вартість входить</div>
+      <div class="amount">€770<small> / особа</small></div>
       <ul class="breakdown-list">
         <li><strong>План активностей та організація походів мною</strong> — весь маршрут по днях, реєстрація на треки, підготовлені локації та план кожного дня.</li>
         <li><strong>Частина спільних витрат на проживання та організацію туру</strong> — оренда 2 вілл, переліт і проживання організатора. Це і є передоплата €330 для бронювання участі. Ще €330 потрібно буде доплатити в грудні 2026.</li>
@@ -641,7 +670,10 @@
       </ul>
     </div>
 
-    <p class="not-included">Не входить: їжа — покупки в супермаркеті, ресторани тощо покриваються кожним учасником окремо.</p>
+    <div class="not-included">
+      <strong>Не входить у €770</strong>
+      <span>Їжа та переліт оплачуються кожним учасником окремо.</span>
+    </div>
 
     <p style="text-align:center; max-width:640px; margin:20px auto 0; font-size:0.9rem; opacity:0.75;">* Можемо обговорити варіант заміни учасника, але це скоріше виключення з правила.</p>
   </div>
